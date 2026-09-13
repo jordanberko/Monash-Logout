@@ -1,0 +1,1132 @@
+{
+ "bodyText": "Exam Delivery Team Authorised Materials QC · Process Check that authorised materials agree across the relevant exam sources and are clear enough for students and supervisors to follow. Allow 30 to 40 minutes 12 sections 16 worked examples 14 question self-test 01Introduction What this process is for, and who it is written for. Authorised materials are the items and resources a student may use during an exam, such as notes, calculators and working sheets. Quality checking (QC) confirms that the relevant sources describe the same permissions and that the instructions are clear enough to follow. There are two ways this goes wrong. The sources disagree, so a student prepares against one set of rules and is invigilated against another. Or the sources agree on something too vague to enforce, so the call gets made differently in different rooms. Both are failures this process exists to catch. The role of QC Our job is not to decide what should be permitted. It is to confirm that every source says the same thing, and that what they say can actually be acted on, then to raise it when either fails. A unit where every source agrees can still need a faculty decision. Who this is for Anyone in the Delivery Team asked to quality check authorised materials, including staff doing it for the first time. It assumes no prior knowledge of eAssessment, eVigilation or the Lookup Tool. Read it in order the first time. After that, section 12 is the day to day reference. What one check covers One check is one exam shell: a single unit code, in one assessment period, for one sitting and one cohort. A unit such as ACW3120 can have an Australian shell, a Malaysian shell and an AAA shell in the same period, each with its own authorised materials, each checked separately. The shell name in col A tells you which one you have. For that shell you produce three things, and nothing else: a category in col G, an outcome in col H, and the Comments in col I. Where the work is recorded Every result goes in the Authorised Materials QC 2026 sheet. That sheet is not a source. It is where you write down what the sources said. 1You record, you do not resolve. A first QC never contacts a faculty and never edits an exam page. You describe what you found in Comments col I and set the outcome. Senior Delivery decides what is escalated and does the escalating. 2If you are unsure, write it down. An entry in Comments costs nothing. A missed discrepancy costs a student their exam conditions. Uncertainty is a reason to record, not a reason to skip. 02Glossary Terms used across the process and in the QC sheet. TermDefinition AAAAlternative Assessment Arrangements. Students approved for adjustments such as extra time, rest breaks or specialised equipment. AAA cohorts often sit in a separate exam shell to the main cohort, which means a separate set of authorised materials to check. Auth matsShorthand for authorised materials. CohortA group of students sitting under the same conditions. The main cohort sits under standard conditions; an AAA cohort sits with approved adjustments. Different cohorts usually sit in different shells. Centrally scheduled examsExams timetabled by Assessment Scheduling in line with the main University assessment periods: Semester 1 and Semester 2, Deferred and Supplementary, and Rescheduled Deferred. Centrally scheduled is not the same as end of semester, which is what decides whether the Lookup Tool applies. Closed Book + SPIClosed book with Specifically Permitted Items, each item listed individually. See section 4. DiscrepancyAny difference between sources that would change what a student brings or what a supervisor allows. eAShorthand for eAssessment, used in Comments and in the All Match (eVig, eA, Lookup) dropdown value. eAssessmentThe platform students use to sit in-semester and end of semester eExams. Enrolled and SyncedThe value in col F meaning the exam shell has students enrolled and has synced to eVigilation, so the unit is ready to QC. See section 11. eVigShorthand for eVigilation, used in Comments and in the All Match (eVig, eA, Lookup) dropdown value. eVigilationThe online supervision platform used to monitor students sitting supervised assessments. Online supervisors read authorised materials here. eVigNS / eVigRSThe eVigilation notation for the no scan and room scan invigilation types. Exam shellOne instance of an exam on eAssessment. A single unit can have several shells in the same period: an Australian sitting, a Malaysian sitting, an AAA sitting, a deferred sitting. Each carries its own authorised materials and each is checked separately. Gen AIGenerative artificial intelligence. Very rarely permitted. A unit that permits it is recorded as Gen AI in Comments and needs a supervisor reminder. See section 10. HybridAn exam answered partly on paper and partly on screen. eVigilation shows a Hybrid yes or no flag, and hybrid exams have answer sheets that must be accounted for. In-semester assessmentAn assessment run during teaching, outside the main exam periods. Not carried by the Lookup Tool. Invig typecol D. Supervised-RI is room scan, Supervised-NOI is no scan, and the suffix says whether supervisors invigilate live or the session is recorded only. Lookup ToolThe Authorised Materials Search, at authmats.evigilation.monash.edu, read by in-venue supervisors on tablets. A QC source for end of semester exams only. See section 3. Main cohortThe majority of students sitting under standard conditions, as distinct from an AAA cohort. MCShorthand for Monash College. Monash CollegeMC exams use three of the six categories only. See section 4. Not EnrolledThe value in col F meaning the shell has no enrolments or has not synced, so the unit is not ready to QC. See section 11. Second QCA review of a first QC by a different person. See section 11. Senior DeliveryMatt Nixon and Kayla Sgambellone. The orange columns in the QC sheet are theirs. See section 10. SittingOne delivery of an exam in one location or window, for example the Australian sitting and the Malaysian sitting of the same unit. Each sitting has its own shell. SPISpecifically Permitted Items. Stagger startExam sessions in the same period starting at staggered times. Slack reminders are scheduled against the first stagger start time. Unit and unit codeA unit is a subject a student is enrolled in; the unit code identifies it, for example ACW3120. One unit can have several exam shells in the same period. Unsupervised examAn assessment with no supervision. It does not appear in eVigilation and does not need an authorised materials check. Working sheetsBlank sheets a student may write on during the exam. Students bring their own unless the exam page says they are provided. Not the same as answer sheets, which belong to hybrid exams and are counted separately. The QC sheet treats a working sheet discrepancy and an answer sheet discrepancy as two different findings. 03The sources we QC against What each one is, who reads it, and how to open it. Students read this eAssessment The platform students sit their exam in. The landing page carries an Instructions section and an Authorised Materials section. The most detailed of the three, because Instructions is free text. Applies to every supervised exam Online supervisors read this eVigilation The online supervision platform. Authorised materials sit behind the information icon. The fields are fixed, so wording is constrained and detail is sometimes lost. Applies to every supervised exam In-venue supervisors read this Lookup Tool The Authorised Materials Search, at authmats.evigilation.monash.edu, read on tablets at the venue. If its card is wrong, the person enforcing the rules in the room has the wrong rules. Applies to end of semester exams only Not a sourceThe Authorised Materials QC 2026 sheet records what the sources say. It is never evidence of what they say. Which sources apply to your exam Read the delivery period off the shell name in col A, not off the calendar. ACC2100 2026 Sem 1 Deferred & Supplementary is a Deferred and Supplementary exam even though it sits in the Semester 1 year, and a mid-semester assessment held during Semester 2 is not part of the Semester 2 main exam period. The period in the shell name is what decides how many sources you check. Delivery periodSources to checkNotes End of semesterSemester 1 and Semester 2 main exam periodsThree. eAssessment, eVigilation and the Lookup Tool. All three must agree.These are the exams in-venue supervisors invigilate, which is why the Lookup Tool matters. All other deliveriesIn-semester, Deferred and Supplementary, Rescheduled Deferred, Monash College, external clientsTwo. eAssessment and eVigilation. Both must agree.The Lookup Tool is not a QC source for these rounds. It may still hold a card for the unit, so a card existing is not a reason to check it, and a card missing is never a discrepancy. Malaysiaand other offshore or regional sittingsThe same as their Australian equivalent for that delivery period.No separate procedure, but these units have their own shell and their authorised materials can differ from the Australian sitting. Check each shell independently. Never carry an outcome across from one to the other. Opening eAssessment From the QC sheet, click the link in col B. This opens the exam landing page directly and is the fastest route. If col B is blank or the link fails, go to eAssessment and search the unit code in the Search courses field. Select the correct shell. There are often several for the same unit code. Match the year, assessment period, sitting, and whether it is a main cohort, AAA or deferred shell. The shell name in col A tells you which one you want. Read both the Instructions section and the Authorised Materials section. Instructions is free text and often carries conditions that appear nowhere else, such as copy and paste restrictions or an additional device. FIG 1The eAssessment Instructions section. Note \"not allowed to use a secondary device\", a restriction eVigilation has no field for. FIG 2The eAssessment Authorised Materials section on a different unit. Fixed heading, then the detail. Opening eVigilation Open eVigilation and go to the Exam sessions tab in the left hand navigation. Set Select a date to the exam date. This is the step most often missed. eVigilation shows nothing useful until the date is right, and a unit that looks missing is usually a unit on another date. Set Search by to Exam unit, type the unit code, and search. Searching by Session browses everything running that day, which is useful when you are working through a whole date. Click the information icon next to the unit name to open the Authorised Materials panel. Read the whole panel and scroll to the bottom. It lists the category heading, then Calculator, Dictionary, Notes, Other, Permitted Item, Textbook and Working Sheets, then the Hybrid flag. A green tick means permitted, a red dash means not permitted, and the line underneath carries the detail. FIG 3BCH3021, showing both steps at once: the search panel at the top with Select a date and Search by set, and the panel that opens from the information icon. Read what is recorded here, because FIG 4 is the same unit in the Lookup Tool. Category Closed book with specifically permitted items, a physical calculator, notes double sided A4 x 1, and Working Sheets None. Opening the Lookup Tool End of semester exams only. Skip it entirely for every other delivery. Open the Authorised Materials Search at authmats.evigilation.monash.edu. Set the date filter to the exam date before you search. As with eVigilation, the wrong date returns nothing and looks like a missing unit. Search the unit code and open the unit card. Read the card in full. FIG 4The same unit in the Lookup Tool. Read it against FIG 3. Working sheets is 0 here and None on eVigilation: the same quantity in different words, which is not a discrepancy. Other is where they part, Generative AI not authorised here against N/A on eVigilation. Note also that a card exists for a Deferred and Supplementary sitting even though this tool is not a QC source for that round. 04Authorised material categories The six values in the Auth Mat Category dropdown, col G. Set the category to what the exam actually permits, not what you expect for that faculty or unit. If the exam does not fit any category cleanly, that is itself worth recording in Comments. CategoryWhat it permitsWhat to check most carefully Closed BookNothing beyond the standard exam environment. No notes, no calculator, no additional resources.That nothing has crept into Instructions. A Closed Book exam that mentions a calculator or a formula sheet in Instructions is not Closed Book. Closed Book + SPIA defined, listed set of items is allowed: a physical calculator, a named virtual calculator, working sheets, or a limited number of pages of notes.Every listed item, one at a time, in every source. The most common category and the one where most discrepancies are found, because each item is a separate opportunity for the sources to disagree. Open BookHardcopy reference materials such as textbooks, physical notes or a dictionary.Whether the materials are limited to hardcopy. Soft copy reference material is not permitted here by convention, so an Instructions section permitting digital notes is a mismatch with the category. Open Book with Additional DeviceOpen Book plus a second device. A laptop, tablet or monitor. Not a phone. In most cases not connected to the internet.That the additional device is stated. It usually appears only in eAssessment Instructions and not in eVigilation. Open AccessBroad access to resources during the exam.Whether generative AI is permitted. Almost all Open Access exams explicitly prohibit it. The rare exception needs flagging. Open Access with Additional DeviceOpen Access plus a second device. Unlike Open Book with Additional Device, the second device may be connected to the internet and carry soft copy notes.That the additional device is stated, and that a supervisor reminder is flagged. Every unit in this category needs one. Monash CollegeMC exams use three categories only: Closed Book, Closed Book + SPI, and Open Access. 05QC outcomes The dropdown values you set once you have compared the sources. First QC Outcome col H, you set this ValueUse it whenAlso do this All Match (eVig, eA, Lookup)Every source that applies to this delivery period says the same thing. Three sources for end of semester, two for every other delivery.Record the items listed under \"Always note these, match or not\" in section 8, even when the sources agree. Flag any unit that meets the reminder criteria in section 10. DiscrepancyThe sources do not agree. An item is permitted in one place and not another, or the wording differs in a way that would change what a student brings or what a supervisor allows.Describe the difference in Comments. Name the source and quote the wording from each. Senior Delivery cannot act on \"does not match\". All Match but Escalation RequiredThe sources agree with each other, but what they agree on needs a faculty decision. Contradictory instructions, an unenforceable condition, or something outside normal exam conventions.Explain what needs deciding, and why. OtherThe check does not fit the values above. Most often where an item is provided inside the exam rather than brought by the student, or an unusual condition applies that is not a mismatch.Always explain in Comments. Other with an empty Comments cell tells the next person nothing. Unsupervised ExamThe assessment turns out not to be supervised, so it does not appear in eVigilation and no authorised materials check applies.Note the date you confirmed it, then move on. FIG 5The First QC Outcome column on a real date, with Comments alongside. Most rows are All Match. The red Discrepancy at the foot is an answer sheet count that did not agree. Naming trapAll Match (eVig, eA, Lookup) lists three sources, but it is still the correct answer for a two source check. Do not read the absence of the Lookup Tool as a reason to avoid it. For how these calls are made in practice, work through the worked examples in section 9. Choosing between the values The caseWhat to do The published category and the items it lists do not agree. A Closed Book exam lists a calculator.Set col G to the category the exam actually permits, judged from the items listed, not from the heading. Then record the conflict in Comments: a heading that contradicts its own list is a finding in its own right, and it is what a student reads first. Nothing fits cleanly.Other, and always with an explanation in Comments. It is most often the right value where something is provided inside the exam rather than brought by the student, or an unusual condition applies that is not a mismatch. Other with an empty Comments cell tells the next person nothing. You cannot finish the check. A source will not load, or you cannot tell what a field means.Leave col G, col H and col I blank and ask, per section 10. A source you could not open is never All Match, and it is not Other or Unsupervised Exam either. Those three values all describe something you checked. An unfinished check is unfinished. The unit is not supervised.Unsupervised Exam applies to an assessment confirmed to have no supervision, not to one you could not find in eVigilation. A unit missing from eVigilation has three ordinary causes to rule out first: see case 12. Note the date you confirmed it. Not yet settledWhere a unit has both a discrepancy between sources and a condition that needs a faculty decision, col H takes one value and this guide does not say which. Record both in Comments, set the value that describes the more serious problem, and say in the comment that the other applies too. The precedence rule is with the process owner. Second QC Outcome col J, Senior Delivery sets this Column J is orange, which in the QC sheet means Senior Delivery owns it. Do not fill it in. Section 11 covers how the second pass works. 06The QC sheet Three columns are yours. Everything else is automatic or owned by Senior Delivery. ColColumn and what goes in itWho fills it ACourse Name. The exam shell name including unit code, year, delivery period and sitting, for example ACW3120 2026 Sem 2 Mid-Semester (Malaysia Only). Use it to confirm you have opened the right shell.Automatic BLink. The eAssessment link for that shell.Automatic CStatus. Where the shell sits in the build process. 04.Handed over for QC is the value that matters to you.Automatic DInvig Type, for example Supervised-NOI-RecordOnly.Automatic EStart Time. Use it to work date by date, and to judge how much time is left before the exam.Automatic FEnrolment Status. Enrolled and Synced means ready to QC. Not Enrolled means it is not. Check this before you open anything.Automatic GAuth Mat Category. Dropdown. Set it to the category the exam actually is.You HFirst QC Outcome. Dropdown. Set it once you have compared every source that applies.You IComments. Free text. Anything noteworthy, ambiguous, provided inside the exam, or worth a second opinion. Name the source and quote the wording. This is what Senior Delivery reads to decide what gets escalated.You J to NSecond QC Outcome, Reminder Required, Escalated?, Resolved?, Reminder Set.Senior Delivery R to UAutomatic flags derived from your Comments and the exam data. They drive the QC Overview tab, which is how Senior Delivery finds units needing attention.Automatic Your wording drives the flagsThe automatic columns read your Comments, so a unit only reaches the QC Overview tab if your wording is findable. Write generative AI permissions as Gen AI and describe an additional device in the words the exam page uses. Vague comments strand a unit where nobody is looking for it. FIG 6The QC sheet with column C hidden. The three columns that are yours are Auth Mat Category, First QC Outcome and Comments. Note how few second QC cells are filled, and the Slack reminders in the last column. 07Running a check Pick the delivery period you are working on. The steps change by one source. End of semesterThree sources · Sem 1 and Sem 2 All other deliveriesTwo sources · in-sem, Def & Supp, MC Work one exam date at a time. Filter the QC sheet by Start Time col E, sort unit names A to Z, and go down the list. Working by date keeps you aligned with how eVigilation and the Lookup Tool are searched, since both need a date set before they return anything. Confirm which rows are yours before you start. Ask Senior Delivery if you have not been told: this guide does not set out how work is allocated, and picking rows yourself risks two people checking the same shell while another is missed. Then filter the QC sheet to one exam date using Start Time col E and sort col A alphabetically within that date. Check that the row is ready and not already done. If col G, col H or col I already has something in it, stop and ask before you change it: someone may have checked this shell, and overwriting their entry loses the evidence. Then check Enrolment Status col F. Enrolled and Synced means continue. Not Enrolled means skip the unit and leave G, H and I blank. Do not record a discrepancy for a unit that is not ready. If its exam date is close and it still has not synced, see section 11. Open eAssessment from the link in col B. Confirm the shell name on the page matches col A, including the sitting and cohort. These deliveries have more shells per unit than end of semester does, so this check matters more here. A single unit can have an Australian and a Malaysian sitting, a main cohort and an AAA cohort, and a deferred shell, all in the same window. Read the Instructions section and the Authorised Materials section in full. Note every permitted item and every condition, then check the two sections agree with each other before you open anything else. See FIG 1 and FIG 2 in section 3. Open eVigilation and find the unit on that exam date. Open the Authorised Materials panel from the information icon, read it in full, and scroll to the bottom for the Hybrid flag. See FIG 3 in section 3. Open the Lookup Tool, set the date filter to the exam date, and read the unit card. See FIG 4 in section 3. Compare the three sourcesthe two sources field by field using section 8. Do not skim for an overall impression. Take the fields one at a time. Set Auth Mat Category col G to the category the exam actually is. Set First QC Outcome col H. All Match (eVig, eA, Lookup) is still the correct value when both sources agree, despite the name. Write what you found in Comments col I. Record anything other than a clean match, and the always-note items in section 8 even where every source agrees. Name each source and quote its wording. \"eVig Notes: None. eA: one double sided A4 page permitted\" is actionable. \"Notes discrepancy\" is not. Flag reminder units. Open Access with Additional Device, and any unit permitting generative AI. Write Gen AI in the comment so the unit is findable. See section 10. Move to the next unit. When the date is finished, check the sheet for units added after you filtered, then move to the next date. One check, start to finish Practice scenario. A made-up unit, worked the whole way through, so you have seen an ordinary check before you meet an unusual one. Nothing here is a real exam. StepWhat you doWhat you find The rowRead the shell name in col A and the enrolment status in col F.BCH3021 2026 Sem 2 Main (Australia), Enrolled and Synced. The period in the name is a main exam period, so all three sources apply. eAssessmentOpen the link in col B. Check the shell name on the page matches col A, then read Instructions and Authorised Materials in full.Heading: Closed Book + SPI. Permitted: a physical calculator; one double sided A4 page of physical notes; working sheets, unlimited. The two sections agree with each other. eVigilationSet the date, search the unit, open the Authorised Materials panel, scroll to the bottom.Category: closed book with specifically permitted items. Calculator: Physical Calculator. Notes: Notes - Double sided A4 x1 - Physical Only. Working Sheets: Yes. Hybrid: no. Lookup ToolSet the date filter, search the unit, read the card.Same category, physical calculator, same notes limit, working sheets 99. CompareField by field, across all three.Calculator: all three say physical. Notes: the same one double sided A4 page, in different words. Working sheets: Yes and 99 are the same quantity, and eAssessment says unlimited. Nothing contradicts anything. The sources agree, so this is an All Match. It still needs a comment, because the notes limit and the calculator type are both on the always-note list in section 8: a supervisor or a student can still be caught out by them even when nothing disagrees. That is what you record. ColumnWhat you enter GClosed Book + SPI HAll Match (eVig, eA, Lookup) IAll three sources agree. Physical calculator only, no virtual calculator named. Notes: one double sided A4 page, physical only, worded as \"Notes - Double sided A4 x1 - Physical Only\" on eVig and \"one double sided A4 page\" on eA. Working sheets unlimited: eVig Yes, Lookup 99, eA unlimited. Hybrid no. That is the check finished. You do not contact the faculty, you do not edit the exam page, and you do not fill in col J. The unit now appears to Senior Delivery through the QC Overview tab, and a second person checks it independently. This unit meets no reminder criterion, so there is nothing to flag under section 10. No Lookup ToolThe Lookup Tool is not a QC source for these rounds. It may still hold a card for the unit, as FIG 4 shows, but do not check it and never record a discrepancy either way. Differences worth knowing Multiple shells. Australian and Malaysian sittings of the same unit frequently differ. Check both, and compare them against each other as well as against eVigilation. A difference between the two sittings is worth recording even when each is internally consistent. Late shells. These deliveries sync closer to the exam date than end of semester exams do. A unit that read Not Enrolled yesterday may be ready today. Re-check rather than assuming. Unsupervised units. Units sometimes move from record only to unsupervised after the shell is built, then disappear from eVigilation. Set the outcome to Unsupervised Exam and note the date you confirmed it. Monash College. Three categories only: Closed Book, Closed Book + SPI, and Open Access. 08What to compare Take the fields one at a time. Comparing overall impressions is how discrepancies get missed. Sources describe the same permission in different words and the eye slides over the difference. Go field by field, in the order the eVigilation panel lists them. On the three source path, compare each field across all three: two agreeing does not settle a field the third contradicts. Three things look alike on the page and are not the same: What you are looking atHow to tellWhat to do A contradictory valueTwo sources state the same field and state it differently, in a way that changes what a student brings or a supervisor allows.Discrepancy. Quote both. Equivalent wordingDifferent words, same permission. The eVigilation dropdowns are fixed, so free text on eAssessment will rarely match word for word.Not a discrepancy. Record the wording so the next person does not re-check it. Something a platform cannot stateThe field does not exist in that source at all, so its silence is not disagreement. An additional device and copy and paste restrictions are the common ones.Not a discrepancy. Record it, because only one source carries it. eAssessment against itself The Instructions section against the Authorised Materials section, on the same page. MismatchDo this before you open anything else. Instructions is free text and is written separately from the materials list, so the two drift. A page permitting a textbook under Authorised Materials while Instructions says closed book is a discrepancy on its own, and there is no point comparing a page that already contradicts itself. Category eAssessment: the heading above the authorised materials list. eVigilation: the heading at the top of the panel, for example \"Closed book with specifically permitted items\". Lookup Tool: on the unit card. MismatchDifferent categories in different sources. Also a category that does not match its own contents, such as a Closed Book exam listing a calculator. Calculator eAssessment: the Calculator line, plus any mention in Instructions. eVigilation: the Calculator field, which reads Physical Calculator, a named virtual calculator, or None. MismatchOne source permitting a physical calculator and another a virtual one, or a named product appearing in one source only. Wording such as \"faculty approved calculator\" needs escalating rather than matching. Dictionary eAssessment: listed as a permitted item. eVigilation: the Dictionary field. MismatchPermitted in one source and None in another. Check the platform limitations below first. Notes eAssessment: the Notes line and the Instructions section. eVigilation: the Notes field. MismatchA difference in whether notes are permitted at all, whether they are physical or digital, how many pages, and whether double sided pages are allowed. Wording differences that describe the same limit are not a mismatch. Textbook eAssessment: listed as a permitted item. eVigilation: the Textbook field. MismatchPermitted in one source and N/A or None in another. Working sheets eAssessment: usually a specific number in Instructions. eVigilation: the Working Sheets field, usually Yes or No. Lookup Tool: sometimes a number such as 99. MismatchPermitted in one source and not another, or a different quantity in each. Compare quantities, not wording. For the Working Sheets field only: Yes, 99 and \"unlimited\" are the same quantity, and so are 0, None and N/A. Two different counts, or a count against unlimited, is a Discrepancy. Always record the count in Comments, match or not. These conversions belong to this field. Do not carry them across to answer sheets or to any other field. Other and Permitted Item eAssessment: the Other line and Instructions. eVigilation: the Other and Permitted Item fields, both free text. MismatchAnything present in one source and absent from another. Software, Excel, formula sheets and unusual permissions all land here, so read it carefully. Additional device Almost always the eAssessment Instructions section only. It does not appear in the eVigilation panel. What countsNot a mismatch when eVigilation is silent, because the field does not exist there. It is a mismatch when the category says Additional Device and no source describes what the device may be. Generative AI eAssessment Instructions, usually as an explicit prohibition. Occasionally as an explicit permission. Always flagAny unit that permits generative AI needs flagging, whether or not the sources agree. This is a reminder action, not a mismatch: the sources can agree perfectly and the unit still needs flagging. Answer sheets and the Hybrid flag eVigilation: the Hybrid yes or no flag at the bottom of the panel. eAssessment: answer sheet instructions. MismatchAnswer sheets are not working sheets. They belong to hybrid exams, they are counted separately, and the QC sheet treats the two as different findings. Do not compare one against the other.The Hybrid flag is a yes or no. It tells you whether the exam has a paper component; it is not a count and it cannot agree or disagree with a number. Hybrid marked yes with no answer sheets described anywhere is a mismatch. Where both sources give an answer sheet count and the counts differ, that is a mismatch too. Copy and paste, translation and other restrictions eAssessment Instructions section only. Always recordNot a source mismatch, since the other sources have nowhere to state it. Record restrictions that are difficult to enforce, and any restriction that contradicts something else on the same page. Sitting and cohort The shell name in col A, against the page you have open. Check this firstIf the shell name does not match, you are reading the wrong page and nothing below it is worth comparing. Check this before anything else when something looks badly wrong. Always note these, match or not The comparison above decides the outcome. This list decides the comment. Each of these is worth recording in Comments even when every source agrees, because a supervisor or a student can still be caught out by it. WhatWhat to record Generative AIAny mention, permission or prohibition. A unit that permits it needs a supervisor reminder, so write Gen AI in the comment. Copy and paste restrictionsUsually a paragraph after the permitted materials list. Quote it. These are hard to enforce and they get escalated. Translation apps and websitesWhich are permitted, and on what device. Watch for a page that bans browser translation extensions and then requires a translation website. Programming languages and softwareWhich languages, applications or packages a student may open, and where they run. Record it even when there is no discrepancy. Handwritten notesHow many pages or sheets, what size, and whether single or double sided. “Notes permitted” without a limit is ambiguous. CalculatorPhysical or virtual, and any restriction on type or model. “Faculty approved calculator” is not a specification. Printed formula sheetsWhat kind, how many pages, and where the student gets it. A sheet provided inside the exam is not the same as one the student brings. Local files and MoodleWhether specific named files are permitted or the whole Moodle site. These are very different permissions. Additional device conditionsFor the two with Additional Device categories, what the device may hold or reach, and what is off limits: internet, communication tools, generative AI, extra applications. Flag it if the conditions are unclear or contradict the category. Anything unfamiliarA named file provided in the exam, an aide memoire, a dataset, a molecular modelling kit. If you had to think about what it was, write it down. Known platform limitations Check these before recording a discrepancy. They explain most of what looks like a faculty error. BehaviourWhat is actually happeningWhat to do eVigilation Notes or Dictionary reads None while the exam page permits them.eVigilation will not allow the Dictionary and Notes fields to be populated once the Other field has been filled in. A platform constraint, not a faculty error.Still record it. A supervisor reading eVigilation would enforce the wrong rule. Note the limitation in Comments so Senior Delivery can triage it quickly. Textbook and Other cannot both be populated.The same constraint. Selecting Textbook prevents other permitted items being entered into Other.Record it, and note the limitation. Notes wording never matches exactly.The Notes dropdown available to academics offers three values only: None, Notes - Double sided A4 x1 - Physical Only, and Notes - Double sided A4 x5 max - Physical Only. Free text on eAssessment will describe the same limit differently.Compare the meaning, not the words. \"Notes - Double sided A4 x 1 - Physical Only\" and \"One page (both sides) of written material is permitted\" are the same permission. Excel appears under Other rather than Calculator.Excel is not one of the values in the calculator dropdown academics choose from, so it can only be entered as free text under Other.Not a discrepancy. A physical calculator heading plus Excel under Other means exactly that, and no other virtual calculator is permitted. 09Worked examples Sixteen cases. What was seen, the call that was made, and why. Cases marked Practice scenario have their details set out in full so the call has one defensible answer. Expand all Reference Test yourself 0 / 0 of 14 answered Start again Read the case, then commit to an answer before you reveal it. Fourteen of the sixteen cases are scored. The two that turn on a convention this guide cannot yet confirm are left as reference. All 16 Not a discrepancy Discrepancy Escalate All MatchA permitted additional device▸What you seePractice scenario. The exam page heading reads Open Access. The Instructions section permits a second device, a laptop or tablet but not a phone, and says it may be connected to the internet. The eVigilation panel says nothing about a device, because eVigilation has no field for one. Everything else on the page matches eVigilation.What to doThe category is Open Access with Additional Device: the device permission changes the category, and the heading alone does not settle it. Record the device wording in Comments, because only one source carries it. eVigilation being silent is not a mismatch, since the field does not exist there. This unit meets a reminder criterion in section 10, so flag it; Senior Delivery schedules the message.Practice scenario. The exam page heading reads Open Access. The Instructions section permits a second device, a laptop or tablet but not a phone, and says it may be connected to the internet. The eVigilation panel says nothing about a device, because eVigilation has no field for one. Everything else on the page matches eVigilation.The sources agree. Which value belongs in Auth Mat Category, col G?Open Access with Additional DeviceOpen AccessOpen Book with Additional Device All MatchGenerative AI permitted▸What you seePractice scenario. The exam page Instructions explicitly permit generative AI. The eVigilation panel and the Lookup card carry the same permission. All three sources agree with each other, and nothing on the page contradicts anything else.What to doThe sources agree, so the outcome is All Match. Permitting generative AI is a reminder trigger, not a faculty escalation: write Gen AI in Comments in those words so the unit is findable, and flag it under section 10. Escalation Required is for something the faculty has to decide, which is not the case when the permission is deliberate and consistently stated. Wolfram Alpha is the common edge case: a long standing permitted virtual calculator that has AI features, but unless the page explicitly permits the AI functionality, students should not be using it.Practice scenario. The exam page Instructions explicitly permit generative AI. The eVigilation panel and the Lookup card carry the same permission. All three sources agree with each other, and nothing on the page contradicts anything else.All sources agree. What belongs in First QC Outcome, col H?All Match but Escalation RequiredDiscrepancyAll Match (eVig, eA, Lookup) DiscrepancyWorking sheet counts that differ▸What you seeeVigilation Working Sheets reads Yes. The Lookup Tool card reads 99. The eAssessment page permits 5 working sheets.What to doFor the Working Sheets field, Yes and 99 are the same quantity, both meaning unlimited, so those two agree. Five is not the same quantity as unlimited, so eAssessment against eVigilation is a Discrepancy: a supervisor reading eVigilation would let a student take more sheets than the faculty allowed. Quote all three and give the count. This is a change from the 2023 process, which treated a specific count against Yes as a tighter statement of the same permission. Counts of five are common in Business and Economics units, so expect this to flag more units than it used to.eVigilation Working Sheets reads Yes. The Lookup Tool card reads 99. The eAssessment page permits 5 working sheets.What belongs in First QC Outcome, col H?OtherDiscrepancyAll Match (eVig, eA, Lookup) DiscrepancyeVigilation says no notes but notes are permitted▸What you seePractice scenario. The eVigilation Notes field reads None, and the exam page permits one double sided A4 page of physical notes. You check the panel and the Other field is populated.What to doThe sources contradict each other on a field both can state, so it is a Discrepancy. The populated Other field is the likely cause: once Other is filled in, eVigilation will not allow Notes or Dictionary to be populated. Record that in Comments so Senior Delivery can triage it quickly. The cause does not change the risk, because an online supervisor reading eVigilation would stop a student using notes they are entitled to. Where Other is not populated, this known limitation does not explain it and the difference still stands on its own.Practice scenario. The eVigilation Notes field reads None, and the exam page permits one double sided A4 page of physical notes. You check the panel and the Other field is populated.What belongs in First QC Outcome, col H?DiscrepancyUnsupervised ExamAll Match (eVig, eA, Lookup) All MatchNotes wording that differs but means the same thing▸What you seePractice scenario. eVigilation reads Notes - Double sided A4 x 1 - Physical Only. The exam page reads \"One double sided A4 page of physical notes is permitted.\" Both state the same size, the same count and the same physical restriction.What to doDifferent words, same permission: one double sided A4 page of physical notes. The Notes dropdown available to academics has only three values, so free text on eAssessment will rarely match word for word. Compare the permission, not the phrasing. Record the wording in Comments so the next person does not re-check it. Where either source leaves out the size, the count or whether digital notes are allowed, the permissions are not demonstrably the same and that gap is itself worth recording.Practice scenario. eVigilation reads Notes - Double sided A4 x 1 - Physical Only. The exam page reads \"One double sided A4 page of physical notes is permitted.\" Both state the same size, the same count and the same physical restriction.What belongs in First QC Outcome, col H?All Match (eVig, eA, Lookup)DiscrepancyOther Record itWording only one discipline uses▸What you seeThe exam page permits \"open notes\", with no further definition anywhere on the page. The phrase is used in some disciplines with a narrower local meaning than the words suggest.What to doDo not assume the local meaning, and do not rule it out. An undefined permission is exactly what QC exists to catch: a student and a supervisor can read \"open notes\" differently, and nothing on the page settles it. Record the exact phrase in Comments and say that it is undefined on the page. If the sources agree with each other, that is still All Match with a comment; the ambiguity is for Senior Delivery to take up.Open question for the process owner. Whether a documented faculty convention exists for this phrase, and where a checker can read it, is not recorded anywhere in this guide's sources. Until it is, treat the phrase as undefined rather than inferring a rule. All MatchExcel as the permitted calculator▸What you seePractice scenario. The exam page lists a physical calculator under Calculator and Excel under Other. The eVigilation panel reads Calculator: Physical Calculator, Other: Excel. No virtual calculator heading appears in either source.What to doThe two sources say the same thing, so it is All Match. Excel appearing under Other rather than Calculator is a platform constraint, not a disagreement: Excel is not one of the values in the calculator dropdown, so it can only be entered as free text. A virtual calculator heading would imply every virtual calculator is permitted, which is not the intent. Record the wording in Comments.Open question for the process owner. Whether students may use pre-existing content in their own Excel files, or must start from a blank workbook, is not settled in any source this guide is built from. Record what the page says rather than teaching either reading.Practice scenario. The exam page lists a physical calculator under Calculator and Excel under Other. The eVigilation panel reads Calculator: Physical Calculator, Other: Excel. No virtual calculator heading appears in either source.What belongs in First QC Outcome, col H?OtherDiscrepancyAll Match (eVig, eA, Lookup) DependsFormula sheets▸What you seeThe exam page mentions a formula sheet, or a formula sheet appears inside the exam, and it is not listed in the authorised materials.What to doA formula sheet included as an image on an exam page is exam content, not an authorised material, and is correctly absent from the list. A formula sheet that opens as a link or a PDF in a separate tab should be listed, because supervisors check what students have open. If a formula sheet opens as a link and is not listed, record it as Other with the detail in Comments. Where the page says a sheet is provided to students beforehand, quote that wording: a sheet the student brings in is a different permission from one provided inside the exam, and the two are counted separately.Open question for the process owner. Whether printed formula sheets brought in by students count against a permitted notes limit is not documented in this guide's sources. Record itCopy and paste restrictions▸What you seeThe exam page prohibits copying and pasting, sometimes including copying between the notes window and the response window inside the exam itself. Neither eVigilation nor the Lookup Tool has a field for it.What to doNot a Discrepancy. A source cannot disagree about something it has nowhere to state, so the silence of the other sources is not a mismatch. Record it, because it is difficult to enforce and supervisors need to know. Restrictions on copying to or from external sources are conventional; a restriction on copying within the platform is the one to note.The exam page prohibits copying and pasting, sometimes including copying between the notes window and the response window inside the exam itself. Neither eVigilation nor the Lookup Tool has a field for it.Only the exam page can state this. Is the other sources' silence a Discrepancy?No. Record it in Comments; silence is not disagreement.Yes, and it also needs a supervisor reminder.Yes. One source states it and the others do not. DiscrepancyTranslation tools stated two ways▸What you seePractice scenario. The exam page Instructions permit an online translation website for checking single words. The eVigilation panel Other field reads No translation tools permitted. The two sources state the same permission and state it differently.What to doA supervisor reading eVigilation would stop a student doing something the exam page allows, so this is a Discrepancy. Quote both, naming each source. Note that a page banning browser translation extensions while permitting a separate translation website is not by itself a contradiction: those are different tools, and one can be permitted while the other is not. What makes this a finding is the two sources disagreeing, not the shape of the wording.Practice scenario. The exam page Instructions permit an online translation website for checking single words. The eVigilation panel Other field reads No translation tools permitted. The two sources state the same permission and state it differently.What belongs in First QC Outcome, col H?DiscrepancyAll Match but Escalation RequiredOther All MatchMore than one shell for the same unit▸What you seePractice scenario. The unit has a main cohort shell and an AAA shell. You are checking the main cohort shell named in col A, and its applicable sources agree with each other. The AAA shell is a separate row in the QC sheet, on a different date.What to doA unit having several shells is normal and is not a finding. Each shell is its own row, its own check and its own outcome, so the AAA shell existing changes nothing here. Check that the shell name on the page matches col A before anything else, then judge this row on its own sources.Open question for the process owner. Where two sittings of the same unit are each internally consistent but permit different materials, this guide does not settle whether that is recorded as a Discrepancy, as a Comment on an otherwise matching row, or not at all. Section 3 says sittings can legitimately differ; section 7 says the difference is worth recording. Until it is settled, record what you saw and leave the outcome to reflect this row's own sources.Practice scenario. The unit has a main cohort shell and an AAA shell. You are checking the main cohort shell named in col A, and its applicable sources agree with each other. The AAA shell is a separate row in the QC sheet, on a different date.Does the AAA shell existing make this row a Discrepancy?Yes. Record it as Other.No. It is a separate row with its own check.Yes. Two shells for one unit is a Discrepancy. Investigate firstUnit missing from eVigilation▸What you seeThe unit is in the QC sheet but does not appear in eVigilation for that date. Nothing has been ruled out yet.What to doAn unexplained absence is not an outcome. Work through the three causes in order. First, confirm the date filter is set to the exam date: the wrong date is the most common cause and looks exactly like a missing unit. Second, check Enrolment Status col F; Not Enrolled means the shell has not synced and it usually appears after the overnight sync, so leave G, H and I blank. Third, check whether the unit has been changed to unsupervised, in which case it will not appear at all. Only a confirmed unsupervised assessment is recorded as Unsupervised Exam. If none of those explain it, raise it with Senior Delivery rather than recording a guess.The unit is in the QC sheet but does not appear in eVigilation for that date. Nothing has been ruled out yet.What do you do first?Record a Discrepancy against the missing source.Record the outcome as Unsupervised Exam.Confirm the eVigilation date filter is set to the exam date. No reminderSoftware run from a local drive▸What you seePractice scenario. The exam permits software such as Mathematica, R or Visual Studio, with wording about running it from the local drive. All applicable sources carry the same permission.What to doRunning from the local drive means the program installed on the student's own machine rather than a browser or cloud version. Record which languages, applications or packages are permitted and where they run, because that is one of the always-note items in section 8, even though the sources agree. Only two situations meet the reminder criteria in section 10: Open Access with Additional Device, and a unit permitting generative AI. Permitted software is neither.Practice scenario. The exam permits software such as Mathematica, R or Visual Studio, with wording about running it from the local drive. All applicable sources carry the same permission.Does this unit meet a supervisor reminder criterion in section 10?No. Record the detail in Comments; no reminder is needed.Yes. Any permitted external software needs a reminder.Yes, and you schedule the reminder yourself. All MatchA container limit with no page limit▸What you seePractice scenario. The exam page permits one folder of printed notes, with no page count. The eVigilation Notes field carries the same wording. The applicable sources agree with each other.What to doThe restriction is on the container, not the page count, and one folder means one folder. The sources agree, so the outcome is All Match. It still needs a comment: a note limit with no page count is one of the always-note items in section 8, because a student and a supervisor can read it differently. Record the exact wording. In-venue supervisors enforce it by checking an unusually large pile of notes against the restriction.Practice scenario. The exam page permits one folder of printed notes, with no page count. The eVigilation Notes field carries the same wording. The applicable sources agree with each other.The sources agree. What belongs in First QC Outcome, col H?Other, because no page count is givenAll Match (eVig, eA, Lookup), with the wording recorded in CommentsDiscrepancy, because the limit is unclear EscalateWriting equipment with nothing to write on▸What you seePractice scenario. The Authorised Materials list permits pens and pencils. No working sheets and no answer sheets are described on the exam page, in the eVigilation panel or on the Lookup card, and the Hybrid flag reads no. You have checked all three. The sources agree with each other.What to doNothing on the page gives the student anything to write on, which usually means one of the entries is wrong. The sources agree with each other, so this is not a Discrepancy; what they agree on is the problem, and that needs a faculty decision. Set All Match but Escalation Required, quote both entries, and say what is missing. Where paper provision has not been checked in every applicable source, check it first: an answer sheet described in one source you have not opened changes the answer.Practice scenario. The Authorised Materials list permits pens and pencils. No working sheets and no answer sheets are described on the exam page, in the eVigilation panel or on the Lookup card, and the Hybrid flag reads no. You have checked all three. The sources agree with each other.All applicable sources agree and paper provision has been checked. What belongs in col H?DiscrepancyAll Match (eVig, eA, Lookup)All Match but Escalation Required EscalateMobile phones▸What you seePractice scenario. The authorised materials permit a mobile phone during the assessment. All applicable sources carry the same permission.What to doThe sources agree, so it is not a Discrepancy, but a permitted phone in a supervised exam is a condition the faculty needs to confirm. Set All Match but Escalation Required and quote the wording. The exception is wording about a QR code scanner app used to photograph and upload work after the exam has finished. That is a submission instruction rather than an authorised material, and it does not need escalating.Practice scenario. The authorised materials permit a mobile phone during the assessment. All applicable sources carry the same permission.The sources agree. What belongs in First QC Outcome, col H?All Match but Escalation RequiredDiscrepancyAll Match (eVig, eA, Lookup) 10Escalation and reminders What happens after you record a problem, and how supervisor reminders are set. Three different things get confused with each other. They are separate actions, and only the first one is yours: ActionWhat it meansWho does it RecordWrite the evidence into Comments, col I, naming each source and quoting its wording. Every finding is recorded, and so is every always-note item from section 8, match or not.You FlagMark a unit that meets a supervisor reminder criterion below, so it is findable. You do this by writing the right words in Comments. You do not write, schedule or send the message.You ReferPut something in front of the faculty for a decision. You never contact a faculty. You record it and set the outcome; Senior Delivery raises it and tracks it.Senior Delivery RoleResponsibilityWhere First QC (you)Compare the sources, set the category and outcome, and describe what you found. You never contact a faculty and never edit an exam page.G, H, I Second QCReview another person's first QC, confirm or correct the outcome, and decide what goes to the faculty.J Senior DeliveryRaise the escalation with the faculty, track it to resolution, and set supervisor reminders.J, K, L, M, N How to write a comment that can be actioned Senior Delivery escalates from what you wrote. If the comment does not name the source and quote the wording, someone has to redo your check before they can raise it. Instead ofWrite Notes discrepancyeVig Notes: None. eA authorised materials: \"Notes - Double sided A4 x 1 - Physical Only\". Other field on eVig is populated, which is the likely cause. Calculator does not matcheA: physical calculator only. eVig Calculator: Physical Calculator. Lookup card: \"faculty approved calculator\". Lookup wording needs confirming. Weird instructionseA Instructions prohibits browser translation extensions, then states \"To confirm the meaning of a word it must be typed into a translation website or external application\". Contradictory. Where escalations go Once a discrepancy has been through a second QC and is confirmed, Senior Delivery raises it in #oasis-authorised-materials. Include everything from every source, so the thread carries the full picture without anyone reopening the platforms. Where your own questions go Ask in #oasis-authorised-materials rather than messaging individuals, so the answer is on the record for the next person. Whatever you are asking, give the shell name from col A, the exam date, which sources you have already opened, and the exact wording that is causing the problem. SituationWhat to do You are unsure how to read somethingRecord what you saw in Comments and ask in the channel. An entry in Comments costs nothing, and a question with the wording quoted can be answered without anyone reopening the platforms. You cannot complete the checkLeave G, H and I blank rather than guessing an outcome, and say in the channel which shell it is and what is blocking you. An unavailable source is never by itself All Match, Other or Unsupervised Exam. Something looks urgentRaise it with Senior Delivery directly as well as in the channel, and say why it is urgent, usually that the exam date is close. Supervisor reminders Two situations always need a supervisor reminder. Your part is to make the unit findable, by recording the device wording, or Gen AI in those words, in Comments. Nothing below is yours to send. Senior Delivery referenceThe templates and timing below are here so you can see what your comment feeds into. Senior Delivery writes, schedules and posts these messages. A first checker never posts to #delivery-reminders. The reminder is scheduled in #delivery-reminders, timed for one hour before the first stagger start. A 9am exam gets an 8am reminder. TriggerMessage Open Access with Additional Device@here :page_with_curl: Please note: For unit [UNITCODE], the authorised material is OPEN ACCESS with ADDITIONAL DEVICE. The additional device can be a laptop or tablet but not a phone :computer: Generative AI permitted@here Please note that unit [UNITCODE] permits the use of generative artificial intelligence (AI) (e.g. ChatGPT, GPT-3, OpenAI) as an authorised material to complete the assessment. Note that this exception applies to this unit alone. Use of generative AI for other units is not permitted. :robot_face: Both of those comments feed the QC Overview tab, which is where Senior Delivery finds the units needing a reminder. A unit you did not make findable is a reminder nobody sends. Combined messagesWhere several units in the same session need the same reminder, they are usually combined into one message rather than posted separately. Senior Delivery makes that call. 11Timeline and second QC When QC happens, when to chase, and how the second pass works. StageWhat it means for you Shell built, Not EnrolledNot ready. Leave G, H and I blank. Do not record a discrepancy and do not open the platforms. Enrolled and SyncedReady to QC. This is the trigger. Work through units in Start Time order. First QC recordedCategory, outcome and comments are in. The unit is now visible to Senior Delivery through the QC Overview tab. Second QC recordedcol J is set. Either the unit is complete, or it is with the faculty. Raise it early There is no fixed cut-off written down. In Semester 1 2026 the first pass ran late and the second pass did not reach every unit before delivery. So the working rule is a direction, not a deadline: start early enough that both passes fit before the assessments begin, and treat an unfinished second QC column as a problem to raise rather than a normal state. 1A unit with no First QC Outcome and its exam date approaching. Raise it with Senior Delivery rather than waiting for someone to notice. 2A unit marked Discrepancy or All Match but Escalation Required that has not moved. A faculty needs time to answer. 3A unit still reading Not Enrolled close to its exam date. The shell has not synced. It cannot be QC'd until it does, and someone needs to chase it. A first QC completed the day before an exam leaves no room to escalate anything it finds, which is the same as not having done it. Second QC RuleDetail Every unit gets a second QCNot just the discrepancies. Every unit is checked again, independently, by a senior delivery member. There is no spot check and no sampling. It is a fresh check, not a rubber stampThe second pass opens the sources again. Agreeing with the first outcome without looking is not a second QC. Never second QC your own workThe second pass exists to catch what the first person missed. Reviewing your own check does not do that. Record the result in column JQC Complete, or Escalation Required where it goes to a faculty. Senior Delivery owns this column. Keeping up with late additions Units are added to the QC sheet after a delivery period has started. When you finish a date, go back over it for rows that were not there when you filtered. The Enrolled and Synced Shells tab and the QC Overview tab both surface units that still need a first QC. 12Quick checklist The sequence for one unit, for once you know the process. These ticks are a personal prompt, kept in this browser. They are not a record of the check: nothing here reaches the QC sheet, and the only operational record is what you put in G, H and I. Reset the list before you start the next unit. Where a step does not apply to the delivery you are working on, such as the Lookup Tool outside the main exam periods, tick it to confirm you have considered it and ruled it out. That is not the same as ticking a step you skipped. 0 of 13 First QC checklist complete Reset 01Filter the QC sheet to one exam date using Start Time col E and sort col A A to Z.§7 02Confirm Enrolment Status col F reads Enrolled and Synced. If Not Enrolled, skip and leave G, H and I blank.§11 03Open eAssessment from col B. Confirm the shell matches col A, then read Instructions and Authorised Materials.§3 04Open eVigilation, go to Exam sessions, set the date, set Search by to Exam unit, search the code, then click the information icon.§3 05End of semester only, not Deferred and Supplementary and not Monash College: open the Lookup Tool, set the date filter, search the code and read the unit card.§3 06Compare field by field: category, calculator, dictionary, notes, textbook, working sheets, other and permitted items, additional device, generative AI, hybrid, and restrictions in Instructions.§8 07Check the known platform limitations before recording anything as a discrepancy.§8 08Note the always-record items even where everything matches: Gen AI, copy and paste, translation, software, note limits, calculator type, formula sheets, local files, device conditions, anything unfamiliar.§8 09Set Auth Mat Category col G.§4 10Set First QC Outcome col H.§5 11Record in Comments col I: anything that is not a clean match, and the always-note items in section 8 even where every source agrees. Name each source and quote its wording.§10 12Flag reminder units: Open Access with Additional Device, and any unit permitting generative AI. Write Gen AI in the comment.§10 13Before closing: check for units added since you filtered, and raise anything unchecked or unresolved with an exam date approaching.§11 Training Ready to QC Three things make up this training. The page watches for them as you work, so the tick below only appears once you have actually done them. It records that you have been through the material, not that you have completed a supervised check. ✓ Read the full processSections 1 to 12 0 of 12 Still to read. Click one to go there.IntroductionGlossaryThe sources we QC againstAuthorised material categoriesQC outcomesThe QC sheetRunning a checkWhat to compareWorked examplesEscalation and remindersTimeline and second QCQuick checklist ✓ Work the quick checklistAll 13 steps in section 12 0 of 13 Steps still outstanding. Click one to go there.Step 01Step 02Step 03Step 04Step 05Step 06Step 07Step 08Step 09Step 10Step 11Step 12Step 13 ✓ Pass the self-testSection 9, Test yourself. Twelve of fourteen to pass. 0 of 14 Not answered yet. Click one to go there.A permitted additional deviceGenerative AI permittedWorking sheet counts that differeVigilation says no notes but notes are permittedNotes wording that differs but means the same thingExcel as the permitted calculatorCopy and paste restrictionsTranslation tools stated two waysMore than one shell for the same unitUnit missing from eVigilationSoftware run from a local driveA container limit with no page limitWriting equipment with nothing to write onMobile phones Not finished yet 12 sections still to read. 13 checklist steps outstanding. 14 self-test questions unanswered. Each one above lists exactly what is left. Confirm completion Print this record Start again This records that you have worked through the training. Ask Senior Delivery what they want you to do before your first live row: this guide does not set out a required practice exercise. Your first real check is still reviewed at second QC, which is where practical competence is confirmed. Your tick above is kept in this browser only. Adding your name to the team record below is a separate, deliberate step. @@BUILD@@ 0 people have completed this training Visible to everyone at Monash who opens this page. Nobody yet. Be the first. Add my name to the record The shared record needs the deployed web app. This preview cannot reach it.",
+ "gateText": "Exam Delivery Team Before you start We record training completions against a name, so please confirm this is you. Checking your account Yes, this is my account Not you? Exam Delivery Team Switch account This page identifies you from the Monash Google account you are signed in to. It cannot be changed here. Sign out of Google, or open this link in a private window, then sign in as yourself and return. Back Exam Delivery Team Who are you? We could not read a Monash Google account for this session. A name typed here is recorded as unverified, so sign in with your Monash account if you can. Continue Back Exam Delivery Team Authorised Materials QC How to check that a supervised eExam says the same thing about its authorised materials everywhere it is published, and that what it says is clear enough to enforce. 30 to 40 minutes 12 sections 14 question self-test Start the training Not you? Your progress is saved in this browser as you go, so you can stop and come back.",
+ "sections": [
+  {
+   "id": "s1",
+   "h2": "Introduction",
+   "sub": "What this process is for, and who it is written for."
+  },
+  {
+   "id": "s2",
+   "h2": "Glossary",
+   "sub": "Terms used across the process and in the QC sheet."
+  },
+  {
+   "id": "s3",
+   "h2": "The sources we QC against",
+   "sub": "What each one is, who reads it, and how to open it."
+  },
+  {
+   "id": "s4",
+   "h2": "Authorised material categories",
+   "sub": "The six values in the Auth Mat Category dropdown, col G."
+  },
+  {
+   "id": "s5",
+   "h2": "QC outcomes",
+   "sub": "The dropdown values you set once you have compared the sources."
+  },
+  {
+   "id": "s6",
+   "h2": "The QC sheet",
+   "sub": "Three columns are yours. Everything else is automatic or owned by Senior Delivery."
+  },
+  {
+   "id": "s7",
+   "h2": "Running a check",
+   "sub": "Pick the delivery period you are working on. The steps change by one source."
+  },
+  {
+   "id": "s8",
+   "h2": "What to compare",
+   "sub": "Take the fields one at a time. Comparing overall impressions is how discrepancies get missed."
+  },
+  {
+   "id": "s9",
+   "h2": "Worked examples",
+   "sub": "Sixteen cases. What was seen, the call that was made, and why. Cases marked Practice scenario have their details set out in full so the call has one defensible answer."
+  },
+  {
+   "id": "s10",
+   "h2": "Escalation and reminders",
+   "sub": "What happens after you record a problem, and how supervisor reminders are set."
+  },
+  {
+   "id": "s11",
+   "h2": "Timeline and second QC",
+   "sub": "When QC happens, when to chase, and how the second pass works."
+  },
+  {
+   "id": "s12",
+   "h2": "Quick checklist",
+   "sub": "The sequence for one unit, for once you know the process."
+  },
+  {
+   "id": "done",
+   "h2": "Ready to QC",
+   "sub": ""
+  }
+ ],
+ "headings": [
+  "The role of QC",
+  "Who this is for",
+  "What one check covers",
+  "Where the work is recorded",
+  "Which sources apply to your exam",
+  "Opening eAssessment",
+  "Opening eVigilation",
+  "Opening the Lookup Tool",
+  "First QC Outcome col H, you set this",
+  "Choosing between the values",
+  "Second QC Outcome col J, Senior Delivery sets this",
+  "One check, start to finish",
+  "Differences worth knowing",
+  "Always note these, match or not",
+  "Known platform limitations",
+  "How to write a comment that can be actioned",
+  "Where escalations go",
+  "Where your own questions go",
+  "Supervisor reminders",
+  "Raise it early",
+  "Second QC",
+  "Keeping up with late additions",
+  "Not finished yet"
+ ],
+ "tables": [
+  {
+   "head": [
+    "Term",
+    "Definition"
+   ],
+   "rows": 30
+  },
+  {
+   "head": [
+    "Delivery period",
+    "Sources to check",
+    "Notes"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "Category",
+    "What it permits",
+    "What to check most carefully"
+   ],
+   "rows": 6
+  },
+  {
+   "head": [
+    "Value",
+    "Use it when",
+    "Also do this"
+   ],
+   "rows": 5
+  },
+  {
+   "head": [
+    "The case",
+    "What to do"
+   ],
+   "rows": 4
+  },
+  {
+   "head": [
+    "Col",
+    "Column and what goes in it",
+    "Who fills it"
+   ],
+   "rows": 11
+  },
+  {
+   "head": [
+    "Step",
+    "What you do",
+    "What you find"
+   ],
+   "rows": 5
+  },
+  {
+   "head": [
+    "Column",
+    "What you enter"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "What you are looking at",
+    "How to tell",
+    "What to do"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "What",
+    "What to record"
+   ],
+   "rows": 10
+  },
+  {
+   "head": [
+    "Behaviour",
+    "What is actually happening",
+    "What to do"
+   ],
+   "rows": 4
+  },
+  {
+   "head": [
+    "Action",
+    "What it means",
+    "Who does it"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "Role",
+    "Responsibility",
+    "Where"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "Instead of",
+    "Write"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "Situation",
+    "What to do"
+   ],
+   "rows": 3
+  },
+  {
+   "head": [
+    "Trigger",
+    "Message"
+   ],
+   "rows": 2
+  },
+  {
+   "head": [
+    "Stage",
+    "What it means for you"
+   ],
+   "rows": 4
+  },
+  {
+   "head": [
+    "Rule",
+    "Detail"
+   ],
+   "rows": 4
+  }
+ ],
+ "figures": [
+  {
+   "ref": "FIG 1",
+   "cap": "FIG 1The eAssessment Instructions section. Note \"not allowed to use a secondary device\", a restriction eVigilation has no field for.",
+   "alt": "The eAssessment Instructions section. Free text, so this is where conditions appear that exist nowhere else. Here the permitted materials are numbered, and &quot;not allowed to use a secondary device&quot; is a restriction eVigilation has no field for.",
+   "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAckAAAFtCAYAAA",
+   "w": "457",
+   "h": "365"
+  },
+  {
+   "ref": "FIG 2",
+   "cap": "FIG 2The eAssessment Authorised Materials section on a different unit. Fixed heading, then the detail.",
+   "alt": "The eAssessment Authorised Materials section on a different unit. Fixed heading, then the detail. Read both sections and check they agree with each other before you compare them with anything else.",
+   "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcYAAAEICAYAAA",
+   "w": "454",
+   "h": "264"
+  },
+  {
+   "ref": "FIG 3",
+   "cap": "FIG 3BCH3021, showing both steps at once: the search panel at the top with Select a date and Search by set, and the panel that opens from the information icon. Read what is recorded here, because FIG 4 is the same unit in the Lookup Tool. Category Closed book with specifically permitted items, a physical calculator, notes double sided A4 x 1, and Working Sheets None.",
+   "alt": "eVigilation Exam sessions, showing the search panel and the Authorised Materials panel for BCH3021",
+   "src": "data:image/webp;base64,UklGRv55AABXRUJQVlA4WAoAAAAgAAAAdwUA3",
+   "w": "1400",
+   "h": "734"
+  },
+  {
+   "ref": "FIG 4",
+   "cap": "FIG 4The same unit in the Lookup Tool. Read it against FIG 3. Working sheets is 0 here and None on eVigilation: the same quantity in different words, which is not a discrepancy. Other is where they part, Generative AI not authorised here against N/A on eVigilation. Note also that a card exists for a Deferred and Supplementary sitting even though this tool is not a QC source for that round.",
+   "alt": "The Authorised Materials Search card for BCH3021, Deferred and Supplementary",
+   "src": "data:image/webp;base64,UklGRshXAABXRUJQVlA4WAoAAAAgAAAAmwQAL",
+   "w": "1180",
+   "h": "560"
+  },
+  {
+   "ref": "FIG 5",
+   "cap": "FIG 5The First QC Outcome column on a real date, with Comments alongside. Most rows are All Match. The red Discrepancy at the foot is an answer sheet count that did not agree.",
+   "alt": "The First QC Outcome column on a real date, with Comments alongside. Most rows are All Match. The red Discrepancy at the foot is an answer sheet count that did not agree. Note that a comment is worth writing on a matching row too: several of these record what the exam provides without any disagreement between the sources.",
+   "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYQAAAE0CAYAAA",
+   "w": "388",
+   "h": "308"
+  },
+  {
+   "ref": "FIG 6",
+   "cap": "FIG 6The QC sheet with column C hidden. The three columns that are yours are Auth Mat Category, First QC Outcome and Comments. Note how few second QC cells are filled, and the Slack reminders in the last column.",
+   "alt": "The QC sheet. Column C is hidden in this view, so the visible columns run Course Name, Link, Invig Type, Start Time, Enrolment Status, then the three that are yours: Auth Mat Category, First QC Outcome and Comments. Everything from Second QC Outcome rightwards belongs to Senior Delivery. Look at how few second QC cells are filled, and at the Slack reminders set in the last column.",
+   "src": "data:image/webp;base64,UklGRq6CAgBXRUJQVlA4WAoAAAAgAAAAdwUAN",
+   "w": "1400",
+   "h": "568"
+  }
+ ],
+ "cases": [
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "A permitted additional device",
+   "verdict": "All Match",
+   "see": "Practice scenario. The exam page heading reads Open Access. The Instructions section permits a second device, a laptop or tablet but not a phone, and says it may be connected to the internet. The eVigilation panel says nothing about a device, because eVigilation has no field for one. Everything else on the page matches eVigilation.",
+   "doo": "The category is Open Access with Additional Device: the device permission changes the category, and the heading alone does not settle it. Record the device wording in Comments, because only one source carries it. eVigilation being silent is not a mismatch, since the field does not exist there. This unit meets a reminder criterion in section 10, so flag it; Senior Delivery schedules the message.",
+   "q": "The sources agree. Which value belongs in Auth Mat Category, col G?",
+   "opts": [
+    {
+     "t": "Open Access with Additional Device",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Open Access",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "Open Book with Additional Device",
+     "o": "2",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "Generative AI permitted",
+   "verdict": "All Match",
+   "see": "Practice scenario. The exam page Instructions explicitly permit generative AI. The eVigilation panel and the Lookup card carry the same permission. All three sources agree with each other, and nothing on the page contradicts anything else.",
+   "doo": "The sources agree, so the outcome is All Match. Permitting generative AI is a reminder trigger, not a faculty escalation: write Gen AI in Comments in those words so the unit is findable, and flag it under section 10. Escalation Required is for something the faculty has to decide, which is not the case when the permission is deliberate and consistently stated. Wolfram Alpha is the common edge case: a long standing permitted virtual calculator that has AI features, but unless the page explicitly permits the AI functionality, students should not be using it.",
+   "q": "All sources agree. What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "All Match but Escalation Required",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "Discrepancy",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "0",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "v": "disc",
+   "scored": true,
+   "title": "Working sheet counts that differ",
+   "verdict": "Discrepancy",
+   "see": "eVigilation Working Sheets reads Yes. The Lookup Tool card reads 99. The eAssessment page permits 5 working sheets.",
+   "doo": "For the Working Sheets field, Yes and 99 are the same quantity, both meaning unlimited, so those two agree. Five is not the same quantity as unlimited, so eAssessment against eVigilation is a Discrepancy: a supervisor reading eVigilation would let a student take more sheets than the faculty allowed. Quote all three and give the count. This is a change from the 2023 process, which treated a specific count against Yes as a tighter statement of the same permission. Counts of five are common in Business and Economics units, so expect this to flag more units than it used to.",
+   "q": "What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "Other",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "Discrepancy",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "1",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "disc",
+   "scored": true,
+   "title": "eVigilation says no notes but notes are permitted",
+   "verdict": "Discrepancy",
+   "see": "Practice scenario. The eVigilation Notes field reads None, and the exam page permits one double sided A4 page of physical notes. You check the panel and the Other field is populated.",
+   "doo": "The sources contradict each other on a field both can state, so it is a Discrepancy. The populated Other field is the likely cause: once Other is filled in, eVigilation will not allow Notes or Dictionary to be populated. Record that in Comments so Senior Delivery can triage it quickly. The cause does not change the risk, because an online supervisor reading eVigilation would stop a student using notes they are entitled to. Where Other is not populated, this known limitation does not explain it and the difference still stands on its own.",
+   "q": "What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "Discrepancy",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Unsupervised Exam",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "1",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "Notes wording that differs but means the same thing",
+   "verdict": "All Match",
+   "see": "Practice scenario. eVigilation reads Notes - Double sided A4 x 1 - Physical Only. The exam page reads \"One double sided A4 page of physical notes is permitted.\" Both state the same size, the same count and the same physical restriction.",
+   "doo": "Different words, same permission: one double sided A4 page of physical notes. The Notes dropdown available to academics has only three values, so free text on eAssessment will rarely match word for word. Compare the permission, not the phrasing. Record the wording in Comments so the next person does not re-check it. Where either source leaves out the size, the count or whether digital notes are allowed, the permissions are not demonstrably the same and that gap is itself worth recording.",
+   "q": "What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Discrepancy",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "Other",
+     "o": "2",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": false,
+   "title": "Wording only one discipline uses",
+   "verdict": "Record it",
+   "see": "The exam page permits \"open notes\", with no further definition anywhere on the page. The phrase is used in some disciplines with a narrower local meaning than the words suggest.",
+   "doo": "Do not assume the local meaning, and do not rule it out. An undefined permission is exactly what QC exists to catch: a student and a supervisor can read \"open notes\" differently, and nothing on the page settles it. Record the exact phrase in Comments and say that it is undefined on the page. If the sources agree with each other, that is still All Match with a comment; the ambiguity is for Senior Delivery to take up.Open question for the process owner. Whether a documented faculty convention exists for this phrase, and where a checker can read it, is not recorded anywhere in this guide's sources. Until it is, treat the phrase as undefined rather than inferring a rule.",
+   "q": "",
+   "opts": []
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "Excel as the permitted calculator",
+   "verdict": "All Match",
+   "see": "Practice scenario. The exam page lists a physical calculator under Calculator and Excel under Other. The eVigilation panel reads Calculator: Physical Calculator, Other: Excel. No virtual calculator heading appears in either source.",
+   "doo": "The two sources say the same thing, so it is All Match. Excel appearing under Other rather than Calculator is a platform constraint, not a disagreement: Excel is not one of the values in the calculator dropdown, so it can only be entered as free text. A virtual calculator heading would imply every virtual calculator is permitted, which is not the intent. Record the wording in Comments.Open question for the process owner. Whether students may use pre-existing content in their own Excel files, or must start from a blank workbook, is not settled in any source this guide is built from. Record what the page says rather than teaching either reading.",
+   "q": "What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "Other",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "Discrepancy",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "0",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": false,
+   "title": "Formula sheets",
+   "verdict": "Depends",
+   "see": "The exam page mentions a formula sheet, or a formula sheet appears inside the exam, and it is not listed in the authorised materials.",
+   "doo": "A formula sheet included as an image on an exam page is exam content, not an authorised material, and is correctly absent from the list. A formula sheet that opens as a link or a PDF in a separate tab should be listed, because supervisors check what students have open. If a formula sheet opens as a link and is not listed, record it as Other with the detail in Comments. Where the page says a sheet is provided to students beforehand, quote that wording: a sheet the student brings in is a different permission from one provided inside the exam, and the two are counted separately.Open question for the process owner. Whether printed formula sheets brought in by students count against a permitted notes limit is not documented in this guide's sources.",
+   "q": "",
+   "opts": []
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "Copy and paste restrictions",
+   "verdict": "Record it",
+   "see": "The exam page prohibits copying and pasting, sometimes including copying between the notes window and the response window inside the exam itself. Neither eVigilation nor the Lookup Tool has a field for it.",
+   "doo": "Not a Discrepancy. A source cannot disagree about something it has nowhere to state, so the silence of the other sources is not a mismatch. Record it, because it is difficult to enforce and supervisors need to know. Restrictions on copying to or from external sources are conventional; a restriction on copying within the platform is the one to note.",
+   "q": "Only the exam page can state this. Is the other sources' silence a Discrepancy?",
+   "opts": [
+    {
+     "t": "No. Record it in Comments; silence is not disagreement.",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Yes, and it also needs a supervisor reminder.",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "Yes. One source states it and the others do not.",
+     "o": "1",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "disc",
+   "scored": true,
+   "title": "Translation tools stated two ways",
+   "verdict": "Discrepancy",
+   "see": "Practice scenario. The exam page Instructions permit an online translation website for checking single words. The eVigilation panel Other field reads No translation tools permitted. The two sources state the same permission and state it differently.",
+   "doo": "A supervisor reading eVigilation would stop a student doing something the exam page allows, so this is a Discrepancy. Quote both, naming each source. Note that a page banning browser translation extensions while permitting a separate translation website is not by itself a contradiction: those are different tools, and one can be permitted while the other is not. What makes this a finding is the two sources disagreeing, not the shape of the wording.",
+   "q": "What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "Discrepancy",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "All Match but Escalation Required",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "Other",
+     "o": "2",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "More than one shell for the same unit",
+   "verdict": "All Match",
+   "see": "Practice scenario. The unit has a main cohort shell and an AAA shell. You are checking the main cohort shell named in col A, and its applicable sources agree with each other. The AAA shell is a separate row in the QC sheet, on a different date.",
+   "doo": "A unit having several shells is normal and is not a finding. Each shell is its own row, its own check and its own outcome, so the AAA shell existing changes nothing here. Check that the shell name on the page matches col A before anything else, then judge this row on its own sources.Open question for the process owner. Where two sittings of the same unit are each internally consistent but permit different materials, this guide does not settle whether that is recorded as a Discrepancy, as a Comment on an otherwise matching row, or not at all. Section 3 says sittings can legitimately differ; section 7 says the difference is worth recording. Until it is settled, record what you saw and leave the outcome to reflect this row's own sources.",
+   "q": "Does the AAA shell existing make this row a Discrepancy?",
+   "opts": [
+    {
+     "t": "Yes. Record it as Other.",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "No. It is a separate row with its own check.",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Yes. Two shells for one unit is a Discrepancy.",
+     "o": "1",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "Unit missing from eVigilation",
+   "verdict": "Investigate first",
+   "see": "The unit is in the QC sheet but does not appear in eVigilation for that date. Nothing has been ruled out yet.",
+   "doo": "An unexplained absence is not an outcome. Work through the three causes in order. First, confirm the date filter is set to the exam date: the wrong date is the most common cause and looks exactly like a missing unit. Second, check Enrolment Status col F; Not Enrolled means the shell has not synced and it usually appears after the overnight sync, so leave G, H and I blank. Third, check whether the unit has been changed to unsupervised, in which case it will not appear at all. Only a confirmed unsupervised assessment is recorded as Unsupervised Exam. If none of those explain it, raise it with Senior Delivery rather than recording a guess.",
+   "q": "What do you do first?",
+   "opts": [
+    {
+     "t": "Record a Discrepancy against the missing source.",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "Record the outcome as Unsupervised Exam.",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "Confirm the eVigilation date filter is set to the exam date.",
+     "o": "0",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "Software run from a local drive",
+   "verdict": "No reminder",
+   "see": "Practice scenario. The exam permits software such as Mathematica, R or Visual Studio, with wording about running it from the local drive. All applicable sources carry the same permission.",
+   "doo": "Running from the local drive means the program installed on the student's own machine rather than a browser or cloud version. Record which languages, applications or packages are permitted and where they run, because that is one of the always-note items in section 8, even though the sources agree. Only two situations meet the reminder criteria in section 10: Open Access with Additional Device, and a unit permitting generative AI. Permitted software is neither.",
+   "q": "Does this unit meet a supervisor reminder criterion in section 10?",
+   "opts": [
+    {
+     "t": "No. Record the detail in Comments; no reminder is needed.",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Yes. Any permitted external software needs a reminder.",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "Yes, and you schedule the reminder yourself.",
+     "o": "2",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "ok",
+   "scored": true,
+   "title": "A container limit with no page limit",
+   "verdict": "All Match",
+   "see": "Practice scenario. The exam page permits one folder of printed notes, with no page count. The eVigilation Notes field carries the same wording. The applicable sources agree with each other.",
+   "doo": "The restriction is on the container, not the page count, and one folder means one folder. The sources agree, so the outcome is All Match. It still needs a comment: a note limit with no page count is one of the always-note items in section 8, because a student and a supervisor can read it differently. Record the exact wording. In-venue supervisors enforce it by checking an unusually large pile of notes against the restriction.",
+   "q": "The sources agree. What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "Other, because no page count is given",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup), with the wording recorded in Comments",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Discrepancy, because the limit is unclear",
+     "o": "1",
+     "correct": false
+    }
+   ]
+  },
+  {
+   "v": "esc",
+   "scored": true,
+   "title": "Writing equipment with nothing to write on",
+   "verdict": "Escalate",
+   "see": "Practice scenario. The Authorised Materials list permits pens and pencils. No working sheets and no answer sheets are described on the exam page, in the eVigilation panel or on the Lookup card, and the Hybrid flag reads no. You have checked all three. The sources agree with each other.",
+   "doo": "Nothing on the page gives the student anything to write on, which usually means one of the entries is wrong. The sources agree with each other, so this is not a Discrepancy; what they agree on is the problem, and that needs a faculty decision. Set All Match but Escalation Required, quote both entries, and say what is missing. Where paper provision has not been checked in every applicable source, check it first: an answer sheet described in one source you have not opened changes the answer.",
+   "q": "All applicable sources agree and paper provision has been checked. What belongs in col H?",
+   "opts": [
+    {
+     "t": "Discrepancy",
+     "o": "1",
+     "correct": false
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "All Match but Escalation Required",
+     "o": "0",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "v": "esc",
+   "scored": true,
+   "title": "Mobile phones",
+   "verdict": "Escalate",
+   "see": "Practice scenario. The authorised materials permit a mobile phone during the assessment. All applicable sources carry the same permission.",
+   "doo": "The sources agree, so it is not a Discrepancy, but a permitted phone in a supervised exam is a condition the faculty needs to confirm. Set All Match but Escalation Required and quote the wording. The exception is wording about a QR code scanner app used to photograph and upload work after the exam has finished. That is a submission instruction rather than an authorised material, and it does not need escalating.",
+   "q": "The sources agree. What belongs in First QC Outcome, col H?",
+   "opts": [
+    {
+     "t": "All Match but Escalation Required",
+     "o": "0",
+     "correct": true
+    },
+    {
+     "t": "Discrepancy",
+     "o": "2",
+     "correct": false
+    },
+    {
+     "t": "All Match (eVig, eA, Lookup)",
+     "o": "1",
+     "correct": false
+    }
+   ]
+  }
+ ],
+ "checklist": [
+  {
+   "k": "c1",
+   "txt": "Filter the QC sheet to one exam date using Start Time col E and sort col A A to Z.",
+   "ref": "§7"
+  },
+  {
+   "k": "c2",
+   "txt": "Confirm Enrolment Status col F reads Enrolled and Synced. If Not Enrolled, skip and leave G, H and I blank.",
+   "ref": "§11"
+  },
+  {
+   "k": "c3",
+   "txt": "Open eAssessment from col B. Confirm the shell matches col A, then read Instructions and Authorised Materials.",
+   "ref": "§3"
+  },
+  {
+   "k": "c4",
+   "txt": "Open eVigilation, go to Exam sessions, set the date, set Search by to Exam unit, search the code, then click the information icon.",
+   "ref": "§3"
+  },
+  {
+   "k": "c5",
+   "txt": "End of semester only, not Deferred and Supplementary and not Monash College: open the Lookup Tool, set the date filter, search the code and read the unit card.",
+   "ref": "§3"
+  },
+  {
+   "k": "c6",
+   "txt": "Compare field by field: category, calculator, dictionary, notes, textbook, working sheets, other and permitted items, additional device, generative AI, hybrid, and restrictions in Instructions.",
+   "ref": "§8"
+  },
+  {
+   "k": "c7",
+   "txt": "Check the known platform limitations before recording anything as a discrepancy.",
+   "ref": "§8"
+  },
+  {
+   "k": "c7b",
+   "txt": "Note the always-record items even where everything matches: Gen AI, copy and paste, translation, software, note limits, calculator type, formula sheets, local files, device conditions, anything unfamiliar.",
+   "ref": "§8"
+  },
+  {
+   "k": "c8",
+   "txt": "Set Auth Mat Category col G.",
+   "ref": "§4"
+  },
+  {
+   "k": "c9",
+   "txt": "Set First QC Outcome col H.",
+   "ref": "§5"
+  },
+  {
+   "k": "c10",
+   "txt": "Record in Comments col I: anything that is not a clean match, and the always-note items in section 8 even where every source agrees. Name each source and quote its wording.",
+   "ref": "§10"
+  },
+  {
+   "k": "c11",
+   "txt": "Flag reminder units: Open Access with Additional Device, and any unit permitting generative AI. Write Gen AI in the comment.",
+   "ref": "§10"
+  },
+  {
+   "k": "c12",
+   "txt": "Before closing: check for units added since you filtered, and raise anything unchecked or unresolved with an exam date approaching.",
+   "ref": "§11"
+  }
+ ],
+ "fields": [
+  {
+   "h4": "eAssessment against itself",
+   "where": "The Instructions section against the Authorised Materials section, on the same page.",
+   "miss": "MismatchDo this before you open anything else. Instructions is free text and is written separately from the materials list, so the two drift. A page permitting a textbook under Authorised Materials while Instructions says closed book is a discrepancy on its own, and there is no point comparing a page that already contradicts itself."
+  },
+  {
+   "h4": "Category",
+   "where": "eAssessment: the heading above the authorised materials list. eVigilation: the heading at the top of the panel, for example \"Closed book with specifically permitted items\". Lookup Tool: on the unit card.",
+   "miss": "MismatchDifferent categories in different sources. Also a category that does not match its own contents, such as a Closed Book exam listing a calculator."
+  },
+  {
+   "h4": "Calculator",
+   "where": "eAssessment: the Calculator line, plus any mention in Instructions. eVigilation: the Calculator field, which reads Physical Calculator, a named virtual calculator, or None.",
+   "miss": "MismatchOne source permitting a physical calculator and another a virtual one, or a named product appearing in one source only. Wording such as \"faculty approved calculator\" needs escalating rather than matching."
+  },
+  {
+   "h4": "Dictionary",
+   "where": "eAssessment: listed as a permitted item. eVigilation: the Dictionary field.",
+   "miss": "MismatchPermitted in one source and None in another. Check the platform limitations below first."
+  },
+  {
+   "h4": "Notes",
+   "where": "eAssessment: the Notes line and the Instructions section. eVigilation: the Notes field.",
+   "miss": "MismatchA difference in whether notes are permitted at all, whether they are physical or digital, how many pages, and whether double sided pages are allowed. Wording differences that describe the same limit are not a mismatch."
+  },
+  {
+   "h4": "Textbook",
+   "where": "eAssessment: listed as a permitted item. eVigilation: the Textbook field.",
+   "miss": "MismatchPermitted in one source and N/A or None in another."
+  },
+  {
+   "h4": "Working sheets",
+   "where": "eAssessment: usually a specific number in Instructions. eVigilation: the Working Sheets field, usually Yes or No. Lookup Tool: sometimes a number such as 99.",
+   "miss": "MismatchPermitted in one source and not another, or a different quantity in each. Compare quantities, not wording. For the Working Sheets field only: Yes, 99 and \"unlimited\" are the same quantity, and so are 0, None and N/A. Two different counts, or a count against unlimited, is a Discrepancy. Always record the count in Comments, match or not. These conversions belong to this field. Do not carry them across to answer sheets or to any other field."
+  },
+  {
+   "h4": "Other and Permitted Item",
+   "where": "eAssessment: the Other line and Instructions. eVigilation: the Other and Permitted Item fields, both free text.",
+   "miss": "MismatchAnything present in one source and absent from another. Software, Excel, formula sheets and unusual permissions all land here, so read it carefully."
+  },
+  {
+   "h4": "Additional device",
+   "where": "Almost always the eAssessment Instructions section only. It does not appear in the eVigilation panel.",
+   "miss": "What countsNot a mismatch when eVigilation is silent, because the field does not exist there. It is a mismatch when the category says Additional Device and no source describes what the device may be."
+  },
+  {
+   "h4": "Generative AI",
+   "where": "eAssessment Instructions, usually as an explicit prohibition. Occasionally as an explicit permission.",
+   "miss": "Always flagAny unit that permits generative AI needs flagging, whether or not the sources agree. This is a reminder action, not a mismatch: the sources can agree perfectly and the unit still needs flagging."
+  },
+  {
+   "h4": "Answer sheets and the Hybrid flag",
+   "where": "eVigilation: the Hybrid yes or no flag at the bottom of the panel. eAssessment: answer sheet instructions.",
+   "miss": "MismatchAnswer sheets are not working sheets. They belong to hybrid exams, they are counted separately, and the QC sheet treats the two as different findings. Do not compare one against the other.The Hybrid flag is a yes or no. It tells you whether the exam has a paper component; it is not a count and it cannot agree or disagree with a number. Hybrid marked yes with no answer sheets described anywhere is a mismatch. Where both sources give an answer sheet count and the counts differ, that is a mismatch too."
+  },
+  {
+   "h4": "Copy and paste, translation and other restrictions",
+   "where": "eAssessment Instructions section only.",
+   "miss": "Always recordNot a source mismatch, since the other sources have nowhere to state it. Record restrictions that are difficult to enforce, and any restriction that contradicts something else on the same page."
+  },
+  {
+   "h4": "Sitting and cohort",
+   "where": "The shell name in col A, against the page you have open.",
+   "miss": "Check this firstIf the shell name does not match, you are reading the wrong page and nothing below it is worth comparing. Check this before anything else when something looks badly wrong."
+  }
+ ],
+ "nav": [
+  {
+   "href": "#s1",
+   "n": "01",
+   "label": "Introduction"
+  },
+  {
+   "href": "#s2",
+   "n": "02",
+   "label": "Glossary"
+  },
+  {
+   "href": "#s3",
+   "n": "03",
+   "label": "The sources"
+  },
+  {
+   "href": "#s4",
+   "n": "04",
+   "label": "Categories"
+  },
+  {
+   "href": "#s5",
+   "n": "05",
+   "label": "QC outcomes"
+  },
+  {
+   "href": "#s6",
+   "n": "06",
+   "label": "QC sheet"
+  },
+  {
+   "href": "#s7",
+   "n": "07",
+   "label": "Running a check"
+  },
+  {
+   "href": "#s8",
+   "n": "08",
+   "label": "What to compare"
+  },
+  {
+   "href": "#s9",
+   "n": "09",
+   "label": "Worked examples"
+  },
+  {
+   "href": "#s10",
+   "n": "10",
+   "label": "Escalation"
+  },
+  {
+   "href": "#s11",
+   "n": "11",
+   "label": "Timeline"
+  },
+  {
+   "href": "#s12",
+   "n": "12",
+   "label": "Checklist"
+  },
+  {
+   "href": "#done",
+   "n": "13",
+   "label": "Complete"
+  }
+ ],
+ "gates": [
+  {
+   "gate": "read",
+   "b": "Read the full process",
+   "sub": "Sections 1 to 12",
+   "meta": "0 of 12"
+  },
+  {
+   "gate": "chk",
+   "b": "Work the quick checklist",
+   "sub": "All 13 steps in section 12",
+   "meta": "0 of 13"
+  },
+  {
+   "gate": "test",
+   "b": "Pass the self-test",
+   "sub": "Section 9, Test yourself. Twelve of fourteen to pass.",
+   "meta": "0 of 14"
+  }
+ ],
+ "ids": [
+  "addtoroll",
+  "barfill",
+  "cert",
+  "certacts",
+  "certform",
+  "certmsg",
+  "certstamp",
+  "certtitle",
+  "chk",
+  "chkbar",
+  "chkrow-c1",
+  "chkrow-c10",
+  "chkrow-c11",
+  "chkrow-c12",
+  "chkrow-c2",
+  "chkrow-c3",
+  "chkrow-c4",
+  "chkrow-c5",
+  "chkrow-c6",
+  "chkrow-c7",
+  "chkrow-c7b",
+  "chkrow-c8",
+  "chkrow-c9",
+  "clearcert",
+  "confirmdone",
+  "done",
+  "ex-q1",
+  "ex-q10",
+  "ex-q11",
+  "ex-q12",
+  "ex-q13",
+  "ex-q14",
+  "ex-q2",
+  "ex-q3",
+  "ex-q4",
+  "ex-q5",
+  "ex-q6",
+  "ex-q7",
+  "ex-q8",
+  "ex-q9",
+  "exfilters",
+  "exlist",
+  "expandall",
+  "gate",
+  "gates",
+  "homeDone",
+  "homeGo",
+  "homeHi",
+  "homeSwitch",
+  "homeVerified",
+  "lbox",
+  "lclose",
+  "nameBack",
+  "nameField",
+  "nameGo",
+  "pA",
+  "pB",
+  "pct",
+  "printcert",
+  "readfill",
+  "resetchk",
+  "resetquiz",
+  "roll",
+  "rollcount",
+  "rollempty",
+  "rolllist",
+  "rollmsg",
+  "rolltitle",
+  "s1",
+  "s1-the-role-of-qc",
+  "s1-what-one-check-covers",
+  "s1-where-the-work-is-recorded",
+  "s1-who-this-is-for",
+  "s10",
+  "s10-how-to-write-a-comment-that-can-be-actioned",
+  "s10-supervisor-reminders",
+  "s10-where-escalations-go",
+  "s10-where-your-own-questions-go",
+  "s11",
+  "s11-keeping-up-with-late-additions",
+  "s11-raise-it-early",
+  "s11-second-qc",
+  "s12",
+  "s2",
+  "s3",
+  "s3-opening-eassessment",
+  "s3-opening-evigilation",
+  "s3-opening-the-lookup-tool",
+  "s3-which-sources-apply-to-your-exam",
+  "s4",
+  "s5",
+  "s5-choosing-between-the-values",
+  "s5-first-qc-outcome-col-h-you-set-this",
+  "s5-second-qc-outcome-col-j-senior-delivery-sets-this",
+  "s6",
+  "s7",
+  "s7-differences-worth-knowing",
+  "s7-one-check-start-to-finish",
+  "s8",
+  "s8-always-note-these-match-or-not",
+  "s8-known-platform-limitations",
+  "s9",
+  "sclose",
+  "scorebox",
+  "searchbtn",
+  "sinput",
+  "skey",
+  "smodal",
+  "smore",
+  "sresults",
+  "step-home",
+  "step-name",
+  "step-switch",
+  "step-who",
+  "stitle",
+  "studynote",
+  "switchBack",
+  "tally",
+  "tallytxt",
+  "theme",
+  "toc",
+  "tohome",
+  "whoMail",
+  "whoName",
+  "whoNo",
+  "whoYes",
+  "whoami"
+ ],
+ "dataAttrs": [
+  "data-correct",
+  "data-gate",
+  "data-k",
+  "data-meta",
+  "data-missing",
+  "data-mode",
+  "data-n",
+  "data-o",
+  "data-path",
+  "data-qk",
+  "data-scored",
+  "data-v"
+ ],
+ "keyframes": [
+  "blindsreveal",
+  "checkdraw",
+  "exopen",
+  "gaterise",
+  "heroin",
+  "numpop",
+  "pathswap",
+  "ringdraw",
+  "rollin",
+  "tickpop",
+  "verdictin"
+ ],
+ "animSelectors": [
+  "#addtoroll",
+  "#confirmdone",
+  "#whoami",
+  ".anim .fields.rv.in > .field",
+  ".anim .mast > *",
+  ".anim .mastmeta",
+  ".anim .mastmeta .pill",
+  ".anim .tw.rv.in tbody tr",
+  ".ansbtn",
+  ".brand",
+  ".cert.open .bigtick circle",
+  ".cert.open .bigtick path",
+  ".certacts button",
+  ".chk input.pop",
+  ".chk label",
+  ".chkbar .bar i",
+  ".chkbar .donemsg",
+  ".chkbar button",
+  ".ex .chev",
+  ".ex > summary",
+  ".ex[open] .exbody",
+  ".fbtn",
+  ".field",
+  ".flash .secnum",
+  ".gate",
+  ".gate.out .gatecard",
+  ".gatebtn",
+  ".gatecard",
+  ".gates li",
+  ".gchip",
+  ".gtick",
+  ".lbox",
+  ".navbtn",
+  ".pathbtn",
+  ".pill",
+  ".rail",
+  ".readbar i",
+  ".result",
+  ".rolllist li",
+  ".rv.in",
+  ".sclose",
+  ".scorebox button",
+  ".sdialog",
+  ".searchbtn",
+  ".segbtn",
+  ".shot",
+  ".shot.filled",
+  ".sitem",
+  ".smodal",
+  ".smore",
+  ".src",
+  ".steps > li::before",
+  ".swap",
+  ".themebtn",
+  ".theming, .theming *",
+  "html[data-vt=\"blinds\"]::view-transition-new(root)",
+  "html[data-vt=\"blinds\"]::view-transition-old(root)",
+  "nav a",
+  "nav::before, nav::after",
+  "tbody tr td"
+ ],
+ "appsScript": 5,
+ "storageKeys": [
+  "\"amqc-done\"",
+  "\"amqc-done\"",
+  "\"amqc-done\"",
+  "\"amqc-done\"",
+  "\"amqc-done\"",
+  "\"amqc-done\"",
+  "\"amqc-done\"",
+  "\"amqc-mode\"",
+  "\"amqc-mode\"",
+  "\"amqc-path\"",
+  "\"amqc-path\"",
+  "\"amqc-quiz\"",
+  "\"amqc-quiz\"",
+  "\"amqc-quiz\"",
+  "\"amqc-theme\"",
+  "\"amqc-theme\"",
+  "\"amqc-visited\"",
+  "\"amqc-visited\"",
+  "\"amqc-who\"",
+  "\"amqc-who\"",
+  "\"amqc-who\""
+ ]
+}
