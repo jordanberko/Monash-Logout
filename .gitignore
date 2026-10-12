@@ -1,3 +1,5 @@
 node_modules/
 *.bak*
 __pycache__/
+authmats-process/editmode/build-snapshot/
+authmats-process/appsscript-edit/

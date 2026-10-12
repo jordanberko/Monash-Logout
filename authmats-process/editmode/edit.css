@@ -1,0 +1,119 @@
+
+/* =====================================================================
+   Live content edits. Nothing here shows until someone unlocks editing,
+   apart from the two quiet "Edit this guide" buttons.
+   ===================================================================== */
+.edentry{
+  font:inherit;font-size:var(--text-micro,13px);color:var(--ink-3,#526572);
+  background:none;border:1px solid var(--hairline,#C5D6E2);border-radius:999px;
+  padding:6px 14px;cursor:pointer;min-height:36px;
+}
+.edentry:hover{color:var(--ink,#102E42);border-color:var(--ink-3,#526572)}
+.edentry:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:2px}
+.edentry.inpanel{margin-left:12px}
+.edstampwrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.edstampwrap .buildstamp{margin:0}
+
+/* editable blocks, once editing is on */
+body.editing-on [data-ek]{cursor:text;border-radius:4px;transition:box-shadow .15s ease}
+body.editing-on [data-ek]:hover{box-shadow:0 0 0 2px var(--accent-wash,#E0EFF8),0 0 0 3px var(--accent,#006DAE)}
+body.editing-on [data-ek][data-edited]{box-shadow:inset 3px 0 0 var(--ok,#0B6554)}
+body.editing-on [data-ek].ed-on{
+  outline:2px solid var(--accent,#006DAE);outline-offset:3px;box-shadow:none;
+  background:var(--paper,#fff);color:var(--ink,#102E42);
+}
+[data-ek].ed-flash{animation:edflash 1.6s ease}
+@keyframes edflash{0%,60%{background:var(--accent-wash,#E0EFF8)}100%{background:transparent}}
+
+/* the bar along the foot of the window while editing */
+.edbar{
+  position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:80;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+  width:min(760px,calc(100% - 24px));box-sizing:border-box;
+  padding:10px 12px 10px 18px;border-radius:22px;
+  background:var(--deep,#003F66);color:#fff;
+  box-shadow:0 10px 30px rgba(0,30,50,.28);
+  font-family:var(--font-text,inherit);font-size:var(--text-micro,13px);
+}
+.edbartext{margin:0;flex:1 1 260px;line-height:1.45;color:#fff}
+.edbartext b{font-weight:600}
+.edbar .edquiet{color:#fff;border-color:rgba(255,255,255,.5)}
+.edbar .edquiet:hover{background:rgba(255,255,255,.12)}
+.edbar .edgo{background:#fff;color:var(--deep,#003F66);border-color:#fff}
+
+/* buttons shared by the bar, the toolbar, the dialog and the list */
+.edgo,.edquiet,.edtool{
+  font:inherit;font-size:var(--text-micro,13px);font-weight:600;
+  border-radius:999px;padding:7px 14px;min-height:36px;cursor:pointer;
+  border:1px solid var(--accent,#006DAE);
+}
+.edgo{background:var(--accent,#006DAE);color:#fff}
+.edgo:hover{background:var(--accent-deep,#00537F)}
+.edgo:disabled{opacity:.6;cursor:default}
+.edquiet{background:transparent;color:var(--ink,#102E42);border-color:var(--hairline,#C5D6E2);font-weight:500}
+.edquiet:hover{background:var(--cool-wash,#E0EFF8)}
+.edtool{background:var(--paper,#fff);color:var(--ink,#102E42);border-color:var(--hairline,#C5D6E2);
+  font-weight:700;min-width:36px;padding:7px 10px}
+.edgo:focus-visible,.edquiet:focus-visible,.edtool:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:2px}
+
+/* the toolbar beside the block being changed */
+.edtools{
+  position:fixed;z-index:85;display:flex;gap:6px;align-items:center;
+  padding:6px;border-radius:999px;background:var(--paper,#fff);
+  border:1px solid var(--hairline,#C5D6E2);box-shadow:0 6px 20px rgba(0,30,50,.18);
+  font-family:var(--font-text,inherit);
+}
+
+/* the password dialog */
+.edlg{
+  position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;
+  background:rgba(8,26,40,.45);
+}
+.edlg[hidden],.edbar[hidden],.edtools[hidden],.edpanel[hidden],.edtoast[hidden]{display:none}
+.edlgbox{
+  width:min(420px,100%);box-sizing:border-box;padding:24px;border-radius:22px;
+  background:var(--paper,#fff);color:var(--ink,#102E42);
+  box-shadow:0 20px 50px rgba(0,30,50,.3);font-family:var(--font-text,inherit);
+}
+.edlgbox h2{margin:0 0 6px;font-family:var(--font-serif,Georgia,serif);font-weight:400;font-size:28px;color:var(--ink,#102E42)}
+.edlgsub{margin:0 0 16px;color:var(--ink-2,#3A5164);font-size:var(--text-body-sm,15px);line-height:1.5}
+.edlgbox label{display:block;margin:12px 0 4px;font-size:var(--text-micro,13px);font-weight:600;color:var(--ink-2,#3A5164)}
+.edlgbox input{
+  width:100%;box-sizing:border-box;padding:10px 12px;border-radius:12px;min-height:44px;
+  border:1px solid var(--hairline,#C5D6E2);background:var(--paper,#fff);color:var(--ink,#102E42);font:inherit;
+}
+.edlgbox input:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:1px}
+.edmsg{min-height:1.4em;margin:10px 0 0;color:var(--stop,#B64400);font-size:var(--text-micro,13px)}
+.edacts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}
+
+/* the list of live changes */
+.edpanel{
+  position:fixed;z-index:86;right:16px;bottom:90px;
+  width:min(440px,calc(100% - 32px));max-height:min(70vh,640px);overflow:auto;box-sizing:border-box;
+  padding:18px;border-radius:22px;background:var(--paper,#fff);color:var(--ink,#102E42);
+  border:1px solid var(--hairline,#C5D6E2);box-shadow:0 14px 40px rgba(0,30,50,.25);
+  font-family:var(--font-text,inherit);
+}
+.edpanelhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.edpanelhead h2{margin:0;font-family:var(--font-serif,Georgia,serif);font-weight:400;font-size:24px}
+.edempty{margin:6px 0;color:var(--ink-2,#3A5164);font-size:var(--text-body-sm,15px)}
+.edlist{list-style:none;margin:0;padding:0}
+.edlist li{padding:12px 0;border-top:1px solid var(--hairline,#C5D6E2)}
+.edlist p{margin:0 0 4px;line-height:1.45}
+.edwhere{font-size:var(--text-micro,13px);font-weight:600;color:var(--accent,#006DAE)}
+.edsnip{font-size:var(--text-body-sm,15px);color:var(--ink,#102E42)}
+.edmeta{font-size:var(--text-micro,13px);color:var(--ink-3,#526572)}
+.edorphan{font-size:var(--text-micro,13px);color:var(--warn,#8A5A12)}
+.edlist .edacts{justify-content:flex-start;margin-top:6px}
+
+.edtoast{
+  position:fixed;z-index:95;left:50%;top:18px;transform:translateX(-50%);
+  max-width:calc(100% - 32px);box-sizing:border-box;
+  padding:10px 16px;border-radius:14px;background:var(--ink,#102E42);color:#fff;
+  font-family:var(--font-text,inherit);font-size:var(--text-micro,13px);
+  box-shadow:0 8px 24px rgba(0,30,50,.25);
+}
+.edtoast.bad{background:var(--stop,#B64400)}
+
+@media print{ .edentry,.edbar,.edtools,.edlg,.edpanel,.edtoast{display:none !important} }
+@media (prefers-reduced-motion:reduce){ [data-ek].ed-flash{animation:none} }
