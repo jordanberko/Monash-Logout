@@ -14,7 +14,7 @@ Nothing needs redeploying.
 | `Code-edits.gs` | server side: password check, editing sessions, the change log, serving the page with edits written in |
 | `integrate.py` | adds all of the above to a built `appsscript/` folder |
 | `tests/server.test.js` | 43 checks of the server code, run in Node with stand-ins for the Google services |
-| `tests/ui.test.js` | 53 checks of the interface in Chromium, with the server mocked in the page |
+| `tests/ui.test.js` | 54 checks of the interface in Chromium, with the server mocked in the page |
 
 ## Building
 

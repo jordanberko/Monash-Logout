@@ -79,7 +79,9 @@ console.log('\n1. the page as most people see it');
   const r = await pg.evaluate(() => ({
     blocks: document.querySelectorAll('[data-ek]').length,
     edited: document.querySelectorAll('[data-edited]').length,
-    entries: [...document.querySelectorAll('.edentry')].map(x => x.textContent),
+    entries: [...document.querySelectorAll('.edentry')].map(x =>
+      [x.closest('#outline .olfoot') ? 'contents panel' : x.closest('.edstampwrap') ? 'build line' : 'elsewhere', x.textContent]),
+    panelFoot: !!document.querySelector('#outline .olfoot'),
     bar: !document.querySelector('.edbar').hidden,
     locked: ['#exlist', '.qa', '#done', 'nav', '.pagenav'].map(s =>
       [...document.querySelectorAll(s)].some(x => x.querySelector('[data-ek]') || x.matches('[data-ek]'))),
@@ -89,11 +91,19 @@ console.log('\n1. the page as most people see it');
   console.log('   editable blocks found:', r.blocks);
   ckt('text blocks are marked as editable', r.blocks > 300);
   ck('nothing is shown as edited', r.edited, 0);
-  ck('there is a quiet Edit button', r.entries, ['Edit this guide']);
+  /* One at the foot of the Contents panel, in builds that have one, and one
+     by the build line at the end of the guide. Nowhere else. */
+  ck('there is a quiet Edit button in each of its two places', r.entries,
+     (r.panelFoot ? [['contents panel', 'Edit this guide']] : []).concat([['build line', 'Edit this guide']]));
   ck('and no editing bar', r.bar, false);
   ck('the self-test, completion page and navigation are not editable', r.locked, [false, false, false, false, false]);
   ck('every block has its own key', r.keysUnique, true);
   ck('and blocks never sit inside each other', r.nested, 0);
+  if(r.panelFoot){
+    await pg.click('#outlinebtn'); await pg.waitForTimeout(250);
+    await pg.click('#outline .edentry'); await pg.waitForTimeout(200);
+    ck('the one in the Contents panel opens the password dialog', await pg.evaluate(() => !document.querySelector('.edlg').hidden), true);
+  }
   ck('no page errors', pg.errs, []);
   await pg.close();
 }
@@ -131,8 +141,8 @@ let key, original;
 console.log('\n3. unlocking');
 {
   const pg = await open(b, served({}));
-  await pg.evaluate(() => document.querySelector('.edentry').scrollIntoView({block: 'center'}));
-  await pg.click('.edentry');
+  await pg.evaluate(() => document.querySelector('.edstampwrap .edentry').scrollIntoView({block: 'center'}));
+  await pg.click('.edstampwrap .edentry');
   await pg.waitForTimeout(200);
   ck('the password dialog opens', await pg.evaluate(() => !document.querySelector('.edlg').hidden), true);
   ck('with the name already filled in when known', await pg.inputValue('#edname'), await pg.evaluate(() => {
@@ -201,9 +211,14 @@ console.log('\n3. unlocking');
   ckt('pasting brings plain text only', await pg.evaluate(s => { const h = document.querySelector(s).innerHTML; return h.includes('Plain') && !h.includes('Loud'); }, ls));
   await pg.keyboard.press('Escape'); await pg.waitForTimeout(100);
   ck('Escape cancels without saving', await pg.evaluate(s => [document.querySelector(s).getAttribute('contenteditable'), document.querySelector(s).innerHTML.includes('Plain')], ls), [null, false]);
+  /* In Test yourself the guide holds the question cards open on purpose, and
+     later builds open in that mode for a new reader. Opening and closing a
+     card is a Reference behaviour, so check it there. */
   const qa = await pg.evaluate(() => { const s = document.querySelector('#exlist details summary'); if(!s) return null;
-    const d = s.parentElement, before = d.open; s.click(); return [before, d.open]; });
-  ckt('the worked examples still open and close while editing', !qa || qa[0] !== qa[1]);
+    const rb = document.querySelector('.segbtn[data-mode="ref"]');
+    if(rb && document.body.classList.contains('testing')) rb.click();
+    const d = s.parentElement, before = d.open; s.click(); return [before, d.open, document.body.classList.contains('testing')]; });
+  ckt('the worked examples still open and close while editing', !qa || (qa[0] !== qa[1] && !qa[2]));
 
   console.log('\n6. the list of changes, and undo');
   await pg.click('.edbar .edquiet'); await pg.waitForTimeout(150);
@@ -231,8 +246,8 @@ console.log('\n3. unlocking');
 console.log('\n8. a phone, and print');
 {
   const pg = await open(b, served({}), 390);
-  await pg.evaluate(() => document.querySelector('.edentry').scrollIntoView({block: 'center'}));
-  await pg.click('.edentry'); await pg.waitForTimeout(150);
+  await pg.evaluate(() => document.querySelector('.edstampwrap .edentry').scrollIntoView({block: 'center'}));
+  await pg.click('.edstampwrap .edentry'); await pg.waitForTimeout(150);
   await pg.fill('#edname', 'Kate'); await pg.fill('#edpw', 'pw'); await pg.click('.edgo'); await pg.waitForTimeout(250);
   const m = await pg.evaluate(() => { const r = document.querySelector('.edbar').getBoundingClientRect();
     return {fits: r.left >= 0 && r.right <= innerWidth, hscroll: document.documentElement.scrollWidth > innerWidth + 1}; });
