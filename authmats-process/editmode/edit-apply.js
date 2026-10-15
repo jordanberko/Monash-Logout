@@ -19,7 +19,10 @@
   var BLOCK_SEL  = "h2,h3,h4,p,li,td,th,dt,dd,figcaption,.chk .txt";
   var LOCKED_SEL = "#done,#exlist,.qa,.pagenav,nav,.secack,.chkbar,.pathbar," +
                    ".modebar,.filters,.glosfilter,.scorebox,.studynote,.stage," +
-                   ".sechead .secnum,.ackbox,.s7jump,.s7fields,button,input";
+                   ".sechead .secnum,.ackbox,.s7jump,.s7fields,button,input," +
+                   /* a field name that opens a fold, and the platform examples
+                      under it: clicking either has to do its own job */
+                   "summary,.cmp";
 
   function norm(t){ return (t || "").replace(/\s+/g, " ").trim(); }
   /* FNV-1a, 32 bit. The key only has to be stable for the same wording in

@@ -51,7 +51,8 @@ next save. Delete the property to switch editing off; the live edits stay.
 The self-test (questions, answers and the worked examples they come from),
 the completion page and its requirements, the section structure and
 navigation, section numbers and stage labels, the checklist acknowledgement,
-and anything the page builds itself. Those still go through the build.
+the field names that open and close in Comparing, the platform screenshots
+under them, and anything the page builds itself. Those still go through the build.
 
 ## Where changes are kept
 

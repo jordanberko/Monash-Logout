@@ -414,6 +414,8 @@
         show.addEventListener("click", function(){
           closePanel();
           var b = E.byKey[k];
+          /* a block inside a folded field has to be opened before it can be shown */
+          for(var d = b.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
           if(window.AMQC && window.AMQC.scrollToEl) window.AMQC.scrollToEl(b);
           else b.scrollIntoView({block:"center"});
           b.classList.add("ed-flash");
