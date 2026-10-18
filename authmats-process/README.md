@@ -7,7 +7,10 @@ Team, served as a Google Apps Script web app.
 
 | path | what it is |
 |---|---|
-| `site-e.html` | **the source.** All edits are made here. |
+| `site-e.html` | **the source.** All edits are made here. Since October 2026 it follows Kayla's section order and Kate and Kayla's feedback. |
+| `build.py` | builds the deployable `Index.html`, `Code.gs` and `appsscript.json` from the source, with live editing added |
+| `editmode/` | live content editing; see `editmode/README.md` |
+| `proposals/` | `site-current-order.html`: the same feedback in the old section order, kept for reference and never deployed |
 | `mk.py` | wraps the source into a standalone `variant-e.html` for preview and testing |
 | `make_appsscript.py` | builds `appsscript/Index.html` and stamps the build id |
 | `variant-e.html` | generated preview build — do not edit |
@@ -19,9 +22,21 @@ Team, served as a Google Apps Script web app.
 
 ## Building
 
+The deployed build comes from `build.py`:
+
+```
+python3 build.py site-e.html OUT_DIR CODE_GS   # -> OUT_DIR/Index.html, Code.gs, appsscript.json
+```
+
+`CODE_GS` is the `Code.gs` currently deployed in the Apps Script project. It is not
+kept here because it names the owner's account. Its `SUPPORTED_VERSIONS` must include
+the page's `COURSE_VERSION`, or the page shows "Update needed".
+
+For a preview without the Apps Script wrapper:
+
 ```
 python3 mk.py               # -> variant-e.html
-python3 make_appsscript.py  # -> appsscript/Index.html + Code.gs
+python3 make_appsscript.py  # -> appsscript/Index.html + Code.gs (older template)
 ```
 
 ## Checking
