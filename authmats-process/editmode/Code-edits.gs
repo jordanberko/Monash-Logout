@@ -34,7 +34,8 @@ var EDITS_SHEET_NAME   = 'Authorised Materials QC - Content edits';
 var EDITS_PROP_KEY     = 'EDITS_SHEET_ID';
 var EDIT_PASSWORD_KEY  = 'EDIT_PASSWORD';
 var EDITS_HEADERS      = ['Saved at', 'Block', 'Section', 'Before', 'After', 'Edited by', 'Account', 'Action'];
-var EDITS_CACHE_KEY    = 'amqc-live-edits-v1';
+var EDITS_CACHE_KEY    = 'amqc-live-edits-v2';
+var EDITS_VERSION_KEY  = 'EDITS_VERSION';
 var EDIT_TOKEN_SECS    = 3 * 60 * 60;
 var EDIT_MAX_FAILS     = 5;
 var EDIT_LOCKOUT_SECS  = 15 * 60;
@@ -65,10 +66,19 @@ function liveEditsForPage_() {
   }
 }
 
+/** Every save moves the cached copy to a new key, so a copy read before a
+    save, by the save itself or by someone loading the page at that moment,
+    is never served after it. */
+function editsCacheKey_() {
+  var v = PropertiesService.getScriptProperties().getProperty(EDITS_VERSION_KEY) || '0';
+  return EDITS_CACHE_KEY + ':' + v;
+}
+
 /** The edits currently live, one per block: {block: {h, by, at}}. */
 function liveEdits_() {
   var cache = CacheService.getScriptCache();
-  var hit = cache.get(EDITS_CACHE_KEY);
+  var key = editsCacheKey_();
+  var hit = cache.get(key);
   if (hit) return JSON.parse(hit);
   var live = {};
   var sh = editsSheet_(false);
@@ -89,7 +99,7 @@ function liveEdits_() {
     }
   }
   var json = JSON.stringify(live);
-  if (json.length < 90000) cache.put(EDITS_CACHE_KEY, json, 6 * 60 * 60);
+  if (json.length < 90000) cache.put(key, json, 6 * 60 * 60);
   return live;
 }
 
@@ -174,7 +184,11 @@ function editWrite_(row) {
   if (!lock.tryLock(10000)) return false;
   try {
     editsSheet_(true).appendRow(row.map(editCell_));
-    CacheService.getScriptCache().remove(EDITS_CACHE_KEY);
+    /* Sheets holds writes back. Without this, reading the log straight
+       after can miss the row just added and cache the old wording. */
+    SpreadsheetApp.flush();
+    var props = PropertiesService.getScriptProperties();
+    props.setProperty(EDITS_VERSION_KEY, String(Number(props.getProperty(EDITS_VERSION_KEY) || 0) + 1));
   } finally {
     lock.releaseLock();
   }

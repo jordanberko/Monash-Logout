@@ -15,14 +15,25 @@ function ck(label, got, want){
 }
 const ckt = (l, c) => ck(l, !!c, true);
 
-function world(){
+function world(opts){
+  opts = opts || {};
   const props = {}, cache = {}, sheets = {}; let created = 0, nextId = 1, email = 'kate.wrathall@monash.edu';
+  /* Apps Script holds spreadsheet writes back and sends them in batches, so
+     a read through a second openById can miss a row appended moments ago.
+     With batched set, an appended row is only readable after
+     SpreadsheetApp.flush() or once the server call has finished. */
+  const pending = [];
+  const commit = () => { while(pending.length) pending.shift()(); };
   const INDEX = '<html><body><main>x</main><script>var LIVE = /*@@LIVE_EDITS@@*/null;</script></body></html>';
   function sheet(){
     const rows = [];
     return {
       rows,
-      appendRow(r){ rows.push(r.map(v => (typeof v === 'string' && v[0] === "'") ? v.slice(1) : v)); this.raw.push(r); },
+      appendRow(r){
+        const add = () => rows.push(r.map(v => (typeof v === 'string' && v[0] === "'") ? v.slice(1) : v));
+        if(opts.batched) pending.push(add); else add();
+        this.raw.push(r);
+      },
       raw: [],
       getLastRow(){ return rows.length; },
       setFrozenRows(){},
@@ -46,7 +57,8 @@ function world(){
     SpreadsheetApp: {
       create(name){ created++; const id = 'ss' + (nextId++); const s = sheet(); sheets[id] = s;
         return { getId: () => id, getSheets: () => [s] }; },
-      openById(id){ if(!sheets[id]) throw new Error('gone'); return { getId: () => id, getSheets: () => [sheets[id]] }; }
+      openById(id){ if(!sheets[id]) throw new Error('gone'); return { getId: () => id, getSheets: () => [sheets[id]] }; },
+      flush: commit
     },
     LockService: { getScriptLock: () => ({ tryLock: () => true, waitLock(){}, releaseLock(){} }) },
     Session: { getActiveUser: () => ({ getEmail: () => email }) },
@@ -65,6 +77,9 @@ function world(){
   };
   vm.createContext(g);
   vm.runInContext(fs.readFileSync(CODE, 'utf8'), g, { filename: 'Code.gs' });
+  /* each server call is its own execution: whatever it left pending is written when it ends */
+  const ended = fn => function(){ try { return fn.apply(this, arguments); } finally { commit(); } };
+  ['doGet', 'editUnlock', 'saveContentEdit', 'revertContentEdit'].forEach(k => { if(g[k]) g[k] = ended(g[k]); });
   return { g, props, cache, sheets, created: () => created, setEmail: e => { email = e; } };
 }
 const page = w => w.g.doGet({}).getContent();
@@ -162,6 +177,20 @@ console.log('\n6. the guide still loads when the log cannot be read');
 {
   const w = world(); w.props.EDITS_SHEET_ID = 'deleted-sheet';
   ck('a missing log gives an empty set, not an error', liveIn(page(w)), '{}');
+}
+
+console.log('\n7. a save shows on the next load even when Sheets batches the write');
+{
+  const w = world({ batched: true }); w.props.EDIT_PASSWORD = 'pw';
+  const t = w.g.editUnlock({ password: 'pw', name: 'Jordan' }).token;
+  const base = { token: t, section: 's2', before: 'Old', name: 'Jordan' };
+  const s1 = w.g.saveContentEdit(Object.assign({ block: 's2:9cdbbfe3', after: 'First wording' }, base));
+  ck('the save reports the new wording as live', s1.live['s2:9cdbbfe3'] && s1.live['s2:9cdbbfe3'].h, 'First wording');
+  ck('and a reload straight after shows it', (JSON.parse(liveIn(page(w)))['s2:9cdbbfe3'] || {}).h, 'First wording');
+  w.g.saveContentEdit(Object.assign({ block: 's2:9cdbbfe3', after: 'Second wording' }, base));
+  ck('a second save to the same block shows on reload too', (JSON.parse(liveIn(page(w)))['s2:9cdbbfe3'] || {}).h, 'Second wording');
+  w.g.revertContentEdit({ token: t, block: 's2:9cdbbfe3', name: 'Jordan' });
+  ck('and Restore original takes effect on reload', JSON.parse(liveIn(page(w)))['s2:9cdbbfe3'], undefined);
 }
 
 console.log(fails.length ? '\n' + fails.length + ' FAILURES\n' + fails.join('\n') : '\nall ' + n + ' server checks passed');
