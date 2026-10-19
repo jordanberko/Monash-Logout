@@ -24,7 +24,7 @@ function world(opts){
      SpreadsheetApp.flush() or once the server call has finished. */
   const pending = [];
   const commit = () => { while(pending.length) pending.shift()(); };
-  const INDEX = '<html><body><main>x</main><script>var LIVE = /*@@LIVE_EDITS@@*/null;</script></body></html>';
+  const INDEX = '<html><body><main>x</main><script>var LIVE = "@@LIVE_EDITS@@";</script></body></html>';
   function sheet(){
     const rows = [];
     return {
@@ -79,7 +79,7 @@ function world(opts){
   vm.runInContext(fs.readFileSync(CODE, 'utf8'), g, { filename: 'Code.gs' });
   /* each server call is its own execution: whatever it left pending is written when it ends */
   const ended = fn => function(){ try { return fn.apply(this, arguments); } finally { commit(); } };
-  ['doGet', 'editUnlock', 'saveContentEdit', 'revertContentEdit'].forEach(k => { if(g[k]) g[k] = ended(g[k]); });
+  ['doGet', 'getLiveEdits', 'editUnlock', 'saveContentEdit', 'revertContentEdit'].forEach(k => { if(g[k]) g[k] = ended(g[k]); });
   return { g, props, cache, sheets, created: () => created, setEmail: e => { email = e; } };
 }
 const page = w => w.g.doGet({}).getContent();
@@ -191,6 +191,19 @@ console.log('\n7. a save shows on the next load even when Sheets batches the wri
   ck('a second save to the same block shows on reload too', (JSON.parse(liveIn(page(w)))['s2:9cdbbfe3'] || {}).h, 'Second wording');
   w.g.revertContentEdit({ token: t, block: 's2:9cdbbfe3', name: 'Jordan' });
   ck('and Restore original takes effect on reload', JSON.parse(liveIn(page(w)))['s2:9cdbbfe3'], undefined);
+}
+
+console.log('\n8. the page can ask for the live edits as it loads');
+{
+  const w = world({ batched: true }); w.props.EDIT_PASSWORD = 'pw';
+  ck('with nothing saved it gets an empty set', JSON.stringify(w.g.getLiveEdits()), '{}');
+  const t = w.g.editUnlock({ password: 'pw', name: 'Jordan' }).token;
+  w.g.saveContentEdit({ token: t, block: 's2:9cdbbfe3', section: 's2', before: 'Old', after: 'Via the QC sheet', name: 'Jordan' });
+  ck('after a save it gets the new wording', (w.g.getLiveEdits()['s2:9cdbbfe3'] || {}).h, 'Via the QC sheet');
+  ck('the same set that is written into the page', JSON.stringify(w.g.getLiveEdits()), liveIn(page(w)).replace(/\\u003c/g, '<'));
+  ckt('and it needs no password', !('token' in JSON.parse(JSON.stringify(w.g.getLiveEdits()))));
+  const gone = world(); gone.props.EDITS_SHEET_ID = 'deleted-sheet';
+  ck('a missing log gives an empty set here too', JSON.stringify(gone.g.getLiveEdits()), '{}');
 }
 
 console.log(fails.length ? '\n' + fails.length + ' FAILURES\n' + fails.join('\n') : '\nall ' + n + ' server checks passed');

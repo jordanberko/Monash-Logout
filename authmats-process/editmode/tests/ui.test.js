@@ -18,12 +18,17 @@ function ck(label, got, want){
 }
 const ckt = (l, c) => ck(l, !!c, true);
 
-/* The page as doGet would serve it, with these edits written in. */
+/* The page as doGet would serve it, with these edits written in. The mock
+   server holds the same set unless a test says otherwise, as the real one
+   does. Pass null to serve the page with its placeholder left unfilled. */
+const SEEDS = {};
 function served(live){
-  const html = fs.readFileSync(INDEX, 'utf8')
-    .replace('/*@@LIVE_EDITS@@*/null', () => JSON.stringify(live).replace(/</g, '\\u003c'));
+  const src = fs.readFileSync(INDEX, 'utf8');
+  const html = live === null ? src
+    : src.replace('"@@LIVE_EDITS@@"', () => JSON.stringify(live).replace(/</g, '\\u003c'));
   const f = path.join(TMP, 'Index-' + Math.random().toString(36).slice(2) + '.html');
   fs.writeFileSync(f, html);
+  SEEDS['file://' + f] = live || {};
   return 'file://' + f;
 }
 
@@ -40,6 +45,7 @@ window.__srv = {password:'pw', live:{}, expired:false};
       getViewer:function(){ later({name:'Kate Wrathall', email:'kate.wrathall@monash.edu'}); },
       getCapabilities:function(){ later({contract:2}); },
       getTrainingRecord:function(){ later([]); },
+      getLiveEdits:function(){ window.__calls.push(['getLiveEdits']); later(S.live); },
       addTrainingRecord:function(){ later([]); },
       editUnlock:function(p){ window.__calls.push(['editUnlock', p.name]);
         later(p.password === S.password ? {ok:true, token:'00000000-0000-0000-0000-000000000001', ttl:10800, live:S.live}
@@ -50,17 +56,18 @@ window.__srv = {password:'pw', live:{}, expired:false};
       revertContentEdit:function(p){ window.__calls.push(['revertContentEdit', p]);
         delete S.live[p.block]; later({ok:true, live:S.live}); }
     };
+    if(window.__noLiveEdits) delete api.getLiveEdits;   /* an older Code.gs */
     return api;
   }
   window.google = {script:{}};
   Object.defineProperty(window.google.script, 'run', {get:runner});
 })();`;
 
-async function open(b, url, w){
+async function open(b, url, w, serverLive, extraInit){
   const pg = await b.newPage({viewport:{width:w || 1440, height:900}});
   const errs = []; pg.on('pageerror', e => errs.push(String(e))); pg.errs = errs;
   pg.on('dialog', d => d.accept());             /* the confirm() before an undo */
-  await pg.addInitScript(MOCK);
+  await pg.addInitScript(MOCK + '\nwindow.__srv.live = ' + JSON.stringify(serverLive || SEEDS[url] || {}) + ';\n' + (extraInit || ''));
   await pg.goto(url, {waitUntil:'load'});
   await pg.waitForTimeout(700);
   /* past the entry screen, the way the existing checks do it */
@@ -256,6 +263,50 @@ console.log('\n8. a phone, and print');
   ck('none of the editing controls print', await pg.evaluate(() =>
     [...document.querySelectorAll('.edentry,.edbar')].every(x => getComputedStyle(x).display === 'none')), true);
   ck('no page errors', pg.errs, []);
+  await pg.close();
+}
+
+console.log('\n9. a saved change shows on every load');
+{
+  const ed = h => ({[key]: {h, by: 'Jordan', at: '2026-10-20T00:00:00Z'}});
+  const look = pg => pg.evaluate(k => { const el = document.querySelector('[data-ek="' + k + '"]');
+    return {text: el.textContent, edited: el.hasAttribute('data-edited'),
+            asked: window.__calls.filter(c => c[0] === 'getLiveEdits').length}; }, key);
+
+  let pg = await open(b, served(null), 1440, ed('Arrived from the server'));
+  await pg.waitForTimeout(200);
+  let r = await look(pg);
+  ck('a page that arrives without its edits still shows them', [r.text, r.edited], ['Arrived from the server', true]);
+  ck('having asked the server once', r.asked, 1);
+  ck('no page errors', pg.errs, []);
+  await pg.close();
+
+  pg = await open(b, served(ed('Older wording')), 1440, ed('Newer wording'));
+  await pg.waitForTimeout(200);
+  r = await look(pg);
+  ck('a page that arrives with an older copy shows the newer one', r.text, 'Newer wording');
+  await pg.close();
+
+  pg = await open(b, served(ed('Removed since')), 1440, {});
+  await pg.waitForTimeout(200);
+  r = await look(pg);
+  ck('a change restored to the original since is not shown', [r.text, r.edited], [original, false]);
+  await pg.close();
+
+  pg = await open(b, served(ed('Same on both')));
+  await pg.waitForTimeout(200);
+  r = await look(pg);
+  ck('when page and server agree, the edit simply stays', [r.text, r.edited], ['Same on both', true]);
+  ck('no page errors', pg.errs, []);
+  await pg.close();
+
+  /* a new page deployed with an older Code.gs that has no getLiveEdits */
+  const OLD = 'window.__noLiveEdits = true;';
+  pg = await open(b, served(ed('Written into the page')), 1440, null, OLD);
+  await pg.waitForTimeout(200);
+  r = await look(pg);
+  ck('with an older Code.gs the edit in the page still shows', r.text, 'Written into the page');
+  ck('and nothing breaks', pg.errs, []);
   await pg.close();
 }
 

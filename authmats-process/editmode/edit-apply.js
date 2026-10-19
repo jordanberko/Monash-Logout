@@ -3,13 +3,16 @@
    Live content edits: apply.
    Runs straight after the page markup and before every other script, so
    search, the stacked-table labels and anything else that reads the text
-   reads the edited version. doGet replaces the marker below with the edits
-   currently live; served without it (a preview, a test) there are none.
+   reads the edited version. doGet replaces the quoted placeholder below
+   with the edits currently live. It is a string rather than a comment,
+   because a comment can be stripped on the way to the browser. If it
+   arrives unfilled, the editing interface asks the server once loaded.
    ===================================================================== */
 (function(){
   "use strict";
-  var LIVE = /*@@LIVE_EDITS@@*/null;
-  if(!LIVE || typeof LIVE !== "object") LIVE = {};
+  var LIVE = "@@LIVE_EDITS@@";
+  var FILLED = !!LIVE && typeof LIVE === "object";
+  if(!FILLED) LIVE = {};
 
   /* What can be edited: text blocks inside the twelve sections. The
      self-test, the completion page and anything the page builds or scores
@@ -114,6 +117,7 @@
 
   window.AMQC_EDITS = {
     live: LIVE,
+    filled: FILLED,      /* false when the page arrived without the live edits */
     original: original,
     byKey: byKey,
     sanitize: sanitize,

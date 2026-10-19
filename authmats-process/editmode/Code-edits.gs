@@ -40,7 +40,7 @@ var EDIT_TOKEN_SECS    = 3 * 60 * 60;
 var EDIT_MAX_FAILS     = 5;
 var EDIT_LOCKOUT_SECS  = 15 * 60;
 var EDIT_HTML_MAX      = 8000;
-var LIVE_EDITS_MARKER  = '/*@@LIVE_EDITS@@*/null';
+var LIVE_EDITS_MARKER  = '"@@LIVE_EDITS@@"';
 var EDIT_BLOCK_RE      = /^[A-Za-z0-9_-]{1,32}:[0-9a-f]{8}(:\d{1,3})?$/;
 var EDIT_SECTION_RE    = /^[A-Za-z0-9_-]{1,32}$/;
 var EDIT_TOKEN_RE      = /^[0-9a-f-]{36}$/;
@@ -144,6 +144,12 @@ function editSame_(a, b) {
 function editCell_(s) {
   s = String(s == null ? '' : s);
   return /^[=+\-@]/.test(s) ? "'" + s : s;
+}
+
+/** The edits currently live, for the page to check as it loads. The same
+    set is already written into the page, so this reveals nothing new. */
+function getLiveEdits() {
+  try { return liveEdits_(); } catch (err) { return null; }
 }
 
 /** Password in, a three hour editing session out. */

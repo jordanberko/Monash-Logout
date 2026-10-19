@@ -118,12 +118,12 @@ var SHOTS = {
 """
 
 
-def index_from(src):
+def index_from(src, extra=""):
     k = src.index("</style>") + len("</style>")
     head, body = src[:k], src[k:]
     head = head.replace("</style>", RESET + "</style>")
     stamp = "Build %s.%s" % (datetime.date.today().strftime("%Y-%m-%d"),
-                             hashlib.sha1(src.encode()).hexdigest()[:6])
+                             hashlib.sha1((src + extra).encode()).hexdigest()[:6])
     assert body.count("@@BUILD@@") == 1, "expected one @@BUILD@@"
     body = body.replace("@@BUILD@@", stamp)
     index = DOCTYPE + head + "</head>\n<body>\n" + body.strip() + "\n" + SHOTS_JS + "\n</body>\n</html>\n"
@@ -137,7 +137,10 @@ def main(argv):
     edit = "--no-edit" not in argv
     args = [a for a in argv if a != "--no-edit"]
     source, out, code = (pathlib.Path(a) for a in args[:3])
-    index, stamp = index_from(source.read_text(encoding="utf-8"))
+    # the stamp also changes when the editing code does, so a new build of
+    # either can be told apart once it is deployed
+    extra = "".join(f.read_text(encoding="utf-8") for f in sorted((HERE / "editmode").glob("*.*"))) if edit else ""
+    index, stamp = index_from(source.read_text(encoding="utf-8"), extra)
     plain = out if not edit else out.with_name(out.name + "-plain")
     plain.mkdir(parents=True, exist_ok=True)
     (plain / "Index.html").write_text(index, encoding="utf-8")

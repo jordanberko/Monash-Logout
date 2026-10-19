@@ -28,9 +28,14 @@
     return new Promise(function(done){
       var r = window.google && google.script && google.script.run;
       if(!r){ done({ok:false, reason:"offline"}); return; }
-      r.withSuccessHandler(function(v){ done(v || {ok:false, reason:"error"}); })
-       .withFailureHandler(function(err){ done({ok:false, reason:"error", message:String(err && err.message || err)}); })
-       [fn](arg);
+      /* a server function this deployment does not have yet (a new page
+         with an old Code.gs) answers as an error rather than breaking the page */
+      try{
+        var api = r.withSuccessHandler(function(v){ done(v || {ok:false, reason:"error"}); })
+                   .withFailureHandler(function(err){ done({ok:false, reason:"error", message:String(err && err.message || err)}); });
+        if(typeof api[fn] !== "function"){ done({ok:false, reason:"error"}); return; }
+        api[fn](arg);
+      }catch(e){ done({ok:false, reason:"error", message:String(e && e.message || e)}); }
     });
   }
 
@@ -208,7 +213,9 @@
   doneBtn.addEventListener("click", turnOff);
 
   /* the live set changed: from a save, an undo, or someone else's save */
+  var refreshes = 0;
   function refresh(live){
+    refreshes++;
     var before = E.live;
     E.live = live || {};
     var keys = {};
@@ -432,5 +439,20 @@
     panel.appendChild(list);
   }
 
+  /* ---- on every load ---------------------------------------------------
+     The edits normally arrive written into the page. Ask the server as well,
+     so a saved change shows on every load even when that copy is missing or
+     out of date. Only blocks that differ are touched, and the answer is
+     ignored if a save, undo or unlock has already brought a newer set. */
+  (function(){
+    var seen = refreshes;
+    call("getLiveEdits").then(function(live){
+      if(!live || typeof live !== "object" || live.ok === false || refreshes !== seen) return;
+      var missed = Object.keys(live).filter(function(k){ return !E.live[k] || E.live[k].h !== live[k].h; }).length;
+      if(missed && window.console) console.warn("Live edits: " + missed + " applied from the server" +
+        (E.filled ? " (the copy in the page was out of date)." : " (the page arrived without them)."));
+      refresh(live);
+    });
+  })();
 })();
 </script>
