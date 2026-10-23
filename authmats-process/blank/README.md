@@ -95,13 +95,32 @@ Each step is a `<label>`. Give a new one the next `id="chkrow-cN"` and
 
 ## Editing from the page
 
-The deployed blank has live editing built in, so people can fill it in from
-the page without touching this file. Anyone with the edit password can
-change any placeholder: section headings, text, table cells, card labels,
-the page title and team name, the worked examples and their questions and
-answers, the Option A and Option B buttons, and the completion page
-wording. Wording that appears twice, such as the title in the top bar and
-each heading in the contents bar, follows by itself.
+The deployed blank has live editing built in, so people can write the whole
+guide from the page without touching this file. Anyone with the edit
+password can:
+
+- **change any wording** by clicking it: headings, text, table cells, card
+  labels, the page title and team name, the worked examples and their
+  questions and answers, the Option A and Option B buttons, and the
+  completion page
+- **move things** by dragging the handle (⠿) beside a block, anywhere in
+  the guide, or with Move up and Move down in its menu. Rows, steps, cards,
+  examples, checklist steps and answers have their own handle and move
+  among their own kind
+- **add things**: **+ Add a block** at the foot of each section, or **+**
+  beside any block, offers paragraphs, subheadings, lists, steps, notes, key
+  points, tables, screenshots, cards, numbered points and item lists.
+  Duplicate copies any row, step, card, example, checklist step or answer
+- **delete things**, with **Undo** on the editing bar to bring them back
+- **restyle a block**: switch between paragraph, subheading, note and key
+  point. Fonts and colours stay the guide's own, on purpose
+- **change tables**: add a column or remove the last one
+- **add screenshots**: **Replace image** on any screenshot frame uploads a
+  picture, resized to a sensible size first
+- **arrange sections**: hover over a section heading to move it, add a new
+  section after it, or delete it. Numbers and the contents bar follow
+- **set up the self-test**: add or remove a question on any example, add
+  answers, and choose which answer is right
 
 To switch it on, open the Apps Script project, go to **Project Settings >
 Script Properties > Add script property**, and add `EDIT_PASSWORD` with the
@@ -109,16 +128,26 @@ password as its value. Then on the page, scroll to the very end and select
 **Edit this guide**.
 
 Saved changes go live for everyone on their next page load. Every change is
-logged with the editor's name in a sheet called `<title> - Content edits`
-in the script owner's Drive, and can be undone from **Changes** on the page.
+logged with the editor's name in a sheet called `<title> - Content edits`,
+and screenshots go to a folder called `<title> - Images`, both in the
+script owner's Drive. **Changes** on the page lists what has changed, with
+Undo last change and a way to put any section back the way it was built.
 `editmode/README.md` has the full detail.
 
-What the page cannot do is change the shape of the guide: add or remove
-sections, table rows, cards, steps or questions, or swap a placeholder for
-a real screenshot. Those are changes to `site-blank.html`, followed by a
-rebuild and redeploy. Edits made on the page are keyed to the wording they
-replaced, so make structural changes before people start editing, or fold
-their edits into the file first.
+Worth knowing:
+
+- Each section is saved whole. If two people change the same section at
+  once, the second save is refused with a message, and they see the other
+  person's version so they can make their change again.
+- The self-test, checklist and option buttons are wired up when the page
+  loads, so after rearranging them, reload the page to try them.
+- Deleting the worked examples or the checklist is fine: the completion
+  page then asks only for what the guide still has.
+- What has been written on the page lives in the edits sheet, not in
+  `site-blank.html`. A section changed on the page keeps showing the page
+  version even if the file is rebuilt and redeployed.
+- Tested in Chrome. Arranging is designed for a computer with a mouse; on a
+  phone, changing wording works but dragging is fiddly.
 
 ## Building and deploying
 

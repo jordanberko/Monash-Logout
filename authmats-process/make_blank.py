@@ -496,9 +496,9 @@ BODY = r"""
       <button type="button" id="resetquiz">Start again</button>
     </div>
   </div>
-  <p class="studynote hidden" id="studynote">Read the case, then commit to an answer before you reveal it. Three of the four cases are scored.</p>
+  <p class="studynote hidden" id="studynote">Read the case, then commit to an answer before you reveal it. Cases with a question are scored.</p>
   <div class="filters" id="exfilters">
-    <button class="fbtn" type="button" aria-pressed="true" data-v="all">All 4</button>
+    <button class="fbtn" type="button" aria-pressed="true" data-v="all">All</button>
     <button class="fbtn" type="button" aria-pressed="false" data-v="ok">Group one</button>
     <button class="fbtn" type="button" aria-pressed="false" data-v="disc">Group two</button>
     <button class="fbtn" type="button" aria-pressed="false" data-v="esc">Group three</button>
@@ -624,7 +624,7 @@ BODY = r"""
     <li data-gate="read">
       <div class="growtop">
         <span class="gtick">&#10003;</span>
-        <div><b>Read the full guide</b><span class="gsub">Sections 1 to 12</span></div>
+        <div><b>Read the full guide</b><span class="gsub">Every numbered section</span></div>
         <span class="gmeta" data-meta="read">0 of 12</span>
       </div>
       <div class="gmissing" data-missing="read"></div>
@@ -632,7 +632,7 @@ BODY = r"""
     <li data-gate="chk">
       <div class="growtop">
         <span class="gtick">&#10003;</span>
-        <div><b>Work the checklist</b><span class="gsub">All 5 steps in section 12</span></div>
+        <div><b>Work the checklist</b><span class="gsub">Every step in the checklist</span></div>
         <span class="gmeta" data-meta="chk">0 of 5</span>
       </div>
       <div class="gmissing" data-missing="chk"></div>
@@ -640,7 +640,7 @@ BODY = r"""
     <li data-gate="test">
       <div class="growtop">
         <span class="gtick">&#10003;</span>
-        <div><b>Pass the self-test</b><span class="gsub">Section 9, Test yourself. Three of three to pass.</span></div>
+        <div><b>Pass the self-test</b><span class="gsub">The worked example questions. 85% or more to pass.</span></div>
         <span class="gmeta" data-meta="test">0 of 3</span>
       </div>
       <div class="gmissing" data-missing="test"></div>
@@ -688,6 +688,30 @@ BODY = r"""
 </main>
 </div>
 
+<div id="standins" hidden aria-hidden="true"></div>
+<script>
+/* A blank guide can lose any section from the page itself, the self-test
+   and the checklist included. The page's scripts expect their controls to
+   exist, so a hidden stand-in takes the place of any that are gone, and the
+   completion page asks only for what this guide still has. */
+(function(){
+  var need = {pct:"span", barfill:"i", resetchk:"button", chkbar:"div", chk:"div", scorebox:"div", tally:"span",
+              tallytxt:"span", resetquiz:"button", studynote:"p", expandall:"button", exfilters:"div", exlist:"div"};
+  var box = document.getElementById("standins");
+  Object.keys(need).forEach(function(id){
+    if(document.getElementById(id)) return;
+    var e = document.createElement(need[id]);
+    e.id = id;
+    box.appendChild(e);
+  });
+  var gates = {chk: "main #chk input", test: "main #exlist .ex[data-scored]"};
+  Object.keys(gates).forEach(function(k){
+    var li = document.querySelector('#gates [data-gate="' + k + '"]');
+    if(li && !document.querySelector(gates[k])) li.hidden = true;
+  });
+})();
+</script>
+
 
 """
 
@@ -710,7 +734,13 @@ head = swap(head, "<title>Authorised Materials QC</title>", "<title>%s</title>" 
 
 # The scripts carry a few lines of the old guide's wording.
 scripts = swap(scripts, "var PASS_MARK = 12;   /* out of 14 */",
-               "var PASS_MARK = 3;    /* out of 3. Update it when you add or remove scored questions. */")
+               "var PASS_MARK = Math.ceil(document.querySelectorAll(\"main #exlist .ex[data-scored]\").length * 0.85);"
+               "   /* 85%, however many questions the guide has */")
+# A guide with no checklist or no self-test can still be completed.
+scripts = swap(scripts, "chk :{ ok: boxes.length > 0 && chkDone === boxes.length,",
+               "chk :{ ok: chkDone === boxes.length,")
+scripts = swap(scripts, "test:{ ok: quizCards.length > 0 && answered === quizCards.length && correct >= PASS_MARK,",
+               "test:{ ok: answered === quizCards.length && correct >= PASS_MARK,")
 # The line under the completion tick reads the page heading, so it follows
 # an edit to the title or team name.
 scripts = swap(scripts, '"Authorised Materials QC, Exam Delivery Team."',

@@ -17,6 +17,7 @@ def main(src, dst):
     css = (HERE / "edit.css").read_text(encoding="utf-8")
     apply_js = (HERE / "edit-apply.js").read_text(encoding="utf-8")
     ui_js = (HERE / "edit-ui.js").read_text(encoding="utf-8")
+    arrange_js = (HERE / "edit-arrange.js").read_text(encoding="utf-8")
     server = (HERE / "Code-edits.gs").read_text(encoding="utf-8")
 
     assert "@@LIVE_EDITS@@" not in index, "editing is already in this build"
@@ -27,9 +28,10 @@ def main(src, dst):
     assert index.count("</main>") == 1, "expected one </main>"
     i = index.index("</main>") + len("</main>")
     index = index[:i] + "\n" + apply_js + index[i:]
-    # the interface: last, once everything else on the page exists
+    # the interface: last, once everything else on the page exists. Arranging
+    # (blank guides only; it does nothing on any other page) builds on it.
     i = index.rindex("</body>")
-    index = index[:i] + ui_js + index[i:]
+    index = index[:i] + ui_js + arrange_js + index[i:]
 
     # serve the page with the live edits written in
     old = "HtmlService.createHtmlOutputFromFile('Index')"

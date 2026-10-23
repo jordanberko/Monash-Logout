@@ -45,6 +45,7 @@
     "too-long":function(){ return "That change is too long to save in one block."; },
     busy:     function(){ return "Someone else is saving at the same moment. Try again."; },
     invalid:  function(){ return "That change could not be saved. Reload the page and try again."; },
+    stale:    function(){ return "Someone else changed this section while you were working on it, so your change was not saved. Their version is showing now. Make your change again."; },
     error:    function(){ return "Could not reach the server. Check your connection and try again."; }
   };
   function say(r){ return (SAY[r && r.reason] || SAY.error)(r || {}); }
@@ -178,32 +179,43 @@
   bar.appendChild(barText); bar.appendChild(changesBtn); bar.appendChild(doneBtn);
   document.body.appendChild(bar);
 
+  function liveKeys(){
+    return Object.keys(E.live).filter(function(k){ return !(E.tpl && E.tpl.superseded(k)); });
+  }
   function paintBar(){
-    var n = Object.keys(E.live).length;
+    var n = liveKeys().length;
     barText.innerHTML = "";
     var b = el("b", null, "Editing as " + whoName() + ". ");
     barText.appendChild(b);
-    barText.appendChild(document.createTextNode("Select any text to change it. Saved changes go live for everyone."));
+    barText.appendChild(document.createTextNode(E.tpl
+      ? "Select any text to change it. Use the handles beside each block to move, add or delete. Changes go live for everyone."
+      : "Select any text to change it. Saved changes go live for everyone."));
     changesBtn.textContent = "Changes (" + n + ")";
   }
   function turnOn(){
     on = true;
     document.body.classList.add("editing-on");
+    if(E.tpl) document.body.classList.add("editing-tpl");
     bar.hidden = false;
     paintBar();
     [].forEach.call(document.querySelectorAll(".edentry"), function(b){ b.textContent = "Finish editing"; });
     notify("Editing is on. Select any text to change it.");
+    document.dispatchEvent(new CustomEvent("amqc:editing", {detail:{on:true}}));
   }
   function turnOff(){
     if(cur && dirty() && !confirm("Discard the change you have not saved?")) return;
     stop(true);
     on = false;
-    document.body.classList.remove("editing-on");
+    document.body.classList.remove("editing-on", "editing-tpl");
     bar.hidden = true;
     closePanel();
     session = null; ss.del(TOKEN_KEY);           /* finishing locks editing again */
     [].forEach.call(document.querySelectorAll(".edentry"), function(b){ b.textContent = "Edit this guide"; });
-    notify("Editing is locked.");
+    document.dispatchEvent(new CustomEvent("amqc:editing", {detail:{on:false}}));
+    /* a section redrawn while editing has not been wired up by the page's
+       own scripts; a reload does that */
+    notify(shapeChanged ? "Editing is locked. Reload the page to try the self-test, checklist and option buttons with your changes."
+                        : "Editing is locked.");
   }
   doneBtn.addEventListener("click", turnOff);
 
@@ -285,8 +297,11 @@
     if(!cur || saving) return;
     var block = cur, key = block.getAttribute("data-ek");
     var html = E.sanitize(block.innerHTML);
-    if(!E.norm(textOf(html))){ notify("A block cannot be left empty. Use Restore original to undo a change.", true); return; }
+    if(!E.norm(textOf(html))){ notify(E.tpl ? "A block cannot be left empty. To remove it, use Delete beside it."
+                                            : "A block cannot be left empty. Use Restore original to undo a change.", true); return; }
     if(html === E.sanitize(curOrig)){ stop(true); return; }
+    var unit = E.tpl && E.tpl.unitOf(block);
+    if(unit){ saveInUnit(block, unit, html); return; }
     saving = true; tSave.disabled = true; tSave.textContent = "Saving…";
     call("saveContentEdit", {
       token: session && session.v, block: key, section: sectionOf(key),
@@ -305,6 +320,101 @@
       notify("Saved. It is live for everyone.");
     });
   }
+  /* ---- blank guides: a section is saved whole ----------------------- */
+  var undoStack = [], shapeChanged = false, undoBtn = null;
+  function paintUndo(){ if(undoBtn) undoBtn.disabled = !undoStack.length; }
+  if(E.tpl){
+    undoBtn = btn("edquiet", "Undo");
+    undoBtn.title = "Undo your last change";
+    undoBtn.disabled = true;
+    bar.insertBefore(undoBtn, changesBtn);
+    undoBtn.addEventListener("click", undo);
+  }
+
+  /* Save the copies of these sections, and the section order if asked, one
+     after another. Each save names the version it started from. */
+  function commit(units, before, withOrder){
+    var jobs = units.map(function(u){ return {key: u + ":all", section: u, after: E.tpl.serialize(u)}; });
+    if(withOrder) jobs.push({key: E.tpl.layoutKey, section: "page", after: JSON.stringify(E.tpl.order())});
+    var done = [], i = 0;
+    return new Promise(function(finish){
+      (function next(){
+        if(i >= jobs.length){
+          if(done.length) undoStack.push(done);
+          paintUndo();
+          finish({ok:true, saved: done.map(function(d){ return d.key; })});
+          return;
+        }
+        var j = jobs[i++], last = E.live[j.key];
+        call("saveContentEdit", {
+          token: session && session.v, block: j.key, section: j.section,
+          before: String(before || "").slice(0, 4000), after: j.after, base: last ? last.at : "", name: whoName()
+        }).then(function(r){
+          if(r.live) refresh(r.live);
+          if(!r.ok){
+            if(done.length) undoStack.push(done);
+            paintUndo();
+            r.partial = done.length > 0;
+            r.saved = done.map(function(d){ return d.key; });
+            if(r.reason === "stale") r.staleKey = j.key;
+            if(r.reason === "expired"){ session = null; ss.del(TOKEN_KEY); }
+            finish(r);
+            return;
+          }
+          done.push({key: j.key, at: E.live[j.key] && E.live[j.key].at});
+          next();
+        });
+      })();
+    });
+  }
+  function saveInUnit(block, unit, html){
+    var hit = E.tpl.findP(block.getAttribute("data-eid"));
+    if(!hit){ notify(say({reason:"invalid"}), true); return; }
+    var prev = hit.node.innerHTML;
+    hit.node.innerHTML = html;
+    saving = true; tSave.disabled = true; tSave.textContent = "Saving…";
+    commit([unit], textOf(curOrig)).then(function(r){
+      saving = false; tSave.disabled = false; tSave.textContent = "Save";
+      if(!r.ok){
+        if(r.reason === "stale"){ stop(true); notify(say(r), true); return; }
+        hit.node.innerHTML = prev;
+        notify(say(r), true);
+        if(r.reason === "expired") openDialog(save);
+        return;
+      }
+      block.innerHTML = html;
+      block.setAttribute("data-edited", "1");
+      stop(false);
+      E.tpl.sync();
+      notify("Saved. It is live for everyone.");
+    });
+  }
+  /* step back one save at a time, newest first */
+  function undo(){
+    if(saving || !undoStack.length) return;
+    if(cur && dirty()){ notify("Save or cancel the change you are making first.", true); return; }
+    stop(true);
+    var last = undoStack.pop(), i = last.length - 1;
+    saving = true; paintUndo();
+    (function next(){
+      if(i < 0){ saving = false; paintUndo(); notify("Undone for everyone."); return; }
+      var k = last[i--];
+      call("revertContentEdit", {token: session && session.v, block: k.key, step: "back", base: k.at || "", name: whoName()})
+        .then(function(r){
+          if(r.live) refresh(r.live);
+          if(!r.ok){
+            saving = false; paintUndo();
+            if(r.reason === "expired"){ session = null; ss.del(TOKEN_KEY); undoStack.push(last.slice(0, i + 2)); openDialog(undo); return; }
+            notify(r.reason === "stale"
+              ? "Someone else has changed this since, so it cannot be undone from here. Use Changes to put it back the way it was built."
+              : say(r), true);
+            return;
+          }
+          next();
+        });
+    })();
+  }
+
   function restore(){
     if(!cur || saving) return;
     var block = cur, key = block.getAttribute("data-ek");
@@ -334,7 +444,7 @@
   document.addEventListener("click", function(e){
     if(!on) return;
     var t = e.target;
-    if(!t.closest || t.closest(".edtools,.edbar,.edpanel,.edlg,.edtoast")) return;
+    if(!t.closest || t.closest(".edtools,.edbar,.edpanel,.edlg,.edtoast,.edarr")) return;
     if(cur && cur.contains(t)){
       if(t.closest("a")) e.preventDefault();
       /* the wording of an answer or option button: placing the caret must
@@ -381,7 +491,10 @@
   panel.addEventListener("keydown", function(e){ if(e.key === "Escape"){ closePanel(); changesBtn.focus(); } });
 
   function undoKey(key){
-    if(!confirm("Put back the original wording for everyone?")) return;
+    var whole = E.tpl && E.tpl.unitKey(key), order = E.tpl && key === E.tpl.layoutKey;
+    if(!confirm(order ? "Put the sections back in their original order, for everyone?"
+              : whole ? "Put this section back the way it was first built, for everyone? Every change made to it is undone."
+              : "Put back the original wording for everyone?")) return;
     call("revertContentEdit", {token: session && session.v, block: key, name: whoName()}).then(function(r){
       if(!r.ok){
         notify(say(r), true);
@@ -389,10 +502,44 @@
         return;
       }
       refresh(r.live);
-      E.apply(key, null);
-      notify("Original wording restored for everyone.");
+      if(!whole && !order) E.apply(key, null);
+      notify(whole || order ? "Put back the way it was built, for everyone." : "Original wording restored for everyone.");
     });
   }
+  /* the section order, as section titles */
+  function orderText(h){
+    var ids = [];
+    try{ ids = JSON.parse(h) || []; }catch(e){}
+    return ids.map(function(id){ var t = sectionTitle(id); return t === id ? "a removed section" : t; }).join(", ");
+  }
+  /* one save back, from the list of changes */
+  function stepBack(key){
+    var e = E.live[key];
+    if(!e) return;
+    call("revertContentEdit", {token: session && session.v, block: key, step: "back", base: e.at || "", name: whoName()}).then(function(r){
+      if(r.live) refresh(r.live);
+      if(!r.ok){
+        notify(r.reason === "stale" ? "That changed again a moment ago. Look at Changes again." : say(r), true);
+        if(r.reason === "expired"){ session = null; ss.del(TOKEN_KEY); openDialog(function(){ stepBack(key); }); }
+        return;
+      }
+      notify("Undone for everyone.");
+    });
+  }
+
+  /* what the arranging tools on a blank guide need from here */
+  E.ui = {
+    call: call, notify: notify, say: say, whoName: whoName,
+    token: function(){ return session && session.v; },
+    isOn: function(){ return on; },
+    busy: function(){ return saving || (!!cur && dirty()); },
+    stopEditing: function(){ stop(true); },
+    openDialog: openDialog,
+    expire: function(){ session = null; ss.del(TOKEN_KEY); },
+    commit: commit,
+    shapeChanged: function(){ shapeChanged = true; },
+    saving: function(v){ saving = !!v; }
+  };
   function paintPanel(){
     panel.innerHTML = "";
     var head = el("div", "edpanelhead");
@@ -400,7 +547,7 @@
     var x = btn("edquiet", "Close"); x.addEventListener("click", closePanel);
     head.appendChild(x);
     panel.appendChild(head);
-    var keys = Object.keys(E.live).sort(function(a, b){
+    var keys = liveKeys().sort(function(a, b){
       return String(E.live[b].at || "").localeCompare(String(E.live[a].at || ""));
     });
     if(!keys.length){
@@ -410,19 +557,26 @@
     var list = el("ol", "edlist");
     keys.forEach(function(k){
       var e = E.live[k], li = el("li");
-      var orphan = !E.byKey[k];
-      li.appendChild(el("p", "edwhere", sectionTitle(sectionOf(k))));
-      var snip = textOf(e.h);
+      var whole = E.tpl && E.tpl.unitKey(k), order = E.tpl && k === E.tpl.layoutKey;
+      var orphan = E.orphans().indexOf(k) > -1;
+      li.appendChild(el("p", "edwhere", order ? "Section order" : whole && sectionOf(k) === "mast" ? "Page heading" : sectionTitle(sectionOf(k))));
+      var snip = order ? orderText(e.h) : textOf(e.h);
       li.appendChild(el("p", "edsnip", snip.length > 140 ? snip.slice(0, 140) + "…" : snip));
       li.appendChild(el("p", "edmeta", (e.by ? "Changed by " + e.by : "Changed") + (e.at ? ", " + when(e.at) : "")));
       if(orphan) li.appendChild(el("p", "edorphan",
         "Not showing: the original wording of this block changed in an update, so this edit no longer matches anything on the page."));
       var acts = el("div", "edacts");
-      if(!orphan){
+      if(whole || order){
+        var back = btn("edquiet", "Undo last change");
+        back.addEventListener("click", function(){ stepBack(k); });
+        acts.appendChild(back);
+      }
+      if(!orphan && !order){
         var show = btn("edquiet", "Show");
         show.addEventListener("click", function(){
           closePanel();
-          var b = E.byKey[k];
+          var b = whole ? document.getElementById(sectionOf(k)) : E.byKey[k];
+          if(!b){ notify("That section is not in the guide at the moment.", true); return; }
           if(window.AMQC && window.AMQC.scrollToEl) window.AMQC.scrollToEl(b);
           else b.scrollIntoView({block:"center"});
           b.classList.add("ed-flash");

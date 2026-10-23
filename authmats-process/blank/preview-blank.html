@@ -2345,9 +2345,9 @@ img{max-width:100%;height:auto;display:block}
       <button type="button" id="resetquiz">Start again</button>
     </div>
   </div>
-  <p class="studynote hidden" id="studynote">Read the case, then commit to an answer before you reveal it. Three of the four cases are scored.</p>
+  <p class="studynote hidden" id="studynote">Read the case, then commit to an answer before you reveal it. Cases with a question are scored.</p>
   <div class="filters" id="exfilters">
-    <button class="fbtn" type="button" aria-pressed="true" data-v="all">All 4</button>
+    <button class="fbtn" type="button" aria-pressed="true" data-v="all">All</button>
     <button class="fbtn" type="button" aria-pressed="false" data-v="ok">Group one</button>
     <button class="fbtn" type="button" aria-pressed="false" data-v="disc">Group two</button>
     <button class="fbtn" type="button" aria-pressed="false" data-v="esc">Group three</button>
@@ -2473,7 +2473,7 @@ img{max-width:100%;height:auto;display:block}
     <li data-gate="read">
       <div class="growtop">
         <span class="gtick">&#10003;</span>
-        <div><b>Read the full guide</b><span class="gsub">Sections 1 to 12</span></div>
+        <div><b>Read the full guide</b><span class="gsub">Every numbered section</span></div>
         <span class="gmeta" data-meta="read">0 of 12</span>
       </div>
       <div class="gmissing" data-missing="read"></div>
@@ -2481,7 +2481,7 @@ img{max-width:100%;height:auto;display:block}
     <li data-gate="chk">
       <div class="growtop">
         <span class="gtick">&#10003;</span>
-        <div><b>Work the checklist</b><span class="gsub">All 5 steps in section 12</span></div>
+        <div><b>Work the checklist</b><span class="gsub">Every step in the checklist</span></div>
         <span class="gmeta" data-meta="chk">0 of 5</span>
       </div>
       <div class="gmissing" data-missing="chk"></div>
@@ -2489,7 +2489,7 @@ img{max-width:100%;height:auto;display:block}
     <li data-gate="test">
       <div class="growtop">
         <span class="gtick">&#10003;</span>
-        <div><b>Pass the self-test</b><span class="gsub">Section 9, Test yourself. Three of three to pass.</span></div>
+        <div><b>Pass the self-test</b><span class="gsub">The worked example questions. 85% or more to pass.</span></div>
         <span class="gmeta" data-meta="test">0 of 3</span>
       </div>
       <div class="gmissing" data-missing="test"></div>
@@ -2536,6 +2536,30 @@ img{max-width:100%;height:auto;display:block}
 </section>
 </main>
 </div>
+
+<div id="standins" hidden aria-hidden="true"></div>
+<script>
+/* A blank guide can lose any section from the page itself, the self-test
+   and the checklist included. The page's scripts expect their controls to
+   exist, so a hidden stand-in takes the place of any that are gone, and the
+   completion page asks only for what this guide still has. */
+(function(){
+  var need = {pct:"span", barfill:"i", resetchk:"button", chkbar:"div", chk:"div", scorebox:"div", tally:"span",
+              tallytxt:"span", resetquiz:"button", studynote:"p", expandall:"button", exfilters:"div", exlist:"div"};
+  var box = document.getElementById("standins");
+  Object.keys(need).forEach(function(id){
+    if(document.getElementById(id)) return;
+    var e = document.createElement(need[id]);
+    e.id = id;
+    box.appendChild(e);
+  });
+  var gates = {chk: "main #chk input", test: "main #exlist .ex[data-scored]"};
+  Object.keys(gates).forEach(function(k){
+    var li = document.querySelector('#gates [data-gate="' + k + '"]');
+    if(li && !document.querySelector(gates[k])) li.hidden = true;
+  });
+})();
+</script>
 
 
 <script>
@@ -3331,7 +3355,7 @@ img{max-width:100%;height:auto;display:block}
     set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}},
     del:function(k){try{localStorage.removeItem(k)}catch(e){}}
   };
-  var PASS_MARK = 3;    /* out of 3. Update it when you add or remove scored questions. */
+  var PASS_MARK = Math.ceil(document.querySelectorAll("main #exlist .ex[data-scored]").length * 0.85);   /* 85%, however many questions the guide has */
 
   /* The twelve numbered training sections. Document maintenance used to sit
      in a thirteenth and was filtered out here; it now lives in the editor
@@ -3489,8 +3513,8 @@ img{max-width:100%;height:auto;display:block}
 
     return {
       read:{ ok: readCount >= sections.length, now: readCount, of: sections.length },
-      chk :{ ok: boxes.length > 0 && chkDone === boxes.length, now: chkDone, of: boxes.length },
-      test:{ ok: quizCards.length > 0 && answered === quizCards.length && correct >= PASS_MARK,
+      chk :{ ok: chkDone === boxes.length, now: chkDone, of: boxes.length },
+      test:{ ok: answered === quizCards.length && correct >= PASS_MARK,
              now: correct, of: quizCards.length, answered: answered }
     };
   }

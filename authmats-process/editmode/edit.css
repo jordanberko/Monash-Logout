@@ -117,3 +117,70 @@ body.editing-on [data-ek].ed-on{
 
 @media print{ .edentry,.edbar,.edtools,.edlg,.edpanel,.edtoast{display:none !important} }
 @media (prefers-reduced-motion:reduce){ [data-ek].ed-flash{animation:none} }
+
+/* ---- arranging a blank guide ---------------------------------------- */
+.edgutter,.editembar,.edsecbar,.edfigbar{
+  position:fixed;z-index:84;display:flex;gap:2px;align-items:center;padding:3px;border-radius:999px;
+  background:var(--paper,#fff);border:1px solid var(--hairline,#C5D6E2);
+  box-shadow:0 4px 14px rgba(0,30,50,.16);font-family:var(--font-text,inherit);
+}
+.edgutter{flex-direction:column}
+.edgutter[hidden],.editembar[hidden],.edsecbar[hidden],.edfigbar[hidden],.edmenu[hidden],.eddrop[hidden],.edghost[hidden]{display:none}
+.edico{
+  font:inherit;font-size:15px;line-height:1;min-width:32px;min-height:32px;padding:0 6px;
+  border:0;border-radius:999px;background:transparent;color:var(--ink,#102E42);cursor:pointer;
+}
+.edico:hover{background:var(--cool-wash,#E0EFF8)}
+.edico:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:1px}
+.edico.grip{cursor:grab;touch-action:none;font-size:17px}
+.edico.txt{font-size:var(--text-micro,13px);font-weight:600;padding:0 10px;white-space:nowrap}
+.edico.danger{color:var(--stop,#B64400)}
+.edico.danger:hover{background:#FBE9E1}
+.edmenu{
+  position:fixed;z-index:88;min-width:230px;max-height:min(70vh,560px);overflow:auto;box-sizing:border-box;
+  padding:6px;border-radius:16px;background:var(--paper,#fff);color:var(--ink,#102E42);
+  border:1px solid var(--hairline,#C5D6E2);box-shadow:0 12px 32px rgba(0,30,50,.22);font-family:var(--font-text,inherit);
+}
+.edmenu button{
+  display:block;width:100%;text-align:left;font:inherit;font-size:var(--text-body-sm,15px);
+  padding:8px 12px;border:0;border-radius:10px;background:none;color:var(--ink,#102E42);cursor:pointer;
+}
+.edmenu button:hover,.edmenu button:focus-visible{background:var(--cool-wash,#E0EFF8);outline:none}
+.edmenu button.danger{color:var(--stop,#B64400)}
+.edmhead{margin:8px 12px 4px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3,#526572)}
+.edmenu hr{border:0;border-top:1px solid var(--hairline,#C5D6E2);margin:6px 4px}
+.eddrop{position:fixed;z-index:87;height:3px;border-radius:3px;pointer-events:none;
+  background:var(--accent,#006DAE);box-shadow:0 0 0 3px rgba(0,109,174,.2)}
+.edghost{
+  position:fixed;z-index:89;pointer-events:none;max-width:300px;padding:6px 12px;border-radius:999px;
+  background:var(--deep,#003F66);color:#fff;font-family:var(--font-text,inherit);font-size:var(--text-micro,13px);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 8px 20px rgba(0,30,50,.3);
+}
+.ed-dragging{opacity:.35}
+body.ed-isdragging,body.ed-isdragging *{cursor:grabbing !important;user-select:none}
+body.ed-isdragging [data-ek]:hover{box-shadow:none}
+.edaddend{margin:22px 0 0}
+.edaddend button{
+  font:inherit;font-size:var(--text-micro,13px);font-weight:600;min-height:36px;padding:8px 16px;cursor:pointer;
+  color:var(--accent,#006DAE);background:transparent;border:1px dashed var(--accent,#006DAE);border-radius:999px;
+}
+.edaddend button:hover{background:var(--accent-wash,#E0EFF8)}
+#s3 .edaddend button,#s10 .edaddend button{color:#fff;border-color:rgba(255,255,255,.7)}
+#s3 .edaddend button:hover,#s10 .edaddend button:hover{background:rgba(255,255,255,.12)}
+.ed-moved{animation:edmoved 1.7s ease}
+@keyframes edmoved{0%,55%{box-shadow:0 0 0 3px var(--accent,#006DAE)}100%{box-shadow:0 0 0 3px transparent}}
+/* while editing a blank guide, parts that are normally hidden are shown so
+   they can be written: both options' wording, and the self-test questions */
+body.editing-tpl .pathA.hidden,body.editing-tpl .pathB.hidden{display:revert !important}
+body.editing-tpl .pathA:not(span){box-shadow:inset 3px 0 0 #2E7DC5;padding-left:12px}
+body.editing-tpl .pathB:not(span){box-shadow:inset 3px 0 0 #C58A2E;padding-left:12px}
+body.editing-tpl span.pathA{background:rgba(46,125,197,.14)}
+body.editing-tpl span.pathB{background:rgba(197,138,46,.18)}
+body.editing-tpl .ex .quiz{display:block}
+body.editing-tpl .ex .quizseen{display:none}
+body.editing-tpl .qa.hidden{display:block !important;margin:0 24px 20px;padding:14px 16px;border-radius:14px;border:1px dashed var(--hairline,#C5D6E2)}
+body.editing-tpl .studynote.hidden{display:block !important}
+body.editing-tpl .ansbtn[data-correct]{box-shadow:inset 0 0 0 2px var(--ok,#0B6554)}
+
+@media print{ .edgutter,.editembar,.edsecbar,.edfigbar,.edmenu,.eddrop,.edghost,.edaddend{display:none !important} }
+@media (prefers-reduced-motion:reduce){ .ed-moved{animation:none} }

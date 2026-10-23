@@ -158,28 +158,29 @@ console.log('\n3. editing from the page');
     return {ce, typed, last};
   }
 
+  const has = (r, text) => r.last[1].after.includes(text);
   let r = await edit('#s4 .sechead h2', 'Room layout');
-  ck('a section heading saves', [r.ce, r.last[1].after, r.last[1].section], ['true', 'Room layout', 's4']);
+  ck('a section heading saves, as its whole section', [r.ce, r.last[1].block, r.last[1].section, has(r, '<h2>Room layout</h2>')], ['true', 's4:all', 's4', true]);
   ck('and the contents bar follows straight away', await pg.textContent('#toc a[href="#s4"] span:last-child'), 'Room layout');
 
   r = await edit('.mast .ttlname', 'Exam Rooms Guide');
-  ck('the page title saves under the heading area', [r.last[1].after, r.last[1].section], ['Exam Rooms Guide', 'mast']);
+  ck('the page title saves under the heading area', [r.last[1].block, has(r, '<span class="ttlname">Exam Rooms Guide</span>')], ['mast:all', true]);
   ck('and the top bar follows', await pg.textContent('.rail .brand .name'), 'Exam Rooms Guide');
 
   r = await edit('#exlist .ex:nth-of-type(2) summary .example-title', 'Late arrival');
-  ck('an example title takes a space and saves', [r.typed, r.last[1].after], ['Late arrival', 'Late arrival']);
+  ck('an example title takes a space and saves', [r.typed, has(r, '<span class="example-title">Late arrival</span>')], ['Late arrival', true]);
   ck('without opening the card', await pg.evaluate(() => document.querySelector('#exlist .ex:nth-of-type(2)').open), false);
 
   await pg.click('.segbtn[data-mode="test"]'); await pg.waitForTimeout(200);
   await pg.evaluate(() => { const d = document.querySelector('#exlist .ex'); d.open = true; });
   await pg.waitForTimeout(200);
   r = await edit('#exlist .ex:nth-of-type(1) .ansbtn[data-correct] > span', 'Yes always');
-  ck('an answer takes a space and saves', [r.ce, r.typed, r.last[1].after], ['true', 'Yes always', 'Yes always']);
+  ck('an answer takes a space and saves', [r.ce, r.typed, has(r, 'data-correct="1"><span>Yes always</span>')], ['true', 'Yes always', true]);
   ck('without answering the question', await pg.evaluate(() => document.querySelector('#exlist .ex').classList.contains('answered')), false);
   ck('and it is still the right answer', await pg.evaluate(() => document.querySelector('#exlist .ex .ansbtn[data-correct]').textContent), 'Yes always');
 
   r = await edit('#pB > b', 'Venue staff');
-  ck('an option button takes a space and saves', [r.typed, r.last[1].after], ['Venue staff', 'Venue staff']);
+  ck('an option button takes a space and saves', [r.typed, has(r, '<b>Venue staff</b>')], ['Venue staff', true]);
   ck('without switching the option', await pg.getAttribute('#pB', 'aria-pressed'), 'false');
 
   await pg.click('.edbar .edgo'); await pg.waitForTimeout(200);
