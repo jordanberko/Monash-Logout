@@ -1,8 +1,12 @@
-"""site-e.html -> variant-e.html (head/body wrapper + reset block)."""
+"""site-e.html -> variant-e.html (head/body wrapper + reset block).
+
+    python3 mk.py                                                # site-e.html -> variant-e.html
+    python3 mk.py blank/site-blank.html blank/preview-blank.html
+"""
 import sys
 
-SRC = "site-e.html"
-OUT = "variant-e.html"
+SRC = sys.argv[1] if len(sys.argv) > 1 else "site-e.html"
+OUT = sys.argv[2] if len(sys.argv) > 2 else "variant-e.html"
 
 HEAD = """<!DOCTYPE html>
 <html lang="en-AU">

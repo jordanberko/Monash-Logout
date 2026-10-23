@@ -12,6 +12,8 @@ Team, served as a Google Apps Script web app.
 | `make_appsscript.py` | builds `appsscript/Index.html` and stamps the build id |
 | `variant-e.html` | generated preview build — do not edit |
 | `appsscript/` | generated Apps Script deployment files — do not edit `Index.html` by hand |
+| `make_blank.py` | makes `blank/site-blank.html`: this guide's design and layout with no content |
+| `blank/` | the blank guide, for writing a new guide in the same format. See `blank/README.md` |
 | `baseline/` | the pre-restyle source and its content snapshot, used to prove content preservation |
 | `verify/` | the Playwright and Python checks described in `docs/wispr-restyle-notes.md` |
 | `shots/` | preview screenshots from the current styling pass |
@@ -22,6 +24,13 @@ Team, served as a Google Apps Script web app.
 ```
 python3 mk.py               # -> variant-e.html
 python3 make_appsscript.py  # -> appsscript/Index.html + Code.gs
+```
+
+Both take a source and an output path, which is how the blank guide is built:
+
+```
+python3 mk.py blank/site-blank.html blank/preview-blank.html
+python3 make_appsscript.py blank/site-blank.html blank/appsscript
 ```
 
 ## Checking

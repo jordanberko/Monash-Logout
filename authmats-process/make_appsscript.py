@@ -1,9 +1,19 @@
-"""Transform site.html into an Apps Script Index.html, plus write Code.gs."""
-import re, pathlib
+"""Transform site-e.html into an Apps Script Index.html, plus write Code.gs.
 
-OUT = pathlib.Path("/home/user/authmats-process/appsscript")
+    python3 make_appsscript.py                                   # site-e.html -> appsscript/
+    python3 make_appsscript.py blank/site-blank.html blank/appsscript
+"""
+import re, sys, pathlib
+
+HERE = pathlib.Path(__file__).resolve().parent
+SRC = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "site-e.html"
+OUT = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else HERE / "appsscript"
 OUT.mkdir(exist_ok=True)
-src = pathlib.Path("/home/user/authmats-process/site-e.html").read_text()
+src = SRC.read_text()
+
+# The page's <title> names the web app and its training record sheet.
+TITLE = re.search(r"<title>(.*?)</title>", src).group(1).strip()
+assert TITLE and "'" not in TITLE and "\\" not in TITLE, "title must be plain text: %r" % TITLE
 
 # Split head material (title, style) from the body markup. Split on the end of
 # the stylesheet, not on a markup landmark: the page's first element has moved
@@ -285,6 +295,7 @@ function addTrainingRecord(name, date) {
   return getTrainingRecord();
 }
 """
+CODE_GS = CODE_GS.replace("Authorised Materials QC", TITLE)
 (OUT / "Code.gs").write_text(CODE_GS)
 
 MANIFEST = '''{
