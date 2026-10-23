@@ -1894,6 +1894,125 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0}
 img{max-width:100%;height:auto;display:block}
 [hidden]{display:none !important}
+
+/* =====================================================================
+   Live content edits. Nothing here shows until someone unlocks editing,
+   apart from the two quiet "Edit this guide" buttons.
+   ===================================================================== */
+.edentry{
+  font:inherit;font-size:var(--text-micro,13px);color:var(--ink-3,#526572);
+  background:none;border:1px solid var(--hairline,#C5D6E2);border-radius:999px;
+  padding:6px 14px;cursor:pointer;min-height:36px;
+}
+.edentry:hover{color:var(--ink,#102E42);border-color:var(--ink-3,#526572)}
+.edentry:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:2px}
+.edentry.inpanel{margin-left:12px}
+.edstampwrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.edstampwrap .buildstamp{margin:0}
+
+/* editable blocks, once editing is on */
+body.editing-on [data-ek]{cursor:text;border-radius:4px;transition:box-shadow .15s ease}
+body.editing-on [data-ek]:hover{box-shadow:0 0 0 2px var(--accent-wash,#E0EFF8),0 0 0 3px var(--accent,#006DAE)}
+body.editing-on [data-ek][data-edited]{box-shadow:inset 3px 0 0 var(--ok,#0B6554)}
+body.editing-on [data-ek].ed-on{
+  outline:2px solid var(--accent,#006DAE);outline-offset:3px;box-shadow:none;
+  background:var(--paper,#fff);color:var(--ink,#102E42);
+}
+[data-ek].ed-flash{animation:edflash 1.6s ease}
+@keyframes edflash{0%,60%{background:var(--accent-wash,#E0EFF8)}100%{background:transparent}}
+
+/* the bar along the foot of the window while editing */
+.edbar{
+  position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:80;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+  width:min(760px,calc(100% - 24px));box-sizing:border-box;
+  padding:10px 12px 10px 18px;border-radius:22px;
+  background:var(--deep,#003F66);color:#fff;
+  box-shadow:0 10px 30px rgba(0,30,50,.28);
+  font-family:var(--font-text,inherit);font-size:var(--text-micro,13px);
+}
+.edbartext{margin:0;flex:1 1 260px;line-height:1.45;color:#fff}
+.edbartext b{font-weight:600}
+.edbar .edquiet{color:#fff;border-color:rgba(255,255,255,.5)}
+.edbar .edquiet:hover{background:rgba(255,255,255,.12)}
+.edbar .edgo{background:#fff;color:var(--deep,#003F66);border-color:#fff}
+
+/* buttons shared by the bar, the toolbar, the dialog and the list */
+.edgo,.edquiet,.edtool{
+  font:inherit;font-size:var(--text-micro,13px);font-weight:600;
+  border-radius:999px;padding:7px 14px;min-height:36px;cursor:pointer;
+  border:1px solid var(--accent,#006DAE);
+}
+.edgo{background:var(--accent,#006DAE);color:#fff}
+.edgo:hover{background:var(--accent-deep,#00537F)}
+.edgo:disabled{opacity:.6;cursor:default}
+.edquiet{background:transparent;color:var(--ink,#102E42);border-color:var(--hairline,#C5D6E2);font-weight:500}
+.edquiet:hover{background:var(--cool-wash,#E0EFF8)}
+.edtool{background:var(--paper,#fff);color:var(--ink,#102E42);border-color:var(--hairline,#C5D6E2);
+  font-weight:700;min-width:36px;padding:7px 10px}
+.edgo:focus-visible,.edquiet:focus-visible,.edtool:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:2px}
+
+/* the toolbar beside the block being changed */
+.edtools{
+  position:fixed;z-index:85;display:flex;gap:6px;align-items:center;
+  padding:6px;border-radius:999px;background:var(--paper,#fff);
+  border:1px solid var(--hairline,#C5D6E2);box-shadow:0 6px 20px rgba(0,30,50,.18);
+  font-family:var(--font-text,inherit);
+}
+
+/* the password dialog */
+.edlg{
+  position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;
+  background:rgba(8,26,40,.45);
+}
+.edlg[hidden],.edbar[hidden],.edtools[hidden],.edpanel[hidden],.edtoast[hidden]{display:none}
+.edlgbox{
+  width:min(420px,100%);box-sizing:border-box;padding:24px;border-radius:22px;
+  background:var(--paper,#fff);color:var(--ink,#102E42);
+  box-shadow:0 20px 50px rgba(0,30,50,.3);font-family:var(--font-text,inherit);
+}
+.edlgbox h2{margin:0 0 6px;font-family:var(--font-serif,Georgia,serif);font-weight:400;font-size:28px;color:var(--ink,#102E42)}
+.edlgsub{margin:0 0 16px;color:var(--ink-2,#3A5164);font-size:var(--text-body-sm,15px);line-height:1.5}
+.edlgbox label{display:block;margin:12px 0 4px;font-size:var(--text-micro,13px);font-weight:600;color:var(--ink-2,#3A5164)}
+.edlgbox input{
+  width:100%;box-sizing:border-box;padding:10px 12px;border-radius:12px;min-height:44px;
+  border:1px solid var(--hairline,#C5D6E2);background:var(--paper,#fff);color:var(--ink,#102E42);font:inherit;
+}
+.edlgbox input:focus-visible{outline:2px solid var(--accent,#006DAE);outline-offset:1px}
+.edmsg{min-height:1.4em;margin:10px 0 0;color:var(--stop,#B64400);font-size:var(--text-micro,13px)}
+.edacts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}
+
+/* the list of live changes */
+.edpanel{
+  position:fixed;z-index:86;right:16px;bottom:90px;
+  width:min(440px,calc(100% - 32px));max-height:min(70vh,640px);overflow:auto;box-sizing:border-box;
+  padding:18px;border-radius:22px;background:var(--paper,#fff);color:var(--ink,#102E42);
+  border:1px solid var(--hairline,#C5D6E2);box-shadow:0 14px 40px rgba(0,30,50,.25);
+  font-family:var(--font-text,inherit);
+}
+.edpanelhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.edpanelhead h2{margin:0;font-family:var(--font-serif,Georgia,serif);font-weight:400;font-size:24px}
+.edempty{margin:6px 0;color:var(--ink-2,#3A5164);font-size:var(--text-body-sm,15px)}
+.edlist{list-style:none;margin:0;padding:0}
+.edlist li{padding:12px 0;border-top:1px solid var(--hairline,#C5D6E2)}
+.edlist p{margin:0 0 4px;line-height:1.45}
+.edwhere{font-size:var(--text-micro,13px);font-weight:600;color:var(--accent,#006DAE)}
+.edsnip{font-size:var(--text-body-sm,15px);color:var(--ink,#102E42)}
+.edmeta{font-size:var(--text-micro,13px);color:var(--ink-3,#526572)}
+.edorphan{font-size:var(--text-micro,13px);color:var(--warn,#8A5A12)}
+.edlist .edacts{justify-content:flex-start;margin-top:6px}
+
+.edtoast{
+  position:fixed;z-index:95;left:50%;top:18px;transform:translateX(-50%);
+  max-width:calc(100% - 32px);box-sizing:border-box;
+  padding:10px 16px;border-radius:14px;background:var(--ink,#102E42);color:#fff;
+  font-family:var(--font-text,inherit);font-size:var(--text-micro,13px);
+  box-shadow:0 8px 24px rgba(0,30,50,.25);
+}
+.edtoast.bad{background:var(--stop,#B64400)}
+
+@media print{ .edentry,.edbar,.edtools,.edlg,.edpanel,.edtoast{display:none !important} }
+@media (prefers-reduced-motion:reduce){ [data-ek].ed-flash{animation:none} }
 </style></head>
 <body>
 <div class="smodal" id="smodal" hidden>
@@ -2007,8 +2126,8 @@ img{max-width:100%;height:auto;display:block}
  <div class="readbar" aria-hidden="true"><i id="readfill"></i></div>
 </header>
 <div class="shell">
-<main class="main">
-<header class="mast">
+<main class="main" data-edit-template>
+<header class="mast" id="mast">
   <p class="mastkicker">Team name</p>
   <h1><span class="ttlname">Guide title</span> <span class="ttlqual">&middot; Subtitle</span></h1>
   <p class="lede">One or two sentences on what this guide helps someone do.</p>
@@ -2351,11 +2470,11 @@ img{max-width:100%;height:auto;display:block}
   </div>
   <div class="exlist" id="exlist">
 
-    <details class="ex" data-v="ok" data-scored="1"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd><b class='pract'>Practice scenario.</b> Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button></div></div></details>
+    <details class="ex" data-v="ok" data-scored="1"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd><b class='pract'>Practice scenario.</b> Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button></div></div></details>
 
-    <details class="ex" data-v="disc" data-scored="1"><summary><span class="verdict disc">Group two</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button></div></div></details>
+    <details class="ex" data-v="disc" data-scored="1"><summary><span class="verdict disc">Group two</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button></div></div></details>
 
-    <details class="ex" data-v="esc" data-scored="1"><summary><span class="verdict esc">Group three</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button></div></div></details>
+    <details class="ex" data-v="esc" data-scored="1"><summary><span class="verdict esc">Group three</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button></div></div></details>
 
     <details class="ex" data-v="ok"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title, reference only</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call. This card has no question, so it is not part of the self-test.</dd></div></dl></div></details>
 
@@ -2516,7 +2635,7 @@ img{max-width:100%;height:auto;display:block}
     <p class="certnote">A note on what this record covers and what to do next. Your tick above is kept in this browser only. Adding your name to the team record below is a separate, deliberate step.</p>
   </div>
 
-  <p class="buildstamp">Build 2026-10-23.f1e8cb</p>
+  <p class="buildstamp">Build 2026-10-23.749d54</p>
 
   <div class="roll" id="roll">
     <div class="rollhead">
@@ -2532,6 +2651,195 @@ img{max-width:100%;height:auto;display:block}
 </div>
 </section>
 </main>
+<script>
+/* =====================================================================
+   Live content edits: apply.
+   Runs straight after the page markup and before every other script, so
+   search, the stacked-table labels and anything else that reads the text
+   reads the edited version. doGet replaces the marker below with the edits
+   currently live; served without it (a preview, a test) there are none.
+   ===================================================================== */
+(function(){
+  "use strict";
+  var LIVE = /*@@LIVE_EDITS@@*/null;
+  if(!LIVE || typeof LIVE !== "object") LIVE = {};
+
+  /* What can be edited: text blocks inside the twelve sections. The
+     self-test, the completion page and anything the page builds or scores
+     are locked, so an edit can change wording but not what is required to
+     finish the training or which answer is right. */
+  var ROOT_SEL   = "main > section[id]";
+  var BLOCK_SEL  = "h2,h3,h4,p,li,td,th,dt,dd,figcaption,.chk .txt";
+  var LOCKED_SEL = "#done,#exlist,.qa,.pagenav,nav,.secack,.chkbar,.pathbar," +
+                   ".modebar,.filters,.glosfilter,.scorebox,.studynote,.stage," +
+                   ".sechead .secnum,.ackbox,.s7jump,.s7fields,button,input";
+
+  /* A blank guide (main[data-edit-template]) is written from the page, so
+     everything with a placeholder in it opens up: the page heading, the
+     worked examples and their questions, the option buttons and the
+     completion page's own wording. Which answer is right stays fixed in the
+     markup; only its wording changes. What the page counts or stamps, the
+     completion requirements and the training record, stays locked. */
+  var TEMPLATE = !!document.querySelector("main[data-edit-template]");
+  if(TEMPLATE){
+    ROOT_SEL  += ",main > header.mast[id]";
+    BLOCK_SEL += ",.ttlname,.ttlqual,.mastmeta .pill,.src .who,.src .applies," +
+                 ".ex summary .verdict,.ex summary .example-title,.ansbtn > span,.pathbtn > b,.pathbtn > span";
+    LOCKED_SEL = "#gates,.certtitle,.certmsg,.certstamp,.certform,.certacts,.roll,.buildstamp," +
+                 ".pagenav,nav,.chkbar,.modebar,.filters,.scorebox,.sechead .secnum,input," +
+                 "button:not(.ansbtn):not(.pathbtn)";
+  }
+
+  function norm(t){ return (t || "").replace(/\s+/g, " ").trim(); }
+  /* FNV-1a, 32 bit. The key only has to be stable for the same wording in
+     the same section; it is not a security measure. */
+  function hash(s){
+    var h = 0x811c9dc5;
+    for(var i = 0; i < s.length; i++){
+      h ^= s.charCodeAt(i);
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  /* ---- what an edit may contain --------------------------------------
+     Every viewer cleans an edit before it reaches the page, whatever the
+     server stored. Formatting the guide already uses survives; anything
+     else is reduced to its text. */
+  var KEEP = {B:1, STRONG:1, I:1, EM:1, CODE:1, KBD:1, Q:1, BR:1, SPAN:1, A:1};
+  var SPAN_CLASSES = {col:1, owner:1, you:1, snr:1, auto:1, pathA:1, pathB:1, hidden:1};
+  function cleanInto(src, dst){
+    for(var n = src.firstChild; n; n = n.nextSibling){
+      if(n.nodeType === 3){ dst.appendChild(document.createTextNode(n.nodeValue)); continue; }
+      if(n.nodeType !== 1) continue;
+      var tag = n.tagName;
+      if(!KEEP[tag]){ cleanInto(n, dst); continue; }       /* unwrap */
+      var out = document.createElement(tag.toLowerCase());
+      if(tag === "SPAN"){
+        var cls = (n.getAttribute("class") || "").split(/\s+/).filter(function(c){ return SPAN_CLASSES[c]; });
+        if(cls.length) out.setAttribute("class", cls.join(" "));
+      }
+      if(tag === "A"){
+        var href = (n.getAttribute("href") || "").trim();
+        if(/^#[A-Za-z0-9_-]+$/.test(href)){
+          out.setAttribute("href", href);
+          if((n.getAttribute("class") || "").split(/\s+/).indexOf("ref") > -1) out.setAttribute("class", "ref");
+        } else if(/^https:\/\/[^\s"'<>`]+$/.test(href)){
+          out.setAttribute("href", href);
+          out.setAttribute("target", "_blank");
+          out.setAttribute("rel", "noopener noreferrer");
+        } else { cleanInto(n, dst); continue; }               /* no usable link: keep its text */
+        var title = n.getAttribute("title");
+        if(title) out.setAttribute("title", title.slice(0, 200));
+      }
+      if(tag !== "BR") cleanInto(n, out);
+      dst.appendChild(out);
+    }
+  }
+  function sanitize(html){
+    var doc = new DOMParser().parseFromString("<body>" + String(html || "") + "</body>", "text/html");
+    var box = document.createElement("div");
+    cleanInto(doc.body, box);
+    return box.innerHTML;
+  }
+
+  /* ---- finding the blocks ------------------------------------------- */
+  function isBlock(el){
+    if(el.closest(LOCKED_SEL)) return false;
+    if(el.querySelector(BLOCK_SEL)) return false;              /* only the innermost */
+    return norm(el.textContent).length > 0;
+  }
+  var original = {};      /* key -> markup as built, so an edit can be undone */
+  var byKey = {};
+  [].forEach.call(document.querySelectorAll(ROOT_SEL), function(sec){
+    var seen = {};
+    [].forEach.call(sec.querySelectorAll(BLOCK_SEL), function(el){
+      if(!isBlock(el)) return;
+      var base = sec.id + ":" + hash(norm(el.textContent));
+      seen[base] = (seen[base] || 0) + 1;
+      var key = seen[base] > 1 ? base + ":" + seen[base] : base;
+      el.setAttribute("data-ek", key);
+      original[key] = el.innerHTML;
+      byKey[key] = el;
+    });
+  });
+
+  /* A blank guide repeats some of its wording outside the editable area:
+     the title in the top bar and on the sign-in screen, each section's
+     heading in the contents bar, each example group on its filter button.
+     Those copies follow the edited original rather than being edited twice. */
+  function txt(sel, root){ var e = (root || document).querySelector(sel); return e ? norm(e.textContent) : ""; }
+  function put(sel, text){
+    if(!text) return;
+    [].forEach.call(document.querySelectorAll(sel), function(e){ e.textContent = text; });
+  }
+  function syncCopies(){
+    if(!TEMPLATE) return;
+    var title = txt("header.mast .ttlname");
+    put(".rail .brand .name", title);
+    put("#step-home h1", title);
+    if(title){
+      var gate = document.getElementById("gate");
+      if(gate) gate.setAttribute("aria-label", "Sign in to " + title);
+    }
+    put(".gateeyebrow", txt("header.mast .mastkicker"));
+    put("#step-home .gatelede", txt("header.mast .lede"));
+    var pills = document.querySelector("#step-home .gatepills");
+    if(pills){
+      pills.innerHTML = "";
+      [].forEach.call(document.querySelectorAll("header.mast .mastmeta .pill"), function(p){
+        var g = document.createElement("span");
+        g.className = "gatepill";
+        g.textContent = norm(p.textContent);
+        pills.appendChild(g);
+      });
+    }
+    [].forEach.call(document.querySelectorAll("#toc a[href^='#']"), function(a){
+      var sec = document.getElementById(a.getAttribute("href").slice(1));
+      var label = a.querySelector("span:last-child");
+      var h = sec && sec.querySelector(".sechead h2");
+      if(h && label) label.textContent = norm(h.textContent);
+    });
+    [].forEach.call(document.querySelectorAll("#exfilters .fbtn[data-v]"), function(b){
+      var v = b.getAttribute("data-v");
+      if(v === "all") return;
+      var t = txt('#exlist .ex[data-v="' + v + '"] summary .verdict');
+      if(t) b.textContent = t;
+    });
+  }
+
+  function apply(key, entry){
+    var el = byKey[key];
+    if(!el) return false;
+    if(entry && typeof entry.h === "string"){
+      el.innerHTML = sanitize(entry.h);
+      el.setAttribute("data-edited", "1");
+    } else {
+      el.innerHTML = original[key];
+      el.removeAttribute("data-edited");
+    }
+    syncCopies();
+    return true;
+  }
+  Object.keys(LIVE).forEach(function(k){ apply(k, LIVE[k]); });
+  syncCopies();
+
+  window.AMQC_EDITS = {
+    live: LIVE,
+    original: original,
+    byKey: byKey,
+    sanitize: sanitize,
+    apply: apply,
+    norm: norm,
+    /* edits whose block is no longer on the page: its wording changed in
+       a rebuild, or the block was removed */
+    orphans: function(){
+      return Object.keys(window.AMQC_EDITS.live).filter(function(k){ return !byKey[k]; });
+    }
+  };
+})();
+</script>
+
 </div>
 
 
@@ -3581,7 +3889,7 @@ img{max-width:100%;height:auto;display:block}
       try{ rec = JSON.parse(stamp); }catch(e){ rec = {}; }
       cert.classList.add("open");
       certTitle.textContent = "Training complete";
-      certMsg.textContent = "Guide title, Team name.";
+      certMsg.textContent = ([".mast .ttlname", ".mast .mastkicker"].map(function(s){ var e = document.querySelector(s); return e ? e.textContent.trim() : ""; }).filter(Boolean).join(", ") + ".");
       certForm.classList.add("hidden");
       certStamp.classList.remove("hidden");
       certStamp.innerHTML = 'Completed by <span class="signed"><span></span></span> on <time></time>';
@@ -4058,5 +4366,448 @@ var SHOTS = {
 })();
 </script>
 
+<script>
+/* =====================================================================
+   Live content edits: the editing interface.
+   Anyone can see the Edit button; only someone with the edit password can
+   use it. The password is checked on the server and never reaches the page.
+   A saved change is live for everyone on their next page load, and every
+   change is logged with who made it, so each one can be undone.
+   ===================================================================== */
+(function(){
+  "use strict";
+  var E = window.AMQC_EDITS;
+  if(!E) return;
+
+  var TOKEN_KEY = "amqc-edit-token";
+  var ss = {
+    get:function(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } },
+    set:function(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} },
+    del:function(k){ try{ sessionStorage.removeItem(k); }catch(e){} }
+  };
+  var session = null;                 /* {v: token, exp: ms, name: editor} */
+  var editorName = "";                /* kept after a session ends, so asking again does not lose it */
+  try{
+    var s = JSON.parse(ss.get(TOKEN_KEY) || "null");
+    if(s && s.v && s.exp > Date.now()){ session = s; editorName = s.name || ""; }
+  }catch(e){}
+
+  function call(fn, arg){
+    return new Promise(function(done){
+      var r = window.google && google.script && google.script.run;
+      if(!r){ done({ok:false, reason:"offline"}); return; }
+      r.withSuccessHandler(function(v){ done(v || {ok:false, reason:"error"}); })
+       .withFailureHandler(function(err){ done({ok:false, reason:"error", message:String(err && err.message || err)}); })
+       [fn](arg);
+    });
+  }
+
+  var SAY = {
+    wrong:    function(r){ return "That password is not right." +
+                (r.left > 0 ? " " + r.left + (r.left === 1 ? " attempt" : " attempts") + " left." : ""); },
+    locked:   function(){ return "Too many wrong attempts. Try again in 15 minutes."; },
+    "not-set":function(){ return "Editing has not been switched on yet. Ask whoever manages the Apps Script project to set an edit password."; },
+    offline:  function(){ return "Editing only works in the published guide, not in a saved copy of the page."; },
+    expired:  function(){ return "Your editing session has ended. Enter the password again, then save."; },
+    unsafe:   function(){ return "That change contains something that cannot be saved. Remove any pasted code and try again."; },
+    "too-long":function(){ return "That change is too long to save in one block."; },
+    busy:     function(){ return "Someone else is saving at the same moment. Try again."; },
+    invalid:  function(){ return "That change could not be saved. Reload the page and try again."; },
+    error:    function(){ return "Could not reach the server. Check your connection and try again."; }
+  };
+  function say(r){ return (SAY[r && r.reason] || SAY.error)(r || {}); }
+
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(text != null) n.textContent = text;
+    return n;
+  }
+  function btn(cls, text){ var b = el("button", cls, text); b.type = "button"; return b; }
+
+  function whoName(){
+    if(editorName) return editorName;
+    if(session && session.name) return session.name;
+    var w = window.AMQC && window.AMQC.who;
+    if(typeof w === "string") return w;
+    if(w && w.name) return w.name;
+    return "";
+  }
+  function sectionOf(key){ return key.split(":")[0]; }
+  function sectionTitle(id){
+    var s = document.getElementById(id), h = s && s.querySelector("h2,h1");
+    return h ? E.norm(h.textContent) : id;
+  }
+  function textOf(html){ var d = document.createElement("div"); d.innerHTML = html || ""; return E.norm(d.textContent); }
+  function when(iso){
+    var d = new Date(iso);
+    if(isNaN(d)) return "";
+    return d.toLocaleDateString("en-AU", {day:"numeric", month:"short", year:"numeric"}) + ", " +
+           d.toLocaleTimeString("en-AU", {hour:"numeric", minute:"2-digit"});
+  }
+
+  /* ---- toast ---------------------------------------------------------- */
+  var toast = el("div", "edtoast"); toast.setAttribute("role", "status"); toast.hidden = true;
+  document.body.appendChild(toast);
+  var toastAt;
+  function notify(text, bad){
+    toast.textContent = text;
+    toast.classList.toggle("bad", !!bad);
+    toast.hidden = false;
+    clearTimeout(toastAt);
+    toastAt = setTimeout(function(){ toast.hidden = true; }, bad ? 6000 : 3500);
+  }
+
+  /* ---- the password dialog ------------------------------------------ */
+  var dlg = el("div", "edlg"); dlg.hidden = true;
+  dlg.innerHTML =
+    '<form class="edlgbox" role="dialog" aria-modal="true" aria-labelledby="edlgT">' +
+      '<h2 id="edlgT">Edit this guide</h2>' +
+      '<p class="edlgsub">Changes you save go live for everyone straight away, and each one is recorded with your name.</p>' +
+      '<label for="edname">Your name</label>' +
+      '<input id="edname" type="text" autocomplete="name" maxlength="60" required>' +
+      '<label for="edpw">Edit password</label>' +
+      '<input id="edpw" type="password" autocomplete="current-password" required>' +
+      '<p class="edmsg" role="alert"></p>' +
+      '<div class="edacts"><button type="button" class="edquiet" data-x="cancel">Cancel</button>' +
+      '<button type="submit" class="edgo">Unlock editing</button></div>' +
+    '</form>';
+  document.body.appendChild(dlg);
+  var form = dlg.querySelector("form"), nameIn = dlg.querySelector("#edname"),
+      pwIn = dlg.querySelector("#edpw"), msg = dlg.querySelector(".edmsg"),
+      goBtn = dlg.querySelector(".edgo");
+  var lastFocus = null, afterUnlock = null;
+
+  function openDialog(then){
+    afterUnlock = then || null;
+    lastFocus = document.activeElement;
+    msg.textContent = "";
+    nameIn.value = whoName();
+    pwIn.value = "";
+    dlg.hidden = false;
+    (nameIn.value ? pwIn : nameIn).focus();
+  }
+  function closeDialog(){
+    dlg.hidden = true;
+    if(lastFocus && lastFocus.focus) try{ lastFocus.focus(); }catch(e){}
+  }
+  dlg.addEventListener("click", function(e){
+    if(e.target === dlg || (e.target.dataset && e.target.dataset.x === "cancel")) closeDialog();
+  });
+  dlg.addEventListener("keydown", function(e){ if(e.key === "Escape"){ e.preventDefault(); closeDialog(); } });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = nameIn.value.trim();
+    if(!name){ msg.textContent = "Enter your name. It is recorded with each change."; nameIn.focus(); return; }
+    goBtn.disabled = true; goBtn.textContent = "Checking…"; msg.textContent = "";
+    call("editUnlock", {password: pwIn.value, name: name}).then(function(r){
+      goBtn.disabled = false; goBtn.textContent = "Unlock editing";
+      if(!r.ok){ msg.textContent = say(r); pwIn.select(); return; }
+      session = {v: r.token, exp: Date.now() + (r.ttl || 10800) * 1000 - 60000, name: name};
+      editorName = name;
+      ss.set(TOKEN_KEY, JSON.stringify(session));
+      pwIn.value = "";
+      closeDialog();
+      if(r.live) refresh(r.live);
+      var then = afterUnlock; afterUnlock = null;
+      if(then) then(); else turnOn();
+    });
+  });
+
+  /* ---- entry points --------------------------------------------------
+     Out of the way of somebody doing the training: the foot of the
+     Contents panel, and the build line at the end of the guide. */
+  function entry(where, cls){
+    var b = btn("edentry " + (cls || ""), "Edit this guide");
+    b.addEventListener("click", function(){
+      if(on){ turnOff(); return; }
+      if(session && session.exp > Date.now()) turnOn(); else openDialog();
+    });
+    where.appendChild(b);
+    return b;
+  }
+  var olfoot = document.querySelector("#outline .olfoot");
+  if(olfoot) entry(olfoot, "inpanel");
+  var stamp = document.querySelector(".buildstamp");
+  if(stamp){
+    var wrap = el("div", "edstampwrap");
+    stamp.parentNode.insertBefore(wrap, stamp);
+    wrap.appendChild(stamp);
+    entry(wrap, "atstamp");
+  }
+
+  /* ---- edit mode ------------------------------------------------------ */
+  var on = false, cur = null, curOrig = "", saving = false;
+  var bar = el("div", "edbar"); bar.hidden = true;
+  bar.setAttribute("role", "region"); bar.setAttribute("aria-label", "Editing");
+  var barText = el("p", "edbartext");
+  var changesBtn = btn("edquiet", "Changes");
+  var doneBtn = btn("edgo", "Finish editing");
+  bar.appendChild(barText); bar.appendChild(changesBtn); bar.appendChild(doneBtn);
+  document.body.appendChild(bar);
+
+  function paintBar(){
+    var n = Object.keys(E.live).length;
+    barText.innerHTML = "";
+    var b = el("b", null, "Editing as " + whoName() + ". ");
+    barText.appendChild(b);
+    barText.appendChild(document.createTextNode("Select any text to change it. Saved changes go live for everyone."));
+    changesBtn.textContent = "Changes (" + n + ")";
+  }
+  function turnOn(){
+    on = true;
+    document.body.classList.add("editing-on");
+    bar.hidden = false;
+    paintBar();
+    [].forEach.call(document.querySelectorAll(".edentry"), function(b){ b.textContent = "Finish editing"; });
+    notify("Editing is on. Select any text to change it.");
+  }
+  function turnOff(){
+    if(cur && dirty() && !confirm("Discard the change you have not saved?")) return;
+    stop(true);
+    on = false;
+    document.body.classList.remove("editing-on");
+    bar.hidden = true;
+    closePanel();
+    session = null; ss.del(TOKEN_KEY);           /* finishing locks editing again */
+    [].forEach.call(document.querySelectorAll(".edentry"), function(b){ b.textContent = "Edit this guide"; });
+    notify("Editing is locked.");
+  }
+  doneBtn.addEventListener("click", turnOff);
+
+  /* the live set changed: from a save, an undo, or someone else's save */
+  function refresh(live){
+    var before = E.live;
+    E.live = live || {};
+    var keys = {};
+    Object.keys(before).forEach(function(k){ keys[k] = 1; });
+    Object.keys(E.live).forEach(function(k){ keys[k] = 1; });
+    Object.keys(keys).forEach(function(k){
+      if(cur && cur.getAttribute("data-ek") === k) return;  /* not under the cursor */
+      var a = before[k], b = E.live[k];
+      if((a && a.h) !== (b && b.h)) E.apply(k, b);
+    });
+    if(on) paintBar();
+    if(!panel.hidden) paintPanel();
+  }
+
+  /* ---- the toolbar on the block being changed ----------------------- */
+  var tools = el("div", "edtools"); tools.hidden = true;
+  var tBold = btn("edtool", "B"); tBold.setAttribute("aria-label", "Bold"); tBold.title = "Bold (Ctrl+B)";
+  var tSave = btn("edgo", "Save");
+  var tCancel = btn("edquiet", "Cancel");
+  var tRestore = btn("edquiet edrestore", "Restore original");
+  tools.appendChild(tBold); tools.appendChild(tSave); tools.appendChild(tCancel); tools.appendChild(tRestore);
+  document.body.appendChild(tools);
+  /* keep the selection in the block when a toolbar button is pressed */
+  tools.addEventListener("mousedown", function(e){ if(e.target.closest("button")) e.preventDefault(); });
+
+  function place(){
+    if(!cur){ return; }
+    var r = cur.getBoundingClientRect(), h = tools.offsetHeight || 40;
+    var rail = document.querySelector(".rail");
+    var floor = rail ? Math.max(0, rail.getBoundingClientRect().bottom) + 6 : 6;
+    var top = r.top - h - 8;
+    if(top < floor) top = r.bottom + 8;
+    top = Math.min(Math.max(top, floor), window.innerHeight - h - 70);
+    var left = Math.min(Math.max(8, r.left), window.innerWidth - tools.offsetWidth - 8);
+    tools.style.top = Math.round(top) + "px";
+    tools.style.left = Math.round(left) + "px";
+  }
+  var placing = false;
+  function queuePlace(){ if(!placing && cur){ placing = true; requestAnimationFrame(function(){ placing = false; place(); }); } }
+  window.addEventListener("scroll", queuePlace, {passive:true});
+  window.addEventListener("resize", queuePlace);
+
+  function dirty(){ return !!cur && E.sanitize(cur.innerHTML) !== E.sanitize(curOrig); }
+
+  function start(block){
+    if(cur === block) return;
+    if(cur && dirty()){
+      notify("Save or cancel the change you are making first.", true);
+      cur.focus();
+      return;
+    }
+    stop(true);
+    cur = block;
+    curOrig = block.innerHTML;
+    block.setAttribute("contenteditable", "true");
+    block.setAttribute("spellcheck", "true");
+    block.classList.add("ed-on");
+    tRestore.hidden = !E.live[block.getAttribute("data-ek")];
+    tools.hidden = false;
+    place();
+    block.focus();
+  }
+  function stop(revert){
+    if(!cur) return;
+    if(revert) cur.innerHTML = curOrig;
+    cur.removeAttribute("contenteditable");
+    cur.removeAttribute("spellcheck");
+    cur.classList.remove("ed-on");
+    cur = null; curOrig = "";
+    tools.hidden = true;
+  }
+
+  function save(){
+    if(!cur || saving) return;
+    var block = cur, key = block.getAttribute("data-ek");
+    var html = E.sanitize(block.innerHTML);
+    if(!E.norm(textOf(html))){ notify("A block cannot be left empty. Use Restore original to undo a change.", true); return; }
+    if(html === E.sanitize(curOrig)){ stop(true); return; }
+    saving = true; tSave.disabled = true; tSave.textContent = "Saving…";
+    call("saveContentEdit", {
+      token: session && session.v, block: key, section: sectionOf(key),
+      before: textOf(curOrig), after: html, name: whoName()
+    }).then(function(r){
+      saving = false; tSave.disabled = false; tSave.textContent = "Save";
+      if(!r.ok){
+        notify(say(r), true);
+        if(r.reason === "expired"){ session = null; ss.del(TOKEN_KEY); openDialog(save); }
+        return;
+      }
+      block.innerHTML = html;
+      block.setAttribute("data-edited", "1");
+      stop(false);
+      refresh(r.live);
+      notify("Saved. It is live for everyone.");
+    });
+  }
+  function restore(){
+    if(!cur || saving) return;
+    var block = cur, key = block.getAttribute("data-ek");
+    if(!E.live[key]){ stop(true); return; }
+    if(!confirm("Put back the original wording for everyone?")) return;
+    saving = true;
+    call("revertContentEdit", {token: session && session.v, block: key, name: whoName()}).then(function(r){
+      saving = false;
+      if(!r.ok){
+        notify(say(r), true);
+        if(r.reason === "expired"){ session = null; ss.del(TOKEN_KEY); openDialog(restore); }
+        return;
+      }
+      stop(false);
+      refresh(r.live);
+      E.apply(key, null);
+      notify("Original wording restored for everyone.");
+    });
+  }
+  tBold.addEventListener("click", function(){ if(cur) document.execCommand("bold"); });
+  tSave.addEventListener("click", save);
+  tCancel.addEventListener("click", function(){ stop(true); });
+  tRestore.addEventListener("click", restore);
+
+  /* Selecting a block in edit mode edits it rather than following a link
+     or opening a card. Anything outside the editable blocks still works. */
+  document.addEventListener("click", function(e){
+    if(!on) return;
+    var t = e.target;
+    if(!t.closest || t.closest(".edtools,.edbar,.edpanel,.edlg,.edtoast")) return;
+    if(cur && cur.contains(t)){
+      if(t.closest("a")) e.preventDefault();
+      /* the wording of an answer or option button: placing the caret must
+         not answer the question or switch the option */
+      if(cur.closest("button")){ e.preventDefault(); e.stopPropagation(); }
+      return;
+    }
+    var block = t.closest("[data-ek]");
+    if(!block) return;
+    e.preventDefault();
+    e.stopPropagation();
+    start(block);
+  }, true);
+  document.addEventListener("keydown", function(e){
+    if(!cur || !cur.contains(e.target)) return;
+    if(e.key === "Escape"){ e.preventDefault(); stop(true); return; }
+    if(e.key === "Enter" && (e.ctrlKey || e.metaKey)){ e.preventDefault(); save(); return; }
+    if(e.key === "Enter"){ e.preventDefault(); document.execCommand("insertLineBreak"); return; }
+    /* a space inside a button would press it, and inside a card's title
+       would open or close the card */
+    if(e.key === " " && cur.closest("button,summary")){ e.preventDefault(); document.execCommand("insertText", false, " "); }
+  }, true);
+  /* pasting brings text only, never another page's formatting */
+  document.addEventListener("paste", function(e){
+    if(!cur || !cur.contains(e.target)) return;
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+    document.execCommand("insertText", false, text);
+  }, true);
+  document.addEventListener("drop", function(e){
+    if(cur && cur.contains(e.target)) e.preventDefault();
+  }, true);
+
+  /* ---- the list of live changes -------------------------------------- */
+  var panel = el("div", "edpanel"); panel.hidden = true;
+  panel.setAttribute("role", "dialog"); panel.setAttribute("aria-label", "Live changes");
+  document.body.appendChild(panel);
+  function closePanel(){ panel.hidden = true; }
+  changesBtn.addEventListener("click", function(){
+    if(!panel.hidden){ closePanel(); return; }
+    paintPanel(); panel.hidden = false;
+    var f = panel.querySelector("button"); if(f) f.focus();
+  });
+  panel.addEventListener("keydown", function(e){ if(e.key === "Escape"){ closePanel(); changesBtn.focus(); } });
+
+  function undoKey(key){
+    if(!confirm("Put back the original wording for everyone?")) return;
+    call("revertContentEdit", {token: session && session.v, block: key, name: whoName()}).then(function(r){
+      if(!r.ok){
+        notify(say(r), true);
+        if(r.reason === "expired"){ session = null; ss.del(TOKEN_KEY); openDialog(function(){ undoKey(key); }); }
+        return;
+      }
+      refresh(r.live);
+      E.apply(key, null);
+      notify("Original wording restored for everyone.");
+    });
+  }
+  function paintPanel(){
+    panel.innerHTML = "";
+    var head = el("div", "edpanelhead");
+    head.appendChild(el("h2", null, "Live changes"));
+    var x = btn("edquiet", "Close"); x.addEventListener("click", closePanel);
+    head.appendChild(x);
+    panel.appendChild(head);
+    var keys = Object.keys(E.live).sort(function(a, b){
+      return String(E.live[b].at || "").localeCompare(String(E.live[a].at || ""));
+    });
+    if(!keys.length){
+      panel.appendChild(el("p", "edempty", "Nothing has been changed. The guide shows its original wording."));
+      return;
+    }
+    var list = el("ol", "edlist");
+    keys.forEach(function(k){
+      var e = E.live[k], li = el("li");
+      var orphan = !E.byKey[k];
+      li.appendChild(el("p", "edwhere", sectionTitle(sectionOf(k))));
+      var snip = textOf(e.h);
+      li.appendChild(el("p", "edsnip", snip.length > 140 ? snip.slice(0, 140) + "…" : snip));
+      li.appendChild(el("p", "edmeta", (e.by ? "Changed by " + e.by : "Changed") + (e.at ? ", " + when(e.at) : "")));
+      if(orphan) li.appendChild(el("p", "edorphan",
+        "Not showing: the original wording of this block changed in an update, so this edit no longer matches anything on the page."));
+      var acts = el("div", "edacts");
+      if(!orphan){
+        var show = btn("edquiet", "Show");
+        show.addEventListener("click", function(){
+          closePanel();
+          var b = E.byKey[k];
+          if(window.AMQC && window.AMQC.scrollToEl) window.AMQC.scrollToEl(b);
+          else b.scrollIntoView({block:"center"});
+          b.classList.add("ed-flash");
+          setTimeout(function(){ b.classList.remove("ed-flash"); }, 1600);
+        });
+        acts.appendChild(show);
+      }
+      var undo = btn("edquiet", orphan ? "Remove" : "Restore original");
+      undo.addEventListener("click", function(){ undoKey(k); });
+      acts.appendChild(undo);
+      li.appendChild(acts);
+      list.appendChild(li);
+    });
+    panel.appendChild(list);
+  }
+
+})();
+</script>
 </body>
 </html>

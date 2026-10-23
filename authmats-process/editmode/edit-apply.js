@@ -21,6 +21,22 @@
                    ".modebar,.filters,.glosfilter,.scorebox,.studynote,.stage," +
                    ".sechead .secnum,.ackbox,.s7jump,.s7fields,button,input";
 
+  /* A blank guide (main[data-edit-template]) is written from the page, so
+     everything with a placeholder in it opens up: the page heading, the
+     worked examples and their questions, the option buttons and the
+     completion page's own wording. Which answer is right stays fixed in the
+     markup; only its wording changes. What the page counts or stamps, the
+     completion requirements and the training record, stays locked. */
+  var TEMPLATE = !!document.querySelector("main[data-edit-template]");
+  if(TEMPLATE){
+    ROOT_SEL  += ",main > header.mast[id]";
+    BLOCK_SEL += ",.ttlname,.ttlqual,.mastmeta .pill,.src .who,.src .applies," +
+                 ".ex summary .verdict,.ex summary .example-title,.ansbtn > span,.pathbtn > b,.pathbtn > span";
+    LOCKED_SEL = "#gates,.certtitle,.certmsg,.certstamp,.certform,.certacts,.roll,.buildstamp," +
+                 ".pagenav,nav,.chkbar,.modebar,.filters,.scorebox,.sechead .secnum,input," +
+                 "button:not(.ansbtn):not(.pathbtn)";
+  }
+
   function norm(t){ return (t || "").replace(/\s+/g, " ").trim(); }
   /* FNV-1a, 32 bit. The key only has to be stable for the same wording in
      the same section; it is not a security measure. */
@@ -95,6 +111,50 @@
     });
   });
 
+  /* A blank guide repeats some of its wording outside the editable area:
+     the title in the top bar and on the sign-in screen, each section's
+     heading in the contents bar, each example group on its filter button.
+     Those copies follow the edited original rather than being edited twice. */
+  function txt(sel, root){ var e = (root || document).querySelector(sel); return e ? norm(e.textContent) : ""; }
+  function put(sel, text){
+    if(!text) return;
+    [].forEach.call(document.querySelectorAll(sel), function(e){ e.textContent = text; });
+  }
+  function syncCopies(){
+    if(!TEMPLATE) return;
+    var title = txt("header.mast .ttlname");
+    put(".rail .brand .name", title);
+    put("#step-home h1", title);
+    if(title){
+      var gate = document.getElementById("gate");
+      if(gate) gate.setAttribute("aria-label", "Sign in to " + title);
+    }
+    put(".gateeyebrow", txt("header.mast .mastkicker"));
+    put("#step-home .gatelede", txt("header.mast .lede"));
+    var pills = document.querySelector("#step-home .gatepills");
+    if(pills){
+      pills.innerHTML = "";
+      [].forEach.call(document.querySelectorAll("header.mast .mastmeta .pill"), function(p){
+        var g = document.createElement("span");
+        g.className = "gatepill";
+        g.textContent = norm(p.textContent);
+        pills.appendChild(g);
+      });
+    }
+    [].forEach.call(document.querySelectorAll("#toc a[href^='#']"), function(a){
+      var sec = document.getElementById(a.getAttribute("href").slice(1));
+      var label = a.querySelector("span:last-child");
+      var h = sec && sec.querySelector(".sechead h2");
+      if(h && label) label.textContent = norm(h.textContent);
+    });
+    [].forEach.call(document.querySelectorAll("#exfilters .fbtn[data-v]"), function(b){
+      var v = b.getAttribute("data-v");
+      if(v === "all") return;
+      var t = txt('#exlist .ex[data-v="' + v + '"] summary .verdict');
+      if(t) b.textContent = t;
+    });
+  }
+
   function apply(key, entry){
     var el = byKey[key];
     if(!el) return false;
@@ -105,9 +165,11 @@
       el.innerHTML = original[key];
       el.removeAttribute("data-edited");
     }
+    syncCopies();
     return true;
   }
   Object.keys(LIVE).forEach(function(k){ apply(k, LIVE[k]); });
+  syncCopies();
 
   window.AMQC_EDITS = {
     live: LIVE,

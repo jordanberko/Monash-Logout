@@ -3,3 +3,4 @@ node_modules/
 __pycache__/
 authmats-process/editmode/build-snapshot/
 authmats-process/appsscript-edit/
+authmats-process/blank/build/

@@ -4,6 +4,10 @@ The stylesheet and the scripts are copied from site-e.html unchanged, so the
 blank guide looks and behaves exactly like the real one. Only the wording is
 replaced, with placeholder prompts that say what belongs in each spot.
 
+The page is marked as a template (main[data-edit-template]), which tells live
+editing to open up everything with a placeholder in it, not only the wording
+inside the sections. See editmode/README.md.
+
     python3 make_blank.py           # writes blank/site-blank.html
     python3 make_blank.py --force   # overwrites one that already exists
 
@@ -157,8 +161,8 @@ BODY = r"""
  <div class="readbar" aria-hidden="true"><i id="readfill"></i></div>
 </header>
 <div class="shell">
-<main class="main">
-<header class="mast">
+<main class="main" data-edit-template>
+<header class="mast" id="mast">
   <p class="mastkicker">Team name</p>
   <h1><span class="ttlname">@@TITLE@@</span> <span class="ttlqual">&middot; Subtitle</span></h1>
   <p class="lede">One or two sentences on what this guide helps someone do.</p>
@@ -501,11 +505,11 @@ BODY = r"""
   </div>
   <div class="exlist" id="exlist">
 
-    <details class="ex" data-v="ok" data-scored="1"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd><b class='pract'>Practice scenario.</b> Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button></div></div></details>
+    <details class="ex" data-v="ok" data-scored="1"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd><b class='pract'>Practice scenario.</b> Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button></div></div></details>
 
-    <details class="ex" data-v="disc" data-scored="1"><summary><span class="verdict disc">Group two</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button></div></div></details>
+    <details class="ex" data-v="disc" data-scored="1"><summary><span class="verdict disc">Group two</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button></div></div></details>
 
-    <details class="ex" data-v="esc" data-scored="1"><summary><span class="verdict esc">Group three</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button></div></div></details>
+    <details class="ex" data-v="esc" data-scored="1"><summary><span class="verdict esc">Group three</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button></div></div></details>
 
     <details class="ex" data-v="ok"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title, reference only</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call. This card has no question, so it is not part of the self-test.</dd></div></dl></div></details>
 
@@ -707,7 +711,12 @@ head = swap(head, "<title>Authorised Materials QC</title>", "<title>%s</title>" 
 # The scripts carry a few lines of the old guide's wording.
 scripts = swap(scripts, "var PASS_MARK = 12;   /* out of 14 */",
                "var PASS_MARK = 3;    /* out of 3. Update it when you add or remove scored questions. */")
-scripts = swap(scripts, '"Authorised Materials QC, Exam Delivery Team."', '"%s, Team name."' % TITLE)
+# The line under the completion tick reads the page heading, so it follows
+# an edit to the title or team name.
+scripts = swap(scripts, '"Authorised Materials QC, Exam Delivery Team."',
+               '([".mast .ttlname", ".mast .mastkicker"].map(function(s){'
+               ' var e = document.querySelector(s); return e ? e.textContent.trim() : ""; })'
+               '.filter(Boolean).join(", ") + ".")')
 scripts = swap(scripts, "Try a term like calculator, notes, hybrid, reminder or escalation.",
                "Try a different word.")
 # Own storage keys, so a blank guide opened in the same browser as the real

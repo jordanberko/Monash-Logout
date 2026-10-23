@@ -13,7 +13,7 @@
  *   they next save. Delete the property to switch editing off.
  *
  * Where changes go
- *   A spreadsheet named "Authorised Materials QC - Content edits", created
+ *   A spreadsheet named after the guide, "<title> - Content edits", created
  *   in the script owner's Drive on the first save. Every save and every
  *   undo is a row: when, which block, the wording before and after, the
  *   name the editor gave, their Monash account when Google provides it.
@@ -30,7 +30,7 @@
  *     are not editable from the page.
  * ===================================================================== */
 
-var EDITS_SHEET_NAME   = 'Authorised Materials QC - Content edits';
+var EDITS_SHEET_NAME   = PAGE_TITLE + ' - Content edits';   // PAGE_TITLE: the guide's Code.gs, above
 var EDITS_PROP_KEY     = 'EDITS_SHEET_ID';
 var EDIT_PASSWORD_KEY  = 'EDIT_PASSWORD';
 var EDITS_HEADERS      = ['Saved at', 'Block', 'Section', 'Before', 'After', 'Edited by', 'Account', 'Action'];

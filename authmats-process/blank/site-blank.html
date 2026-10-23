@@ -1998,8 +1998,8 @@ body.searching{overflow:hidden}
  <div class="readbar" aria-hidden="true"><i id="readfill"></i></div>
 </header>
 <div class="shell">
-<main class="main">
-<header class="mast">
+<main class="main" data-edit-template>
+<header class="mast" id="mast">
   <p class="mastkicker">Team name</p>
   <h1><span class="ttlname">Guide title</span> <span class="ttlqual">&middot; Subtitle</span></h1>
   <p class="lede">One or two sentences on what this guide helps someone do.</p>
@@ -2342,11 +2342,11 @@ body.searching{overflow:hidden}
   </div>
   <div class="exlist" id="exlist">
 
-    <details class="ex" data-v="ok" data-scored="1"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd><b class='pract'>Practice scenario.</b> Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button></div></div></details>
+    <details class="ex" data-v="ok" data-scored="1"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd><b class='pract'>Practice scenario.</b> Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button></div></div></details>
 
-    <details class="ex" data-v="disc" data-scored="1"><summary><span class="verdict disc">Group two</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button></div></div></details>
+    <details class="ex" data-v="disc" data-scored="1"><summary><span class="verdict disc">Group two</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button></div></div></details>
 
-    <details class="ex" data-v="esc" data-scored="1"><summary><span class="verdict esc">Group three</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1">A wrong answer</button><button class="ansbtn" type="button" data-o="2">A wrong answer</button><button class="ansbtn" type="button" data-o="0" data-correct="1">The correct answer</button></div></div></details>
+    <details class="ex" data-v="esc" data-scored="1"><summary><span class="verdict esc">Group three</span><span class="example-title">Example title</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call, and why it is right.</dd></div></dl></div><div class="qa hidden"><p class="quizq">A question about this example?</p><div class="answers"><button class="ansbtn" type="button" data-o="1"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="2"><span>A wrong answer</span></button><button class="ansbtn" type="button" data-o="0" data-correct="1"><span>The correct answer</span></button></div></div></details>
 
     <details class="ex" data-v="ok"><summary><span class="verdict ok">Group one</span><span class="example-title">Example title, reference only</span><span class="chev">&#9656;</span></summary><div class="exbody"><dl><div><dt>What you see</dt><dd>Describe the situation the reader is looking at.</dd></div><div><dt>What to do</dt><dd>Explain the right call. This card has no question, so it is not part of the self-test.</dd></div></dl></div></details>
 
@@ -3572,7 +3572,7 @@ body.searching{overflow:hidden}
       try{ rec = JSON.parse(stamp); }catch(e){ rec = {}; }
       cert.classList.add("open");
       certTitle.textContent = "Training complete";
-      certMsg.textContent = "Guide title, Team name.";
+      certMsg.textContent = ([".mast .ttlname", ".mast .mastkicker"].map(function(s){ var e = document.querySelector(s); return e ? e.textContent.trim() : ""; }).filter(Boolean).join(", ") + ".");
       certForm.classList.add("hidden");
       certStamp.classList.remove("hidden");
       certStamp.innerHTML = 'Completed by <span class="signed"><span></span></span> on <time></time>';

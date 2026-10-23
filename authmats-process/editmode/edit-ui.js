@@ -67,7 +67,7 @@
   }
   function sectionOf(key){ return key.split(":")[0]; }
   function sectionTitle(id){
-    var s = document.getElementById(id), h = s && s.querySelector("h2");
+    var s = document.getElementById(id), h = s && s.querySelector("h2,h1");
     return h ? E.norm(h.textContent) : id;
   }
   function textOf(html){ var d = document.createElement("div"); d.innerHTML = html || ""; return E.norm(d.textContent); }
@@ -335,7 +335,13 @@
     if(!on) return;
     var t = e.target;
     if(!t.closest || t.closest(".edtools,.edbar,.edpanel,.edlg,.edtoast")) return;
-    if(cur && cur.contains(t)){ if(t.closest("a")) e.preventDefault(); return; }
+    if(cur && cur.contains(t)){
+      if(t.closest("a")) e.preventDefault();
+      /* the wording of an answer or option button: placing the caret must
+         not answer the question or switch the option */
+      if(cur.closest("button")){ e.preventDefault(); e.stopPropagation(); }
+      return;
+    }
     var block = t.closest("[data-ek]");
     if(!block) return;
     e.preventDefault();
@@ -346,7 +352,10 @@
     if(!cur || !cur.contains(e.target)) return;
     if(e.key === "Escape"){ e.preventDefault(); stop(true); return; }
     if(e.key === "Enter" && (e.ctrlKey || e.metaKey)){ e.preventDefault(); save(); return; }
-    if(e.key === "Enter"){ e.preventDefault(); document.execCommand("insertLineBreak"); }
+    if(e.key === "Enter"){ e.preventDefault(); document.execCommand("insertLineBreak"); return; }
+    /* a space inside a button would press it, and inside a card's title
+       would open or close the card */
+    if(e.key === " " && cur.closest("button,summary")){ e.preventDefault(); document.execCommand("insertText", false, " "); }
   }, true);
   /* pasting brings text only, never another page's formatting */
   document.addEventListener("paste", function(e){

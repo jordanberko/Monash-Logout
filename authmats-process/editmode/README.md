@@ -15,6 +15,7 @@ Nothing needs redeploying.
 | `integrate.py` | adds all of the above to a built `appsscript/` folder |
 | `tests/server.test.js` | 43 checks of the server code, run in Node with stand-ins for the Google services |
 | `tests/ui.test.js` | 53 checks of the interface in Chromium, with the server mocked in the page |
+| `tests/template.test.js` | 30 checks of editing on a blank guide (see below) |
 
 ## Building
 
@@ -53,10 +54,37 @@ the completion page and its requirements, the section structure and
 navigation, section numbers and stage labels, the checklist acknowledgement,
 and anything the page builds itself. Those still go through the build.
 
+## Blank guides
+
+A page whose `<main>` carries `data-edit-template` (the blank guide made by
+`make_blank.py`) is being written from the page, so more of it opens up:
+
+- the page heading: title, subtitle, team name, summary and pills
+- the labels on the cards in section 3
+- the worked examples: group labels, titles, both halves of each case, the
+  questions and the wording of each answer
+- the Option A and Option B buttons
+- the completion page's heading and notes
+
+Wording repeated elsewhere follows the original: the title in the top bar
+and on the sign-in screen, the team name, summary and pills on the sign-in
+screen, each section heading in the contents bar, and each example group on
+its filter button.
+
+Which answer is right is still fixed in the markup, so an edit changes the
+wording of an answer but never which one scores. The completion
+requirements, the training record, build line and anything the page counts
+stay locked, as do adding or removing sections, rows, cards and
+screenshots. Those go through the file.
+
+```
+node editmode/tests/template.test.js blank/appsscript/Index.html
+```
+
 ## Where changes are kept
 
-A spreadsheet named **Authorised Materials QC - Content edits** in the
-script owner's Drive, created on the first save. One row per save or undo:
+A spreadsheet named after the guide, **Authorised Materials QC - Content
+edits** for this one, in the script owner's Drive, created on the first save. One row per save or undo:
 when, which block, the wording before and after, the name given, the Monash
 account when Google provides it, and whether it was an edit or an undo.
 Nothing is ever deleted from it.

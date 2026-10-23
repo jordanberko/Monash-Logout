@@ -6,11 +6,14 @@ light and dark themes, worked examples with a self-test, the checklist, and the
 completion page with the shared training record. Every piece of wording is a
 placeholder that says what belongs there.
 
+Once deployed, people with the edit password can fill it in from the page
+itself. See **Editing from the page** below.
+
 | file | what it is |
 |---|---|
 | `site-blank.html` | **the source.** Fill this in. |
 | `preview-blank.html` | built from the source, for opening in a browser. Do not edit. |
-| `appsscript/` | built Apps Script files, for deploying as its own web app. Do not edit `Index.html` by hand. |
+| `appsscript/` | built Apps Script files with live editing included, for deploying as its own web app. Do not edit by hand. |
 
 `make_blank.py` (one folder up) made `site-blank.html` from `site-e.html`. It
 will not overwrite a blank that already exists, because that would wipe
@@ -90,20 +93,56 @@ When you change the number of scored questions, also update:
 Each step is a `<label>`. Give a new one the next `id="chkrow-cN"` and
 `data-k="cN"`, and keep both unique. Update `0 of 5` in the bar above it.
 
+## Editing from the page
+
+The deployed blank has live editing built in, so people can fill it in from
+the page without touching this file. Anyone with the edit password can
+change any placeholder: section headings, text, table cells, card labels,
+the page title and team name, the worked examples and their questions and
+answers, the Option A and Option B buttons, and the completion page
+wording. Wording that appears twice, such as the title in the top bar and
+each heading in the contents bar, follows by itself.
+
+To switch it on, open the Apps Script project, go to **Project Settings >
+Script Properties > Add script property**, and add `EDIT_PASSWORD` with the
+password as its value. Then on the page, scroll to the very end and select
+**Edit this guide**.
+
+Saved changes go live for everyone on their next page load. Every change is
+logged with the editor's name in a sheet called `<title> - Content edits`
+in the script owner's Drive, and can be undone from **Changes** on the page.
+`editmode/README.md` has the full detail.
+
+What the page cannot do is change the shape of the guide: add or remove
+sections, table rows, cards, steps or questions, or swap a placeholder for
+a real screenshot. Those are changes to `site-blank.html`, followed by a
+rebuild and redeploy. Edits made on the page are keyed to the wording they
+replaced, so make structural changes before people start editing, or fold
+their edits into the file first.
+
 ## Building and deploying
 
 Run from `authmats-process/`:
 
 ```
 python3 mk.py blank/site-blank.html blank/preview-blank.html
-python3 make_appsscript.py blank/site-blank.html blank/appsscript
+python3 make_appsscript.py blank/site-blank.html blank/build
+python3 editmode/integrate.py blank/build blank/appsscript
 ```
 
-The first gives you a page to open in a browser. The second gives you
-`Code.gs`, `Index.html` and `appsscript.json` for a new Apps Script project.
-Setup steps are at the top of `Code.gs`. The web app and its training record
-sheet take their names from the page's `<title>`, so set that before the first
-deploy.
+The first gives you a page to open in a browser. The other two give you
+`Code.gs`, `Index.html` and `appsscript.json` in `blank/appsscript/`, with
+editing included, for a new Apps Script project. Setup steps are at the top
+of `Code.gs`. The web app, its training record sheet and its edits log take
+their names from the page's `<title>`, so set that before the first deploy.
+`blank/build/` is a scratch folder and is not committed.
+
+To check the editing on the blank:
+
+```
+node editmode/tests/template.test.js blank/appsscript/Index.html
+node editmode/tests/server.test.js blank/appsscript/Code.gs
+```
 
 The blank keeps its progress, ticks and completion under its own browser
 storage keys, so it never mixes with the real guide's.

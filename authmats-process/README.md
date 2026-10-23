@@ -30,7 +30,8 @@ Both take a source and an output path, which is how the blank guide is built:
 
 ```
 python3 mk.py blank/site-blank.html blank/preview-blank.html
-python3 make_appsscript.py blank/site-blank.html blank/appsscript
+python3 make_appsscript.py blank/site-blank.html blank/build
+python3 editmode/integrate.py blank/build blank/appsscript   # adds live editing
 ```
 
 ## Checking
